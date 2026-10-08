@@ -1,0 +1,76 @@
+---
+import Base from "@/layouts/Base.astro";
+import { site, url } from "@/lib/site";
+
+const ready = Boolean(site.email || site.links.length);
+---
+
+<Base title="Contact" description={`Get in touch with ${site.photographer}.`} ground="night" rail={false} noindex={!ready}>
+  <section class="contact" data-ground-zone="night">
+    <h1 class="display contact__title">Write to {site.photographer.split(" ")[0]}</h1>
+    {
+      ready ? (
+        <div class="contact__ways">
+          {site.email && (
+            <a class="contact__email" href={`mailto:${site.email}`}>
+              {site.email}
+            </a>
+          )}
+          {site.links.length > 0 && (
+            <ul class="contact__links">
+              {site.links.map((l) => (
+                <li>
+                  <a href={l.href} rel="me noopener">
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      ) : (
+        <p class="contact__pending">Contact details are not published yet.</p>
+      )
+    }
+    <a class="mono contact__back" href={url("/")}>Back to the descent</a>
+  </section>
+</Base>
+
+<style>
+  .contact {
+    min-height: 100svh;
+    display: grid;
+    align-content: center;
+    gap: 2.5rem;
+    padding: var(--section) var(--gutter);
+  }
+  .contact__title {
+    margin: 0;
+    font-size: clamp(3.5rem, 11vw, 10rem);
+    margin-left: -0.04em;
+  }
+  .contact__email {
+    font-variation-settings: "wdth" 80;
+    font-size: clamp(1.5rem, 4vw, 3.5rem);
+    letter-spacing: -0.02em;
+    word-break: break-all;
+  }
+  .contact__links {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 2rem;
+    font-size: 1.125rem;
+  }
+  .contact__pending {
+    margin: 0;
+    font-size: 1.25rem;
+    color: var(--fg-dim);
+  }
+  .contact__back {
+    text-decoration: none;
+    color: var(--fg-dim);
+  }
+</style>

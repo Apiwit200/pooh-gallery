@@ -1,0 +1,10 @@
+{
+  "category": "kinetic-type",
+  "duration": 10,
+  "canvas": [1920, 1080],
+  "asset_needs": [],
+  "brief": "Title sting for the photography exhibition Light Falls. Seven of the photographer's own frames, chosen from the curated homepage, dissolve in descending order of measured exposure value: island at noon, a deer in shade, a pylon at dusk, a shark in aquarium light, concert confetti, New Year fireworks, and finally M31. A Geist Mono EV readout and a hairline meter on the right step down with each frame's real EV (read from src/data/photos.json) and fall off the scale at Andromeda. The title rises over the galaxy for the final 2.4 seconds. Photographs are shown unaltered: no grading, no filters, only scale and opacity.",
+  "frames_source": "src/data/curation.json ids, resolved to public/photos/<file>-1920.avif by build.mjs",
+  "fonts": ["Mona Sans Variable (wdth 75)", "Geist Mono Variable"],
+  "palette": { "deep": "#04060a", "paper": "#ebe7dd" }
+}

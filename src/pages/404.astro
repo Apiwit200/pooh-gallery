@@ -1,0 +1,30 @@
+---
+import Base from "@/layouts/Base.astro";
+import { url } from "@/lib/site";
+---
+
+<Base title="Not found" ground="night" noindex rail={false}>
+  <section class="lost" data-ground-zone="night">
+    <p class="mono">404 · nothing at this depth</p>
+    <h1 class="display lost__title">Underexposed.</h1>
+    <p>This page does not exist, or the light never reached it.</p>
+    <a href={url("/")}>Back to the surface</a>
+  </section>
+</Base>
+
+<style>
+  .lost {
+    min-height: 100svh;
+    display: grid;
+    align-content: center;
+    gap: 1.5rem;
+    padding: var(--section) var(--gutter);
+  }
+  .lost__title {
+    margin: 0;
+    font-size: clamp(4rem, 14vw, 12rem);
+  }
+  .lost p {
+    margin: 0;
+  }
+</style>

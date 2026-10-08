@@ -1,0 +1,397 @@
+---
+import Photo from "@/components/Photo.astro";
+import Starfield from "@/components/Starfield.astro";
+import Base from "@/layouts/Base.astro";
+import { compose } from "@/lib/compose";
+import {
+  collections,
+  DEEP_SKY,
+  DEEP_SKY_SLUG,
+  descent,
+  featured,
+  finale,
+  formatEv,
+  hero,
+  photoStratum,
+  STRATA,
+  strataLines,
+} from "@/lib/photos";
+import { site, url } from "@/lib/site";
+import curation from "@/data/curation.json";
+
+const finaleTitle = (curation.descent as { finaleTitle?: string }).finaleTitle ?? "Where the daylight came from.";
+
+const measured = descent.filter((p) => p.ev != null && p.collection !== DEEP_SKY_SLUG);
+const brightest = measured[0]?.ev ?? null;
+const darkest = measured[measured.length - 1]?.ev ?? null;
+
+const chapters = [...STRATA, DEEP_SKY]
+  .map((stratum) => {
+    const frames = featured.filter((p) => p.id !== hero.id && p.id !== finale?.id && photoStratum(p) === stratum);
+    const evs = frames.flatMap((p) => (p.ev == null ? [] : [p.ev]));
+    return {
+      stratum,
+      line: strataLines[stratum.key],
+      blocks: compose(frames),
+      range: evs.length ? ([Math.max(...evs), Math.min(...evs)] as const) : null,
+      collections: collections.filter((c) => c.stratum === stratum),
+      count: frames.length,
+    };
+  })
+  .filter((c) => c.count > 0);
+
+const href = (slug: string) => url(slug === DEEP_SKY_SLUG ? "/deep-sky/" : `/c/${slug}/`);
+const jsonld = {
+  "@context": "https://schema.org",
+  "@type": "ImageGallery",
+  name: site.title,
+  description: site.description,
+  author: { "@type": "Person", name: site.photographer },
+};
+---
+
+<Base image={hero} preload={hero} ground="daylight" jsonld={jsonld}>
+  <section class="opening" data-ground-zone="daylight" data-nav-over aria-labelledby="title">
+    <Photo photo={hero} eager class="opening__photo" ratio="auto" sizes="100vw" view={false} />
+    <div class="opening__type" data-parallax="-0.35">
+      <h1 id="title" class="display opening__title">{site.title}</h1>
+      <p class="opening__by">Photographs by {site.photographer}</p>
+    </div>
+    <p class="opening__note mono">
+      {descent.length} frames · {formatEv(brightest)} to {formatEv(darkest)} · then the sky
+    </p>
+    <a class="opening__descend mono" href="#prologue">Descend</a>
+  </section>
+
+  <section id="prologue" class="prologue" data-ground-zone="daylight">
+    <p class="prologue__text">
+      Every photograph here is placed by the light it caught. The camera wrote down how bright each scene was. The
+      page starts at the brightest noon in the archive and goes down, frame by frame, through shade and dusk into
+      lamplight, night, and the sky past it.
+    </p>
+    <p class="mono prologue__key">The scale on the right reads each frame's exposure value as you pass it.</p>
+  </section>
+
+  {
+    chapters.map(({ stratum, line, blocks, range, collections: cs }) => (
+      <section
+        class:list={["stratum", `stratum--${stratum.key}`]}
+        data-ground-zone={stratum.key}
+        aria-labelledby={`s-${stratum.key}`}
+        id={stratum.key}
+      >
+        {stratum === DEEP_SKY && <Starfield />}
+        <header class="stratum__head">
+          <h2 id={`s-${stratum.key}`} class="display stratum__name" data-parallax="0.12">
+            {stratum.name}
+          </h2>
+          <div class="stratum__meta">
+            <p class="stratum__line">{line}</p>
+            <p class="mono stratum__range">
+              {range ? `${formatEv(range[0])} → ${formatEv(range[1])}` : stratum === DEEP_SKY ? "Beyond the scale" : ""}
+            </p>
+            <ul class="stratum__links">
+              {cs.map((c) => (
+                <li>
+                  <a href={href(c.slug)}>{c.title}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </header>
+
+        {blocks.map((b) => (
+          <div class:list={["block", `block--${b.kind}`, b.kind === "offset" && `block--${b.side}`]} data-reveal={b.kind}>
+            {b.kind === "full" && <Photo photo={b.photo} sizes="100vw" />}
+            {b.kind === "offset" && <Photo photo={b.photo} sizes="(min-width: 64rem) 58vw, 100vw" />}
+            {b.kind === "pair" && b.photos.map((p) => <Photo photo={p} sizes="(min-width: 48rem) 40vw, 100vw" />)}
+            {b.kind === "strip" && (
+              <div class="strip" data-strip>
+                <div class="strip__track" data-strip-track>
+                  {b.photos.map((p) => (
+                    <Photo photo={p} sizes="(min-width: 48rem) 70vh, 85vw" />
+                  ))}
+                </div>
+              </div>
+            )}
+            {b.kind === "quiet" && <Photo photo={b.photo} sizes="(min-width: 48rem) 26vw, 60vw" />}
+          </div>
+        ))}
+      </section>
+    ))
+  }
+
+  <section class="finale" data-ground-zone="deep-sky" aria-labelledby="finale-title">
+    {finale && <Photo photo={finale} class="finale__photo" sizes="(min-width: 48rem) 50vw, 90vw" />}
+    <h2 id="finale-title" class="display finale__title">{finaleTitle}</h2>
+    <nav class="finale__links" aria-label="Keep looking">
+      <a href={url("/index/")}>Every collection</a>
+      <a href={url("/archive/")}>The whole archive, by light</a>
+      <a href={url("/deep-sky/")}>Beyond the frame</a>
+    </nav>
+    <p class="mono finale__credit">© {new Date().getFullYear()} {site.photographer}</p>
+  </section>
+</Base>
+
+<script>
+  import "@/scripts/descent";
+</script>
+
+<style>
+  .opening {
+    position: relative;
+    height: 100svh;
+    min-height: 32rem;
+    overflow: clip;
+    color: #f4f1ea;
+  }
+  .opening :global(.opening__photo) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .opening::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to bottom, rgb(10 14 16 / 0.28), transparent 18%),
+      linear-gradient(to top, rgb(6 20 22 / 0.5), rgb(6 20 22 / 0.12) 42%, transparent 60%);
+    pointer-events: none;
+  }
+  .opening__type {
+    position: absolute;
+    z-index: 1;
+    left: var(--gutter);
+    right: calc(var(--gutter) + var(--rail));
+    bottom: clamp(4.5rem, 11vh, 7.5rem);
+  }
+  .opening__title {
+    font-size: clamp(4.5rem, 17vw, 15rem);
+    margin: 0;
+    margin-left: -0.04em;
+  }
+  .opening__by {
+    margin: 1.75rem 0 0 0.2em;
+    font-size: clamp(1rem, 1.2vw + 0.6rem, 1.375rem);
+    font-variation-settings: "wdth" 88;
+  }
+  .opening__note,
+  .opening__descend {
+    position: absolute;
+    z-index: 1;
+    bottom: 1.5rem;
+  }
+  .opening__note {
+    left: var(--gutter);
+    max-width: 60%;
+  }
+  .opening__descend {
+    right: calc(var(--gutter) + var(--rail));
+    text-decoration: none;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid currentColor;
+  }
+
+  .prologue {
+    padding: var(--section) calc(var(--gutter) + var(--rail)) var(--section) var(--gutter);
+    display: grid;
+    gap: 2rem;
+  }
+  .prologue__text {
+    margin: 0;
+    max-width: 40rem;
+    font-size: clamp(1.375rem, 1.6vw + 0.8rem, 2.25rem);
+    line-height: 1.22;
+    letter-spacing: -0.012em;
+    font-variation-settings: "wdth" 92;
+    text-wrap: pretty;
+  }
+  .prologue__key {
+    margin: 0;
+    color: var(--fg-dim);
+  }
+  @media (min-width: 64rem) {
+    .prologue {
+      padding-left: 33%;
+    }
+  }
+
+  .stratum {
+    position: relative;
+    padding: var(--section) 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(4rem, 12vh, 9rem);
+  }
+  .stratum__head {
+    position: relative;
+    z-index: 1;
+    padding-inline: var(--gutter) calc(var(--gutter) + var(--rail));
+    display: grid;
+    gap: 1.5rem;
+  }
+  .stratum__name {
+    margin: 0;
+    font-size: clamp(4rem, 14vw, 13rem);
+  }
+  .stratum__meta {
+    display: grid;
+    gap: 0.75rem;
+    max-width: 30rem;
+  }
+  .stratum__line {
+    margin: 0;
+    font-size: 1.125rem;
+    line-height: 1.45;
+    text-wrap: pretty;
+  }
+  .stratum__range {
+    margin: 0;
+    color: var(--fg-dim);
+  }
+  .stratum__links {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.25rem;
+    font-size: 0.875rem;
+  }
+  .stratum__links a {
+    text-decoration-color: var(--hair);
+  }
+  .stratum__links a:hover {
+    text-decoration-color: currentColor;
+  }
+  @media (min-width: 64rem) {
+    .stratum__head {
+      grid-template-columns: 1fr 22rem;
+      align-items: end;
+    }
+    .stratum__meta {
+      padding-bottom: 1rem;
+    }
+  }
+
+  .block {
+    padding-inline: var(--gutter) calc(var(--gutter) + var(--rail));
+  }
+  .block--full {
+    padding-inline: 0;
+  }
+  .block--full :global(.frame) {
+    max-height: 100svh;
+    margin-inline: auto;
+  }
+  .block--offset :global(.frame) {
+    width: min(100%, 58rem);
+    max-width: 58vw;
+  }
+  .block--right {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .block--left {
+    padding-left: clamp(var(--gutter), 9vw, 10rem);
+  }
+  .block--pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(0.75rem, 2.5vw, 2.5rem);
+    align-items: start;
+  }
+  .block--pair :global(.frame:nth-child(2)) {
+    margin-top: clamp(3rem, 16vh, 12rem);
+  }
+  @media (min-width: 64rem) {
+    .block--pair {
+      grid-template-columns: 5fr 4fr;
+      padding-left: 16%;
+    }
+  }
+  .block--quiet {
+    display: flex;
+    justify-content: center;
+    padding-block: clamp(2rem, 10vh, 8rem);
+  }
+  .block--quiet :global(.frame) {
+    width: clamp(11rem, 24vw, 22rem);
+  }
+  @media (max-width: 48rem) {
+    .block--offset :global(.frame) {
+      max-width: none;
+      width: 88%;
+    }
+    .block--left {
+      padding-left: var(--gutter);
+    }
+  }
+
+  .block--strip {
+    padding-inline: 0;
+    min-width: 0;
+  }
+  .strip {
+    max-width: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .strip__track {
+    display: flex;
+    gap: clamp(0.75rem, 1.5vw, 1.5rem);
+    width: max-content;
+    padding-inline: var(--gutter) calc(var(--gutter) + var(--rail));
+  }
+  .strip__track :global(.frame) {
+    height: min(70vh, 44rem);
+    width: auto;
+    scroll-snap-align: center;
+  }
+  @media (max-width: 48rem) {
+    .strip__track :global(.frame) {
+      height: auto;
+      width: 85vw;
+    }
+  }
+
+  .stratum--deep-sky {
+    color: var(--color-paper);
+    background: var(--color-deep);
+    isolation: isolate;
+  }
+
+  .finale {
+    min-height: 100svh;
+    padding: var(--section) calc(var(--gutter) + var(--rail)) 2rem var(--gutter);
+    display: grid;
+    grid-template-rows: 1fr auto auto auto;
+    justify-items: center;
+    gap: 2.5rem;
+    text-align: center;
+    color: var(--color-paper);
+    background: var(--color-deep);
+  }
+  .finale :global(.finale__photo) {
+    width: min(100%, 34rem);
+    align-self: center;
+  }
+  .finale__title {
+    margin: 0;
+    font-size: clamp(2.5rem, 6vw, 5.5rem);
+    max-width: 14ch;
+  }
+  .finale__links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem 2rem;
+  }
+  .finale__credit {
+    margin: 2rem 0 0;
+    opacity: 0.72;
+  }
+</style>

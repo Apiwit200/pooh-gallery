@@ -1,0 +1,131 @@
+{
+  "title": "Choose the visual world",
+  "question": "The roll assigned The Descent. Keep it, take an alternate, or re-roll.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "The Descent",
+      "kicker": "THE ROLL",
+      "lineage": "the Pattaya aquarium tunnel, and light falling off with depth",
+      "thesis": "The whole archive as one dive from noon daylight to a sky with no floor, ordered by the light each photo actually caught.",
+      "palette": ["#E9E4D8", "#7FA79E", "#1E4A55", "#0C1A2A", "#05070B"],
+      "materials": ["ground colour that drains with scroll depth", "a light-meter rail reading each photo's real EV from EXIF", "film-white daylight fading to ink"],
+      "viewport": "Brightest frame of the archive full-bleed on a pale daylight ground, title set into the sky, the EV gauge already lit at the edge.",
+      "risk": "The colour drain has to stay subtle or it fights the photographs; EV must come from real EXIF, never estimated.",
+      "raised": [
+        { "from": "challenger-seven-segment", "raise": "The gauge draws its whole EV scale in ghost ticks; only the current reading lights." },
+        { "from": "challenger-riso-system", "raise": "The ground is one fully committed field at every depth, never a neutral grey card." },
+        { "from": "challenger-glaze-shelf", "raise": "Gravity rules: one vertical axis, every chapter hangs from it." },
+        { "from": "challenger-riso-zine", "raise": "Type and photograph are two layers that scroll at different rates." },
+        { "from": "challenger-seed-rack", "raise": "Every photograph leads with the image and flips to its facts: lens, exposure, the hour it was made." }
+      ]
+    },
+    {
+      "id": "model-pick",
+      "label": "Almanac of Light",
+      "kicker": "IMPECCABLE’S PICK",
+      "lineage": "sunrise tables, ephemerides and printed almanacs",
+      "thesis": "The archive filed by hour of light, from first light to astronomical twilight, as a printed almanac.",
+      "palette": ["#F1EEE8", "#C9A46A", "#3B4A5E", "#0B0B0C"],
+      "materials": ["ruled almanac tables", "hour columns", "dawn-to-dark chapter bands"],
+      "viewport": "A sunrise photograph with the day's light table set beside it like a printed almanac page.",
+      "risk": "Familiar: editorial tables on ivory is where most photography sites in this category already land."
+    },
+    {
+      "id": "challenger-deep-dive",
+      "label": "Mesophotic Dive",
+      "verdict": "competitive",
+      "lineage": "technical deep-dive logs and dive computers",
+      "thesis": "A literal dive profile: surface, thermocline, reef wall, no floor.",
+      "palette": ["#3FB8C8", "#0E3550", "#071426", "#F2F6F7"],
+      "materials": ["abyssal blue by depth", "marine-snow particles", "dive-computer digits"],
+      "viewport": "Turquoise surface frame with a depth axis already descending on the left.",
+      "case": "Shares the descent grammar; loses on audience, since visitors identify with photographs, not diving.",
+      "risk": "Reads as an ocean theme pasted over dogs, roads and temples.",
+      "hero": "https://impeccable.style/worlds/cards/rivers-tides-ocean-depths-mesophotic-deep-dive-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/rivers-tides-ocean-depths-mesophotic-deep-dive.webp"
+    },
+    {
+      "id": "challenger-seven-segment",
+      "label": "Seven-Segment Clock",
+      "verdict": "declined",
+      "lineage": "LED alarm clocks and scoreboards",
+      "thesis": "Every caption lit in one eight-cell segment mask.",
+      "palette": ["#FF2A1A", "#2A0806", "#050505"],
+      "materials": ["lit and ghost segments", "matte black ground"],
+      "viewport": "Four red digits over a black field.",
+      "case": "Fuses poorly: red LED glow competes with the photographs.",
+      "kept": "Unlit cells are designed too: the EV gauge shows its whole scale in ghost ticks.",
+      "risk": "Gadget nostalgia over photography.",
+      "hero": "https://impeccable.style/worlds/cards/signals-instruments-seven-segment-alarm-clock-hero.webp"
+    },
+    {
+      "id": "challenger-riso-system",
+      "label": "Risograph System",
+      "verdict": "declined",
+      "lineage": "Riso spot-ink printing",
+      "thesis": "Misregistered fluorescent inks on warm paper.",
+      "palette": ["#FF48B0", "#0078BF", "#FFE800", "#F4EFE6"],
+      "materials": ["spot ink", "halftone grain"],
+      "viewport": "Ink shapes overlapping on paper.",
+      "case": "Fuses poorly: fluoro inks would recolour the photographs.",
+      "kept": "Total palette commitment at page scale.",
+      "risk": "Makes photography look like zine art.",
+      "hero": "https://impeccable.style/worlds/cards/risograph-web-system-hero.webp"
+    },
+    {
+      "id": "challenger-glaze-shelf",
+      "label": "Glaze River Shelf",
+      "verdict": "declined",
+      "lineage": "kiln shelves and glaze tests",
+      "thesis": "Samples in a row, glaze running by gravity.",
+      "palette": ["#F2F0EA", "#1F4FA0", "#0E2A5C"],
+      "materials": ["kiln-shelf chalk", "cobalt glaze"],
+      "viewport": "A shelf of glazed cups with recipe cards.",
+      "case": "Fuses poorly: no relationship to the archive.",
+      "kept": "Gravity sets the reading order: one vertical axis.",
+      "risk": "Ceramics costume.",
+      "hero": "https://impeccable.style/worlds/cards/clay-ceramics-fracture-glaze-river-shelf-hero.webp"
+    },
+    {
+      "id": "challenger-riso-zine",
+      "label": "Riso Zine Cover",
+      "verdict": "declined",
+      "lineage": "duplicator-printed zines",
+      "thesis": "Two ink layers sliding out of register.",
+      "palette": ["#FF5C9E", "#3A6FD8", "#ECE6D6"],
+      "materials": ["newsprint", "two-drum overlap"],
+      "viewport": "A misregistered two-colour cover.",
+      "case": "Fuses poorly: overprint destroys photographic colour.",
+      "kept": "Two layers moving independently: type against photograph.",
+      "risk": "Gimmick over image.",
+      "hero": "https://impeccable.style/worlds/cards/posters-covers-sleeves-risograph-zine-cover-hero.webp"
+    },
+    {
+      "id": "challenger-seed-rack",
+      "label": "Seed Packet Rack",
+      "verdict": "declined",
+      "lineage": "hardware-store seed racks",
+      "thesis": "Painted promise on the front, instructions on the back.",
+      "palette": ["#C8372D", "#6E9A3A", "#E6D8B8", "#8B8F93"],
+      "materials": ["gouache fronts", "almanac backs"],
+      "viewport": "A rack of packets ranked by season.",
+      "case": "Fuses poorly: gouache illustration has no place beside photographs.",
+      "kept": "Front leads with the promise, back holds the facts: image first, EXIF on the flip.",
+      "risk": "Craft-fair costume.",
+      "hero": "https://impeccable.style/worlds/cards/vernacular-ephemera-seed-packet-rack-hero.webp"
+    }
+  ],
+  "reroll": { "registers": ["safer", "bolder"] },
+  "buildPath": { "value": "code", "toggle": false },
+  "canon": true,
+  "canonCard": {
+    "label": "The category standard",
+    "thesis": "A dark photography portfolio: black ground, large serif titles, masonry grid, lightbox.",
+    "palette": ["#0B0B0C", "#171719", "#F1EEE8", "#A9A8A5"],
+    "materials": ["near-black ground", "editorial serif", "masonry grid"],
+    "viewport": "Full-bleed hero photograph with a large serif name over it.",
+    "risk": "Indistinguishable from every photographer's site by design."
+  },
+  "steer": true
+}

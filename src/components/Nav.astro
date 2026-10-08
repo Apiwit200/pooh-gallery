@@ -1,0 +1,275 @@
+---
+import { collections, STRATA, DEEP_SKY, formatEv } from "@/lib/photos";
+import { site, url } from "@/lib/site";
+
+const current = Astro.url.pathname;
+const links = [
+  { href: url("/index/"), label: "Index" },
+  { href: url("/archive/"), label: "Archive" },
+  { href: url("/deep-sky/"), label: "Deep sky" },
+  { href: url("/about/"), label: "About" },
+];
+const strata = [...STRATA, DEEP_SKY]
+  .map((s) => ({ ...s, collections: collections.filter((c) => c.stratum.key === s.key) }))
+  .filter((s) => s.collections.length);
+const isCurrent = (href: string) => current === href || (href !== url("/") && current.startsWith(href));
+---
+
+<header class="nav">
+  <a class="nav__mark" href={url("/")} aria-current={current === url("/") ? "page" : undefined}>
+    <span class="nav__title">{site.title}</span>
+    <span class="nav__by">{site.photographer}</span>
+  </a>
+  <nav aria-label="Primary" class="nav__links">
+    {links.map((l) => <a href={l.href} aria-current={isCurrent(l.href) ? "page" : undefined}>{l.label}</a>)}
+  </nav>
+  <button class="nav__open" type="button" aria-haspopup="dialog" aria-controls="menu" data-menu-open>Index</button>
+</header>
+
+<dialog id="menu" class="menu" aria-label="Index of the descent">
+  <div class="menu__bar">
+    <span class="menu__title">{site.title}</span>
+    <button type="button" class="menu__close" data-menu-close>Close</button>
+  </div>
+  <nav aria-label="Index">
+    <ol class="menu__strata">
+      {
+        strata.map((s) => (
+          <li class="menu__stratum">
+            <span class="menu__stratum-name">{s.name}</span>
+            <ul class="menu__collections">
+              {s.collections.map((c) => (
+                <li>
+                  <a href={url(c.slug === "beyond-the-frame" ? "/deep-sky/" : `/c/${c.slug}/`)}>
+                    <span>{c.title}</span>
+                    <span class="mono">{c.ev ? formatEv(c.ev.median) : "EV —"} · {c.photos.length}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))
+      }
+    </ol>
+    <ul class="menu__more">
+      {[{ href: url("/"), label: "The descent" }, ...links].map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+      {(site.email || site.links.length > 0) && <li><a href={url("/contact/")}>Contact</a></li>}
+    </ul>
+  </nav>
+</dialog>
+
+<style>
+  .nav {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 40;
+    height: var(--nav-h);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding-inline: var(--gutter) calc(var(--gutter) + var(--rail));
+    color: var(--fg);
+    background: color-mix(in oklab, var(--ground) 92%, transparent);
+    border-bottom: 1px solid var(--hair);
+    backdrop-filter: blur(10px) saturate(1.1);
+    pointer-events: none;
+    transition:
+      background-color 0.6s var(--ease-out-expo),
+      color 0.6s var(--ease-out-expo),
+      border-color 0.6s var(--ease-out-expo);
+  }
+  :global(html[data-nav-over]) .nav {
+    color: #f4f1ea;
+    background: transparent;
+    border-color: transparent;
+    backdrop-filter: none;
+  }
+  .nav > * {
+    pointer-events: auto;
+  }
+  .nav__mark {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    text-decoration: none;
+  }
+  .nav__title {
+    font-variation-settings: "wdth" 75;
+    font-weight: 620;
+    font-size: 1.0625rem;
+    letter-spacing: -0.01em;
+  }
+  .nav__by {
+    font-size: 0.8125rem;
+    opacity: 0.75;
+  }
+  .nav__links {
+    display: none;
+    gap: clamp(1rem, 2.4vw, 2.25rem);
+    font-size: 0.875rem;
+  }
+  .nav__links a {
+    text-decoration: none;
+    padding-block: 0.5rem;
+    background: linear-gradient(currentColor, currentColor) no-repeat 0 100% / 0 1px;
+    transition: background-size 0.45s var(--ease-out-expo);
+  }
+  .nav__links a:hover,
+  .nav__links a[aria-current="page"] {
+    background-size: 100% 1px;
+  }
+  .nav__open {
+    font: inherit;
+    font-size: 0.875rem;
+    background: none;
+    border: 0;
+    color: inherit;
+    padding: 0.75rem 0;
+    cursor: pointer;
+  }
+  @media (min-width: 52rem) {
+    .nav__links {
+      display: flex;
+    }
+    .nav__open {
+      display: none;
+    }
+  }
+  @media (max-width: 30rem) {
+    .nav__by {
+      display: none;
+    }
+  }
+
+  .menu {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    max-height: none;
+    margin: 0;
+    padding: 0 var(--gutter) 3rem;
+    border: 0;
+    background: var(--color-night);
+    color: var(--color-paper);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    opacity: 0;
+    transition:
+      opacity 0.45s var(--ease-out-expo),
+      display 0.45s allow-discrete,
+      overlay 0.45s allow-discrete;
+  }
+  .menu[open] {
+    opacity: 1;
+  }
+  @starting-style {
+    .menu[open] {
+      opacity: 0;
+    }
+  }
+  .menu::backdrop {
+    background: transparent;
+  }
+  .menu__bar {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: var(--nav-h);
+    background: var(--color-night);
+  }
+  .menu__title {
+    font-variation-settings: "wdth" 75;
+    font-weight: 620;
+  }
+  .menu__close {
+    font: inherit;
+    font-size: 0.875rem;
+    color: inherit;
+    background: none;
+    border: 0;
+    padding: 0.75rem 0;
+    cursor: pointer;
+  }
+  .menu__strata {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0 0;
+  }
+  .menu__stratum {
+    border-top: 1px solid color-mix(in oklab, var(--color-paper) 18%, transparent);
+    padding-block: 1.25rem 2rem;
+    display: grid;
+    gap: 1rem;
+  }
+  .menu__stratum-name {
+    font-variation-settings: "wdth" 75;
+    font-weight: 560;
+    font-size: clamp(2.5rem, 9vw, 5.5rem);
+    letter-spacing: -0.035em;
+    line-height: 0.9;
+  }
+  .menu__collections {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    columns: 15rem auto;
+    column-gap: 2rem;
+  }
+  .menu__collections a {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    padding-block: 0.55rem;
+    text-decoration: none;
+    break-inside: avoid;
+    border-bottom: 1px solid color-mix(in oklab, var(--color-paper) 10%, transparent);
+  }
+  .menu__collections a:hover span:first-child {
+    text-decoration: underline;
+  }
+  .menu__collections .mono {
+    opacity: 0.75;
+  }
+  .menu__more {
+    list-style: none;
+    padding: 0;
+    margin: 2.5rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 2rem;
+  }
+  @media (min-width: 64rem) {
+    .menu__stratum {
+      grid-template-columns: minmax(16rem, 1fr) 2fr;
+      align-items: start;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .menu {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const over = document.querySelector("[data-nav-over]");
+  if (over) {
+    const root = document.documentElement;
+    root.toggleAttribute("data-nav-over", true);
+    new IntersectionObserver(([e]) => root.toggleAttribute("data-nav-over", !!e?.isIntersecting), {
+      rootMargin: "0px 0px -100% 0px",
+    }).observe(over);
+  }
+  const menu = document.getElementById("menu") as HTMLDialogElement | null;
+  document.addEventListener("click", (e) => {
+    const t = e.target as HTMLElement;
+    if (t.closest("[data-menu-open]")) menu?.showModal();
+    else if (t.closest("[data-menu-close]") || (t.closest("#menu a") && menu?.open)) menu?.close();
+  });
+</script>

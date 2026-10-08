@@ -1,0 +1,145 @@
+---
+import Photo from "@/components/Photo.astro";
+import Base from "@/layouts/Base.astro";
+import { collections, DEEP_SKY_SLUG, descent, formatEv, photos } from "@/lib/photos";
+import { site, url } from "@/lib/site";
+
+const count = <T,>(xs: T[]) => [...xs.reduce((m, x) => m.set(x, (m.get(x) ?? 0) + 1), new Map<T, number>())].sort((a, b) => b[1] - a[1]);
+const cameras = count(photos.flatMap((p) => (p.exif.model ? [p.exif.model] : [])));
+const lenses = count(photos.flatMap((p) => (p.exif.lens ? [p.exif.lens] : []))).slice(0, 4);
+const focals = count(photos.flatMap((p) => (p.exif.focal ? [p.exif.focal] : []))).slice(0, 3);
+const years = [...new Set(photos.flatMap((p) => (p.exif.taken ? [p.exif.taken.slice(0, 4)] : [])))].sort();
+const measured = descent.filter((p) => p.ev != null && p.collection !== DEEP_SKY_SLUG);
+const portrait = descent.find((p) => p.collection === DEEP_SKY_SLUG && p.orientation === "portrait") ?? descent[Math.floor(descent.length / 3)]!;
+const places = collections.filter((c) => c.slug !== DEEP_SKY_SLUG).map((c) => c.title);
+---
+
+<Base title="About" description={`About ${site.photographer} and how this archive of photographs is arranged.`} ground="shade">
+  <article class="about" data-ground-zone="shade">
+    <h1 class="display about__title">{site.photographer}</h1>
+    {
+      site.statement.length > 0 && (
+        <div class="about__statement">
+          {site.statement.map((p) => (
+            <p>{p}</p>
+          ))}
+        </div>
+      )
+    }
+    <div class="about__colophon">
+      <p class="about__lead">
+        This site holds {photos.length} photographs by {site.photographer}{years.length ? `, made between ${years[0]} and ${years[years.length - 1]}` : ""}.
+        They are not arranged by date or place but by light: each frame sits where its own exposure puts it, from
+        {measured[0] ? ` ${formatEv(measured[0].ev)}` : " the brightest"} at noon to
+        {measured.at(-1) ? ` ${formatEv(measured.at(-1)!.ev)}` : " the darkest"} at night, and then the sky.
+      </p>
+      <dl class="facts">
+        {cameras.length > 0 && (
+          <div>
+            <dt class="mono">Camera</dt>
+            <dd>{cameras.map(([m, n]) => `${m} (${n} frames)`).join(", ")}</dd>
+          </div>
+        )}
+        {lenses.length > 0 && (
+          <div>
+            <dt class="mono">Lenses most used</dt>
+            <dd>{lenses.map(([l]) => l).join(", ")}</dd>
+          </div>
+        )}
+        {focals.length > 0 && (
+          <div>
+            <dt class="mono">Focal lengths most used</dt>
+            <dd>{focals.map(([f]) => `${f}mm`).join(", ")}</dd>
+          </div>
+        )}
+        <div>
+          <dt class="mono">Collections</dt>
+          <dd>{places.join(", ")}</dd>
+        </div>
+        <div>
+          <dt class="mono">Deep sky</dt>
+          <dd>
+            <a href={url("/deep-sky/")}>The Moon, the Sun, Jupiter, the Pleiades, Orion and Andromeda</a>
+          </dd>
+        </div>
+      </dl>
+      <p class="about__note">
+        Camera details come from each file's own metadata. Location data is never published.
+        {site.email && (
+          <>
+            {" "}To get in touch, <a href={url("/contact/")}>use the contact page</a>.
+          </>
+        )}
+      </p>
+    </div>
+    <figure class="about__figure">
+      <Photo photo={portrait} sizes="(min-width: 64rem) 30vw, 80vw" />
+    </figure>
+  </article>
+</Base>
+
+<style>
+  .about {
+    padding: calc(var(--nav-h) + var(--section)) calc(var(--gutter) + var(--rail)) var(--section) var(--gutter);
+    display: grid;
+    gap: 3rem;
+  }
+  .about__title {
+    margin: 0;
+    font-size: clamp(3.75rem, 12vw, 11rem);
+    margin-left: -0.04em;
+  }
+  .about__statement p,
+  .about__lead {
+    margin: 0 0 1em;
+    max-width: 38rem;
+    font-size: clamp(1.25rem, 1vw + 0.9rem, 1.75rem);
+    line-height: 1.32;
+    letter-spacing: -0.01em;
+    text-wrap: pretty;
+  }
+  .facts {
+    margin: 2rem 0;
+    display: grid;
+    gap: 1.25rem;
+    max-width: 40rem;
+  }
+  .facts div {
+    display: grid;
+    gap: 0.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--hair);
+  }
+  .facts dt {
+    color: var(--fg-dim);
+  }
+  .facts dd {
+    margin: 0;
+    line-height: 1.5;
+  }
+  .about__note {
+    margin: 0;
+    max-width: 34rem;
+    color: var(--fg-dim);
+  }
+  .about__figure {
+    margin: 0;
+    width: min(100%, 24rem);
+  }
+  @media (min-width: 64rem) {
+    .about {
+      grid-template-columns: 1fr 22rem;
+      column-gap: 5rem;
+    }
+    .about__title {
+      grid-column: 1 / -1;
+    }
+    .about__figure {
+      grid-column: 2;
+      grid-row: 2 / span 2;
+      position: sticky;
+      top: 6rem;
+      align-self: start;
+    }
+  }
+</style>

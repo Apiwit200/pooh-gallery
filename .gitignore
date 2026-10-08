@@ -1,0 +1,18 @@
+# graft's local graph cache — regenerable, not committed (run `graft build`).
+/graft/
+node_modules/
+dist/
+.astro/
+.env
+.env.*
+!.env.example
+.DS_Store
+photos/originals/
+photos/.cache/
+.wrangler/
+
+# Generated in CI / locally
+.audit/lighthouse/
+videos/*/node_modules/
+videos/*/renders/*.tmp
+videos/*/snapshots/

@@ -1,0 +1,135 @@
+---
+import Grid from "@/components/Grid.astro";
+import Base from "@/layouts/Base.astro";
+import { descent, formatEv, photoStratum, type Photo } from "@/lib/photos";
+import { url } from "@/lib/site";
+
+export function getStaticPaths() {
+  const PER_PAGE = 120;
+  const pages = Math.max(1, Math.ceil(descent.length / PER_PAGE));
+  return Array.from({ length: pages }, (_, i) => ({
+    params: { page: i === 0 ? undefined : String(i + 1) },
+    props: { index: i, pages, frames: descent.slice(i * PER_PAGE, (i + 1) * PER_PAGE) },
+  }));
+}
+
+const { index, pages, frames } = Astro.props as { index: number; pages: number; frames: Photo[] };
+const PER_PAGE = 120;
+const pageUrl = (i: number) => url(i === 0 ? "/archive/" : `/archive/${i + 1}/`);
+const evs = frames.flatMap((p) => (p.ev == null ? [] : [p.ev]));
+const range = evs.length ? `${formatEv(Math.max(...evs))} → ${formatEv(Math.min(...evs))}` : "Beyond the scale";
+const ground = photoStratum(frames[Math.floor(frames.length / 2)]!).key;
+const title = index === 0 ? "Archive" : `Archive, page ${index + 1}`;
+---
+
+<Base title={title} description={`Every public photograph, ordered by measured light. Page ${index + 1} of ${pages}: ${range}.`} ground={ground}>
+  <header class="head" data-ground-zone={ground}>
+    <h1 class="display head__title">Archive</h1>
+    <p class="head__text">
+      Every public frame, {descent.length} in all, ordered by the light it caught. This page holds frames
+      {index * PER_PAGE + 1}–{index * PER_PAGE + frames.length}.
+    </p>
+    <p class="mono head__range">{range}</p>
+  </header>
+  <section class="frames" aria-label={`Frames ${index * PER_PAGE + 1} to ${index * PER_PAGE + frames.length}`}>
+    <Grid photos={frames} />
+  </section>
+  <nav class="pager" aria-label="Archive pages">
+    {index > 0 ? <a class="pager__step" href={pageUrl(index - 1)} rel="prev">Higher</a> : <span aria-hidden="true"></span>}
+    <ol class="pager__pages">
+      {
+        Array.from({ length: pages }, (_, i) => (
+          <li>
+            <a href={pageUrl(i)} aria-current={i === index ? "page" : undefined} class="mono" aria-label={`Page ${i + 1}`}>
+              {i + 1}
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+    {
+      index < pages - 1 ? (
+        <a class="pager__step pager__step--deeper" href={pageUrl(index + 1)} rel="next">
+          Deeper
+        </a>
+      ) : (
+        <span aria-hidden="true" />
+      )
+    }
+  </nav>
+</Base>
+
+<style>
+  .head {
+    padding: calc(var(--nav-h) + var(--section)) calc(var(--gutter) + var(--rail)) 3rem var(--gutter);
+    display: grid;
+    gap: 1.5rem;
+  }
+  .head__title {
+    margin: 0;
+    font-size: clamp(4.5rem, 16vw, 14rem);
+    margin-left: -0.04em;
+  }
+  .head__text {
+    margin: 0;
+    max-width: 34rem;
+    font-size: 1.125rem;
+    line-height: 1.45;
+  }
+  .head__range {
+    margin: 0;
+    color: var(--fg-dim);
+  }
+  .frames {
+    padding: 0 calc(var(--gutter) + var(--rail)) 4rem var(--gutter);
+  }
+  .pager {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 1rem;
+    padding: 2.5rem calc(var(--gutter) + var(--rail)) 5rem var(--gutter);
+    border-top: 1px solid var(--hair);
+  }
+  .pager__step {
+    font-variation-settings: "wdth" 76;
+    font-weight: 540;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    letter-spacing: -0.02em;
+  }
+  .pager__step--deeper {
+    text-align: right;
+  }
+  .pager__pages {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.25rem;
+  }
+  .pager__pages a {
+    display: grid;
+    place-items: center;
+    min-width: 2.75rem;
+    height: 2.75rem;
+    text-decoration: none;
+  }
+  .pager__pages a[aria-current="page"] {
+    background: var(--fg);
+    color: var(--ground);
+  }
+  .pager__pages a:not([aria-current]):hover {
+    text-decoration: underline;
+  }
+  @media (max-width: 40rem) {
+    .pager {
+      grid-template-columns: 1fr 1fr;
+    }
+    .pager__pages {
+      grid-column: 1 / -1;
+      grid-row: 2;
+    }
+  }
+</style>

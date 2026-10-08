@@ -1,0 +1,67 @@
+---
+import { altFor, asset, facts, formatDate, formatEv, formatTime, WIDTHS, type Photo } from "@/lib/photos";
+
+interface Props {
+  photo: Photo;
+  sizes?: string;
+  eager?: boolean;
+  class?: string;
+  /** CSS aspect-ratio for an art-directed crop. Defaults to the photograph's own ratio. */
+  ratio?: string | undefined;
+  position?: string;
+  /** Wrap in a link that opens the full, uncropped frame in the viewer. */
+  view?: boolean;
+  transitionName?: string;
+}
+
+const { photo: p, sizes = "100vw", eager = false, class: cls, ratio, position, view = true, transitionName } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const widths = [...new Set(WIDTHS.map((w) => Math.min(w, p.width)))];
+const srcset = WIDTHS.map((w, i) => `${asset(base, p, w)} ${widths[Math.min(i, widths.length - 1)]}w`)
+  .filter((s, i, a) => a.findIndex((t) => t.split(" ")[1] === s.split(" ")[1]) === i)
+  .join(", ");
+const largest = WIDTHS[WIDTHS.length - 1]!;
+const scale = Math.min(1, largest / p.width);
+const caption = [p.title, p.exif.taken ? `${formatDate(p.exif.taken)}, ${formatTime(p.exif.taken)}` : "", formatEv(p.ev), ...facts(p)]
+  .filter(Boolean)
+  .join(" · ");
+const style = [
+  `aspect-ratio:${ratio ?? `${p.width} / ${p.height}`}`,
+  `background-image:url(${p.lqip})`,
+  `background-color:${p.color}`,
+  `background-position:${Math.round(p.focus[0] * 100)}% ${Math.round(p.focus[1] * 100)}%`,
+  transitionName ? `view-transition-name:${transitionName}` : "",
+].filter(Boolean).join(";");
+const Tag = view ? "a" : "div";
+---
+
+<Tag
+  class:list={["frame", cls]}
+  style={style}
+  data-ev={p.ev ?? ""}
+  data-pid={p.id}
+  {...view
+    ? {
+        href: asset(base, p, largest),
+        "data-pswp-width": Math.round(p.width * scale),
+        "data-pswp-height": Math.round(p.height * scale),
+        "data-caption": caption,
+        "aria-label": `View ${altFor(p)} full screen`,
+      }
+    : {}}
+>
+  <img
+    src={asset(base, p, 1080)}
+    srcset={srcset}
+    sizes={sizes}
+    alt={altFor(p)}
+    width={p.width}
+    height={p.height}
+    loading={eager ? "eager" : "lazy"}
+    decoding={eager ? "sync" : "async"}
+    fetchpriority={eager ? "high" : "auto"}
+    style={`object-position:${position ?? `${Math.round(p.focus[0] * 100)}% ${Math.round(p.focus[1] * 100)}%`}`}
+    data-eager={eager || undefined}
+    onload="this.classList.add('is-loaded')"
+  />
+</Tag>

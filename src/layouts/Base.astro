@@ -1,0 +1,81 @@
+---
+import "@/styles/global.css";
+import monaLatin from "@fontsource-variable/mona-sans/files/mona-sans-latin-wdth-normal.woff2?url";
+import EvRail from "@/components/EvRail.astro";
+import Nav from "@/components/Nav.astro";
+import { existsSync } from "node:fs";
+import { asset, hero, type Photo } from "@/lib/photos";
+import { site, url } from "@/lib/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: Photo;
+  ground?: "daylight" | "shade" | "dusk" | "lamplight" | "night" | "deep-sky";
+  rail?: boolean;
+  noindex?: boolean;
+  preload?: Photo;
+  jsonld?: Record<string, unknown>;
+}
+
+const { title, description = site.description, image = hero, ground = "daylight", rail = true, noindex = false, preload, jsonld } = Astro.props;
+const fullTitle = title ? `${title} · ${site.title}` : `${site.title} · Photographs by ${site.photographer}`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const base = import.meta.env.BASE_URL;
+const card = image && existsSync(`public/og/${image.file}.jpg`) ? `${base}og/${image.file}.jpg` : undefined;
+const og = image ? new URL(card ?? asset(base, image, 1080), Astro.site).href : undefined;
+const groundColor = { daylight: "#e7e3d9", shade: "#b8c1b2", dusk: "#86a59c", lamplight: "#1d4652", night: "#0c1824", "deep-sky": "#04060a" }[ground];
+---
+
+<!doctype html>
+<html lang={site.locale} data-ground={ground}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <meta name="theme-color" content={groundColor} />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="preload" href={monaLatin} as="font" type="font/woff2" crossorigin />
+    <link rel="icon" href={url("/favicon.svg")} type="image/svg+xml" />
+    <link rel="sitemap" href={url("/sitemap-index.xml")} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.title} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    {og && <meta property="og:image" content={og} />}
+    {og && image && <meta property="og:image:width" content={card ? "1200" : String(Math.min(1080, image.width))} />}
+    {og && image && <meta property="og:image:height" content={card ? "630" : String(Math.round((image.height * Math.min(1080, image.width)) / image.width))} />}
+    {og && image && <meta property="og:image:alt" content={image.alt ?? image.title ?? `Photograph by ${site.photographer}`} />}
+    <meta name="twitter:card" content={og ? "summary_large_image" : "summary"} />
+    {
+      preload && (
+        <link
+          rel="preload"
+          as="image"
+          type="image/avif"
+          fetchpriority="high"
+          imagesrcset={`${asset(base, preload, 480)} 480w, ${asset(base, preload, 1080)} 1080w, ${asset(base, preload, 1920)} 1920w`}
+          imagesizes="100vw"
+        />
+      )
+    }
+    {jsonld && <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />}
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to the photographs</a>
+    <Nav />
+    {rail && <EvRail />}
+    <main id="main">
+      <slot />
+    </main>
+    <slot name="after" />
+    <script>
+      import "@/scripts/viewer";
+      import "@/scripts/ground";
+    </script>
+  </body>
+</html>

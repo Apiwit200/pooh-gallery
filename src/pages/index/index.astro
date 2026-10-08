@@ -1,0 +1,134 @@
+---
+import Photo from "@/components/Photo.astro";
+import Base from "@/layouts/Base.astro";
+import { collections, DEEP_SKY, DEEP_SKY_SLUG, formatEv, photos, STRATA } from "@/lib/photos";
+import { url } from "@/lib/site";
+
+const strata = [...STRATA, DEEP_SKY]
+  .map((s) => ({ s, cs: collections.filter((c) => c.stratum === s) }))
+  .filter((x) => x.cs.length);
+const href = (slug: string) => url(slug === DEEP_SKY_SLUG ? "/deep-sky/" : `/c/${slug}/`);
+const year = (iso?: string) => iso?.slice(0, 4) ?? "";
+---
+
+<Base title="Index" description={`All ${collections.length} collections, ${photos.length} photographs, in order of descent from the brightest to the darkest.`} ground="daylight">
+  <header class="intro" data-ground-zone="daylight">
+    <h1 class="display intro__title">Index</h1>
+    <p class="intro__text">
+      {collections.length} collections, {photos.length} photographs. Each sits at the median exposure of its frames,
+      so the list reads from the brightest day down to the sky.
+    </p>
+  </header>
+
+  {
+    strata.map(({ s, cs }) => (
+      <section class="stratum" data-ground-zone={s.key} aria-labelledby={`i-${s.key}`}>
+        <h2 id={`i-${s.key}`} class="stratum__name">
+          {s.name}
+        </h2>
+        <ol class="list">
+          {cs.map((c) => (
+            <li>
+              <a class="row" href={href(c.slug)}>
+                <span class="mono row__ev">{c.ev ? formatEv(c.ev.median) : "EV —"}</span>
+                <span class="row__title">{c.title}</span>
+                <span class="mono row__meta">
+                  {c.photos.length} frames{c.dates ? ` · ${year(c.dates.from)}` : ""}
+                </span>
+                <span class="row__thumb">
+                  <Photo photo={c.cover} view={false} ratio="4 / 3" sizes="12rem" transitionName={`cover-${c.slug}`} />
+                </span>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </section>
+    ))
+  }
+</Base>
+
+<style>
+  .intro {
+    padding: calc(var(--nav-h) + var(--section)) calc(var(--gutter) + var(--rail)) 4rem var(--gutter);
+    display: grid;
+    gap: 2rem;
+  }
+  .intro__title {
+    margin: 0;
+    font-size: clamp(4.5rem, 16vw, 14rem);
+    margin-left: -0.04em;
+  }
+  .intro__text {
+    margin: 0;
+    max-width: 34rem;
+    font-size: clamp(1.125rem, 0.6vw + 1rem, 1.375rem);
+    line-height: 1.45;
+    text-wrap: pretty;
+  }
+  .stratum {
+    padding: 4rem calc(var(--gutter) + var(--rail)) 6rem var(--gutter);
+  }
+  .stratum__name {
+    margin: 0 0 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    color: var(--fg-dim);
+  }
+  .list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--hair);
+  }
+  .row {
+    display: grid;
+    grid-template-columns: 5.5rem 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    padding-block: 0.9rem;
+    border-bottom: 1px solid var(--hair);
+    text-decoration: none;
+  }
+  .row__ev {
+    color: var(--fg-dim);
+  }
+  .row__title {
+    font-variation-settings: "wdth" 76;
+    font-weight: 540;
+    font-size: clamp(1.75rem, 3.6vw, 3.25rem);
+    letter-spacing: -0.03em;
+    line-height: 1;
+    transition: transform 0.6s var(--ease-out-expo);
+  }
+  .row__meta {
+    color: var(--fg-dim);
+    text-align: right;
+  }
+  .row__thumb {
+    grid-column: 1 / -1;
+    width: 9rem;
+    display: none;
+  }
+  .row:hover .row__title,
+  .row:focus-visible .row__title {
+    transform: translateX(0.5rem);
+  }
+  @media (min-width: 48rem) {
+    .row {
+      grid-template-columns: 6rem 1fr auto 9rem;
+    }
+    .row__thumb {
+      display: block;
+      grid-column: auto;
+    }
+  }
+  @media (max-width: 40rem) {
+    .row {
+      grid-template-columns: 1fr auto;
+    }
+    .row__ev {
+      grid-column: 1 / -1;
+    }
+  }
+</style>
