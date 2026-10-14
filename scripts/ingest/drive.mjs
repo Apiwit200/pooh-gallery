@@ -35,14 +35,18 @@ export async function crawl(rootId, path = [], out = { files: [], folders: [] })
 
 export async function download(driveId, dest) {
   const url = `https://drive.usercontent.google.com/download?id=${driveId}&export=download&confirm=t`;
-  for (let attempt = 0; attempt < 5; attempt++) {
-    const res = await fetch(url);
-    const type = res.headers.get("content-type") ?? "";
-    if (res.ok && !type.startsWith("text/html")) {
-      const { writeFile } = await import("node:fs/promises");
-      const buf = Buffer.from(await res.arrayBuffer());
-      await writeFile(dest, buf);
-      return buf.length;
+  for (let attempt = 0; attempt < 6; attempt++) {
+    try {
+      const res = await fetch(url);
+      const type = res.headers.get("content-type") ?? "";
+      if (res.ok && !type.startsWith("text/html")) {
+        const { writeFile } = await import("node:fs/promises");
+        const buf = Buffer.from(await res.arrayBuffer());
+        await writeFile(dest, buf);
+        return buf.length;
+      }
+    } catch {
+      // Connection resets and truncated bodies are transient on large Drive downloads; retry below.
     }
     await new Promise((r) => setTimeout(r, 1500 * 2 ** attempt));
   }

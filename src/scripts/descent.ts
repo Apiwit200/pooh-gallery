@@ -1,5 +1,6 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { developOnce, developOnScroll } from "@/scripts/develop";
 
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const finePointer = matchMedia("(pointer: fine)").matches;
@@ -20,6 +21,18 @@ if (!reduce) {
     document.addEventListener("pswp-closed", () => lenis.start());
   }
 
+  const opening = document.querySelector<HTMLElement>(".opening .frame");
+  if (opening) developOnce(opening);
+
+  // Display headings rise out of a mask line by line as their section arrives.
+  gsap.utils.toArray<HTMLElement>("[data-rise]").forEach((el) => {
+    gsap.fromTo(
+      el.querySelectorAll(".rise__line > span"),
+      { yPercent: 105 },
+      { yPercent: 0, duration: 1.1, ease: "expo.out", stagger: 0.08, scrollTrigger: { trigger: el, start: "top 88%" } },
+    );
+  });
+
   // Type moves on its own layer, against the photographs.
   gsap.utils.toArray<HTMLElement>("[data-parallax]").forEach((el) => {
     const k = Number(el.dataset.parallax);
@@ -32,12 +45,27 @@ if (!reduce) {
 
   // Each composition reveals in its own way; the shape follows the layout.
   const reveal: Record<string, (el: HTMLElement) => gsap.core.Timeline | gsap.core.Tween | void> = {
-    full: (el) =>
-      gsap.fromTo(
-        el.querySelector(".frame"),
-        { clipPath: "inset(14% 6% 14% 6%)" },
-        { clipPath: "inset(0% 0% 0% 0%)", ease: "none", scrollTrigger: { trigger: el, start: "top 95%", end: "top 25%", scrub: 0.6 } },
-      ),
+    full: (el) => {
+      const frame = el.querySelector<HTMLElement>(".frame")!;
+      const clip = () =>
+        gsap.fromTo(
+          frame,
+          { clipPath: "inset(14% 6% 14% 6%)" },
+          { clipPath: "inset(0% 0% 0% 0%)", ease: "none", scrollTrigger: { trigger: el, start: "top 95%", end: "top 25%", scrub: 0.6 } },
+        );
+      // Develop when the frame first nears the viewport; fall back to the clip reveal without WebGL.
+      ScrollTrigger.create({
+        trigger: el,
+        start: "top 140%",
+        once: true,
+        onEnter: async () => {
+          const ok = await developOnScroll(frame, (draw) =>
+            ScrollTrigger.create({ trigger: el, start: "top 90%", end: "top 20%", onUpdate: (st) => draw(st.progress) }),
+          );
+          if (!ok) clip();
+        },
+      });
+    },
     offset: (el) => {
       const fromRight = el.classList.contains("block--right");
       return gsap.fromTo(

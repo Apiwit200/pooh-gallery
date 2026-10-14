@@ -64,6 +64,13 @@ const groundColor = { daylight: "#e7e3d9", shade: "#b8c1b2", dusk: "#86a59c", la
       )
     }
     {jsonld && <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />}
+    <script is:inline>
+      // Decide before first paint whether frames will develop, so the opening image never flashes.
+      try {
+        if (!matchMedia("(prefers-reduced-motion: reduce)").matches && document.createElement("canvas").getContext("webgl"))
+          document.documentElement.classList.add("can-develop");
+      } catch {}
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to the photographs</a>

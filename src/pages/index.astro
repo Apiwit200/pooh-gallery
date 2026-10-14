@@ -52,7 +52,7 @@ const jsonld = {
 
 <Base image={hero} preload={hero} ground="daylight" jsonld={jsonld}>
   <section class="opening" data-ground-zone="daylight" data-nav-over aria-labelledby="title">
-    <Photo photo={hero} eager class="opening__photo" ratio="auto" sizes="100vw" view={false} />
+    <Photo photo={hero} eager class="opening__photo" ratio="auto" sizes="100vw" view={false} develop />
     <div class="opening__type" data-parallax="-0.35">
       <h1 id="title" class="display opening__title">{site.title}</h1>
       <p class="opening__by">Photographs by {site.photographer}</p>
@@ -82,8 +82,8 @@ const jsonld = {
       >
         {stratum === DEEP_SKY && <Starfield />}
         <header class="stratum__head">
-          <h2 id={`s-${stratum.key}`} class="display stratum__name" data-parallax="0.12">
-            {stratum.name}
+          <h2 id={`s-${stratum.key}`} class="display stratum__name" data-parallax="0.12" data-rise>
+            <span class="rise__line"><span>{stratum.name}</span></span>
           </h2>
           <div class="stratum__meta">
             <p class="stratum__line">{line}</p>
@@ -93,7 +93,7 @@ const jsonld = {
             <ul class="stratum__links">
               {cs.map((c) => (
                 <li>
-                  <a href={href(c.slug)}>{c.title}</a>
+                  <a class="trace" href={href(c.slug)}>{c.title}</a>
                 </li>
               ))}
             </ul>
@@ -125,9 +125,9 @@ const jsonld = {
     {finale && <Photo photo={finale} class="finale__photo" sizes="(min-width: 48rem) 50vw, 90vw" />}
     <h2 id="finale-title" class="display finale__title">{finaleTitle}</h2>
     <nav class="finale__links" aria-label="Keep looking">
-      <a href={url("/index/")}>Every collection</a>
-      <a href={url("/archive/")}>The whole archive, by light</a>
-      <a href={url("/deep-sky/")}>Beyond the frame</a>
+      <a class="trace" href={url("/index/")}>Every collection</a>
+      <a class="trace" href={url("/archive/")}>The whole archive, by light</a>
+      <a class="trace" href={url("/deep-sky/")}>Beyond the frame</a>
     </nav>
     <p class="mono finale__credit">© {new Date().getFullYear()} {site.photographer}</p>
   </section>
@@ -260,12 +260,7 @@ const jsonld = {
     gap: 0.25rem 1.25rem;
     font-size: 0.875rem;
   }
-  .stratum__links a {
-    text-decoration-color: var(--hair);
-  }
-  .stratum__links a:hover {
-    text-decoration-color: currentColor;
-  }
+
   @media (min-width: 64rem) {
     .stratum__head {
       grid-template-columns: 1fr 22rem;

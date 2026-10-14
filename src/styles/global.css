@@ -179,6 +179,64 @@ img {
   }
 }
 
+/* Developing frames: a temporary canvas over the untouched image. */
+.frame > canvas.develop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.frame.is-developing > img,
+.can-develop .frame[data-develop]:not(.is-developed) > img {
+  opacity: 0 !important;
+  transition: none;
+}
+/* The canvas's last frame is the photograph, so the handover must be instant. */
+.frame.is-developed > img {
+  opacity: 1;
+  transition: none;
+}
+
+/* Masked rise for display headings: each line slides up out of its own clip. */
+.rise__line {
+  display: block;
+  overflow: clip;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.rise__line > span {
+  display: block;
+}
+
+/* Directional trace: enters from the left, leaves to the right, never rewinds. */
+.trace {
+  position: relative;
+  text-decoration: none;
+}
+.trace::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.15em;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.35s var(--ease-out-expo);
+}
+.trace:hover::after,
+.trace:focus-visible::after,
+.trace[aria-current="page"]::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+@media (prefers-reduced-motion: reduce) {
+  .trace::after {
+    transition: none;
+  }
+}
+
 /* The viewer: the deepest ground, the photograph alone, its facts set like a meter reading. */
 .pswp {
   --pswp-bg: var(--color-deep);

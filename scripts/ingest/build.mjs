@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
 import { existsSync } from "node:fs";
-import { mkdir, readFile, readdir, rm, stat, writeFile } from "node:fs/promises";
+import { mkdir, readFile, readdir, rename, rm, stat, writeFile } from "node:fs/promises";
 import { availableParallelism } from "node:os";
 import { join } from "node:path";
 import exifr from "exifr";
@@ -134,7 +134,9 @@ async function variants(file, meta) {
       .resize({ width: target, withoutEnlargement: true })
       .withIccProfile("srgb")
       .avif(AVIF)
-      .toFile(join(PUBLIC, `${key}-${w}.avif`));
+      .toFile(join(PUBLIC, `.${key}-${w}.avif.tmp`));
+    // Rename is atomic, so a server never hands out a half-written variant during a rebuild.
+    await rename(join(PUBLIC, `.${key}-${w}.avif.tmp`), join(PUBLIC, `${key}-${w}.avif`));
   }
 }
 

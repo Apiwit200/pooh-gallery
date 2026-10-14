@@ -12,9 +12,11 @@ interface Props {
   /** Wrap in a link that opens the full, uncropped frame in the viewer. */
   view?: boolean;
   transitionName?: string;
+  /** Hold the image until the develop reveal paints it (opening frame only). */
+  develop?: boolean;
 }
 
-const { photo: p, sizes = "100vw", eager = false, class: cls, ratio, position, view = true, transitionName } = Astro.props;
+const { photo: p, sizes = "100vw", eager = false, class: cls, ratio, position, view = true, transitionName, develop = false } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const widths = [...new Set(WIDTHS.map((w) => Math.min(w, p.width)))];
 const srcset = WIDTHS.map((w, i) => `${asset(base, p, w)} ${widths[Math.min(i, widths.length - 1)]}w`)
@@ -39,6 +41,7 @@ const Tag = view ? "a" : "div";
   class:list={["frame", cls]}
   style={style}
   data-ev={p.ev ?? ""}
+  data-develop={develop || undefined}
   data-pid={p.id}
   {...view
     ? {
