@@ -24,7 +24,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 const base = import.meta.env.BASE_URL;
 const card = image && existsSync(`public/og/${image.file}.jpg`) ? `${base}og/${image.file}.jpg` : undefined;
 const og = image ? new URL(card ?? asset(base, image, 1080), Astro.site).href : undefined;
-const groundColor = { daylight: "#e7e3d9", shade: "#b8c1b2", dusk: "#86a59c", lamplight: "#1d4652", night: "#0c1824", "deep-sky": "#04060a" }[ground];
+const groundColor = { daylight: "#e6e8ea", shade: "#b8c1b2", dusk: "#86a59c", lamplight: "#1d4652", night: "#0c1824", "deep-sky": "#04060a" }[ground];
 ---
 
 <!doctype html>

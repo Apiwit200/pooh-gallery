@@ -13,8 +13,7 @@ const description = `All ${objects.length} astrophotographs by the photographer,
 
 <Base title="Beyond the Frame" description={description} image={objects.find((p) => p.title?.startsWith("M31")) ?? c.cover} ground="deep-sky">
   <Starfield />
-  <header class="head" data-ground-zone="deep-sky">
-    <p class="mono head__trail"><a href={url("/")}>The descent</a> / past the scale</p>
+  <header class="head" data-ground-zone="deep-sky" data-deep-sky>
     <h1 class="display head__title">Beyond the Frame</h1>
     <p class="head__text">
       Here the exposure scale runs out. These {objects.length} frames are ordered instead by how long their light
@@ -37,14 +36,11 @@ const description = `All ${objects.length} astrophotographs by the photographer,
 
   {
     objects.map((p, i) => (
-      <section class:list={["object", { "object--tall": p.orientation === "portrait" }]} id={`o-${p.id}`} aria-labelledby={`t-${p.id}`}>
+      <section data-deep-sky class:list={["object", { "object--tall": p.orientation === "portrait" }]} id={`o-${p.id}`} aria-labelledby={`t-${p.id}`}>
         <div class="object__frame">
           <Photo photo={p} sizes={p.orientation === "portrait" ? "(min-width: 64rem) 46vw, 100vw" : "(min-width: 64rem) 70vw, 100vw"} position="center" />
         </div>
         <div class="object__label">
-          <p class="mono object__index">
-            {String(i + 1).padStart(2, "0")} / {String(objects.length).padStart(2, "0")}
-          </p>
           <h2 id={`t-${p.id}`} class="object__title">{p.title ?? p.name}</h2>
           {p.lightTravel && (
             <p class="object__travel">
@@ -53,7 +49,7 @@ const description = `All ${objects.length} astrophotographs by the photographer,
             </p>
           )}
           <p class="mono object__facts">
-            {[p.exif.taken ? formatDate(p.exif.taken) : "", ...facts(p)].filter(Boolean).join(" · ") || p.name}
+            {[`${i + 1} of ${objects.length}`, p.exif.taken ? formatDate(p.exif.taken) : "", ...facts(p)].filter(Boolean).join(" · ")}
           </p>
         </div>
       </section>

@@ -7,8 +7,8 @@
   --font-sans: "Mona Sans Variable", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Geist Mono Variable", ui-monospace, monospace;
 
-  /* The descent. Each stratum owns one ground; the page interpolates between them by depth. */
-  --color-daylight: #e7e3d9;
+  /* The descent. Each stratum owns one ground; the page steps between them at chapter boundaries. */
+  --color-daylight: #e6e8ea;
   --color-shade: #b8c1b2;
   --color-dusk: #86a59c;
   --color-lamplight: #1d4652;
@@ -25,7 +25,7 @@
 :root {
   --ground: var(--color-daylight);
   --fg: var(--color-ink);
-  --fg-dim: color-mix(in oklab, var(--fg) 72%, var(--ground));
+  --fg-dim: color-mix(in oklab, var(--fg) 84%, var(--ground));
   --hair: color-mix(in oklab, var(--fg) 22%, transparent);
   --gutter: clamp(1rem, 3.2vw, 2.75rem);
   --rail: clamp(2.25rem, 4vw, 4.5rem);

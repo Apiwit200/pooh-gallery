@@ -156,8 +156,8 @@ const jsonld = {
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(to bottom, rgb(10 14 16 / 0.28), transparent 18%),
-      linear-gradient(to top, rgb(6 20 22 / 0.5), rgb(6 20 22 / 0.12) 42%, transparent 60%);
+      linear-gradient(to bottom, rgb(20 14 10 / 0.34), transparent 45%),
+      linear-gradient(to top, rgb(10 8 6 / 0.4), transparent 22%);
     pointer-events: none;
   }
   .opening__type {
@@ -165,7 +165,7 @@ const jsonld = {
     z-index: 1;
     left: var(--gutter);
     right: calc(var(--gutter) + var(--rail));
-    bottom: clamp(4.5rem, 11vh, 7.5rem);
+    top: calc(var(--nav-h) + clamp(1.5rem, 8vh, 6rem));
   }
   .opening__title {
     font-size: clamp(4.5rem, 17vw, 15rem);
@@ -275,7 +275,7 @@ const jsonld = {
     padding-inline: var(--gutter) calc(var(--gutter) + var(--rail));
   }
   .block--full {
-    padding-inline: 0;
+    padding-inline: 0 var(--rail);
   }
   .block--full :global(.frame) {
     max-height: 100svh;
@@ -294,7 +294,7 @@ const jsonld = {
   }
   .block--pair {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: clamp(0.75rem, 2.5vw, 2.5rem);
     align-items: start;
   }
@@ -303,7 +303,7 @@ const jsonld = {
   }
   @media (min-width: 64rem) {
     .block--pair {
-      grid-template-columns: 5fr 4fr;
+      grid-template-columns: minmax(0, 5fr) minmax(0, 4fr);
       padding-left: 16%;
     }
   }
@@ -328,6 +328,8 @@ const jsonld = {
   .block--strip {
     padding-inline: 0;
     min-width: 0;
+    margin-right: var(--rail);
+    overflow: clip;
   }
   .strip {
     max-width: 100%;
@@ -339,7 +341,7 @@ const jsonld = {
     display: flex;
     gap: clamp(0.75rem, 1.5vw, 1.5rem);
     width: max-content;
-    padding-inline: var(--gutter) calc(var(--gutter) + var(--rail));
+    padding-inline: var(--gutter);
   }
   .strip__track :global(.frame) {
     height: min(70vh, 44rem);

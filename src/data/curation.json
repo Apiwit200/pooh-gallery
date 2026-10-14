@@ -1,9 +1,9 @@
 {
- "$comment": "Edit titles, intros, featured photos and visibility here, then run npm run photos:build. Per-photo overrides go in photos, keyed by photo id: title, alt, featured, hidden.",
+ "$comment": "Edit titles, intros, featured photos and visibility here, then run npm run photos:build. Per-photo overrides go in photos, keyed by photo id: title, alt, featured, hidden. Titles marked with titleNote were written by the designer and are meant to be edited.",
  "collections": [
   {
    "slug": "2025-i",
-   "title": "2025, I",
+   "title": "Garden Café",
    "folders": [
     "a/2025 first"
    ],
@@ -17,11 +17,12 @@
     "e7a669b662",
     "38f5b50054",
     "20852a07e9"
-   ]
+   ],
+   "titleNote": "Title chosen by the designer from the frames; the Drive folder name is in folders. Edit freely."
   },
   {
    "slug": "2025-ii",
-   "title": "2025, II",
+   "title": "Ivy Barn",
    "folders": [
     "a/2025 second"
    ],
@@ -34,11 +35,12 @@
     "9343dbd5cb",
     "f5a3d879e5",
     "e3f8141760"
-   ]
+   ],
+   "titleNote": "Title chosen by the designer from the frames; the Drive folder name is in folders. Edit freely."
   },
   {
    "slug": "2025-iii",
-   "title": "2025, III",
+   "title": "Mist and Koi",
    "folders": [
     "a/2025 third"
    ],
@@ -50,7 +52,8 @@
     "6c146e5b8e",
     "c5ee780fc2",
     "0417b7c62e"
-   ]
+   ],
+   "titleNote": "Title chosen by the designer from the frames; the Drive folder name is in folders. Edit freely."
   },
   {
    "slug": "pattaya",
@@ -368,7 +371,7 @@
   },
   {
    "slug": "day-1",
-   "title": "Day 1",
+   "title": "Behind the Wire",
    "folders": [
     "b/Day 1"
    ],
@@ -384,11 +387,12 @@
     "5041e61b7e",
     "3d6295eeb6",
     "fe019f6c65"
-   ]
+   ],
+   "titleNote": "Title chosen by the designer from the frames; the Drive folder name is in folders. Edit freely."
   },
   {
    "slug": "day-2",
-   "title": "Day 2",
+   "title": "Back Roads",
    "folders": [
     "b/Day 2"
    ],
@@ -401,11 +405,12 @@
     "b48d489f6d",
     "9ae4d4e0aa",
     "109908c1cf"
-   ]
+   ],
+   "titleNote": "Title chosen by the designer from the frames; the Drive folder name is in folders. Edit freely."
   },
   {
    "slug": "day-3",
-   "title": "Day 3",
+   "title": "Town Mornings",
    "folders": [
     "b/Day 3"
    ],
@@ -419,7 +424,8 @@
     "faacf01e3a",
     "0d21e58cc2",
     "73b8ad5fb4"
-   ]
+   ],
+   "titleNote": "Title chosen by the designer from the frames; the Drive folder name is in folders. Edit freely."
   },
   {
    "slug": "day-12",
@@ -433,7 +439,7 @@
   },
   {
    "slug": "day-14",
-   "title": "Day 14",
+   "title": "Dry Season",
    "folders": [
     "b/Day 14"
    ],
@@ -448,7 +454,8 @@
     "1ef6be7938",
     "d8bad020c0",
     "427dba0400"
-   ]
+   ],
+   "titleNote": "Title chosen by the designer from the frames; the Drive folder name is in folders. Edit freely."
   },
   {
    "slug": "day-15",
@@ -462,7 +469,7 @@
   },
   {
    "slug": "day-24",
-   "title": "Day 24",
+   "title": "Yellow Trees",
    "folders": [
     "b/Day 24"
    ],
@@ -476,7 +483,8 @@
     "242720065f",
     "8fd8decacd",
     "8dc8aa2b6d"
-   ]
+   ],
+   "titleNote": "Title chosen by the designer from the frames; the Drive folder name is in folders. Edit freely."
   },
   {
    "slug": "fd-home",
@@ -506,7 +514,7 @@
   },
   {
    "slug": "p00p3oo",
-   "title": "P00P3OO",
+   "title": "Long Lens",
    "folders": [
     "b/P00P3OO"
    ],
@@ -521,7 +529,8 @@
     "fa37ddf811",
     "4554287cf5",
     "930cd7cb45"
-   ]
+   ],
+   "titleNote": "Title chosen by the designer from the frames; the Drive folder name is in folders. Edit freely."
   },
   {
    "slug": "sea-views",
@@ -554,7 +563,7 @@
   },
   {
    "slug": "loose-frames",
-   "title": "Loose Frames",
+   "title": "Tigers and a Crescent",
    "folders": [
     "b"
    ],
@@ -563,7 +572,8 @@
    "sequence": [
     "6a22670c60",
     "5b202008c9"
-   ]
+   ],
+   "titleNote": "Title chosen by the designer from the frames; the Drive folder name is in folders. Edit freely."
   },
   {
    "slug": "beyond-the-frame",
@@ -640,10 +650,38 @@
    "title": "M31, the Andromeda Galaxy",
    "lightTravel": "about 2.5 million years",
    "lightSeconds": 78750000000000.0
+  },
+  "e81d541409": {
+   "hidden": true,
+   "heldReason": "Recognizable people posing; publish once they agree."
+  },
+  "ebd89ef11c": {
+   "hidden": true,
+   "heldReason": "Recognizable people posing; publish once they agree."
+  },
+  "8e1575b83d": {
+   "hidden": true,
+   "heldReason": "Recognizable people posing; publish once they agree."
+  },
+  "8f4d0b8eba": {
+   "hidden": true,
+   "heldReason": "Recognizable people posing; publish once they agree."
+  },
+  "86f00f717e": {
+   "hidden": true,
+   "heldReason": "Recognizable people posing; publish once they agree."
+  },
+  "66d240cee0": {
+   "hidden": true,
+   "heldReason": "Recognizable people posing; publish once they agree."
+  },
+  "b53b2ce326": {
+   "hidden": true,
+   "heldReason": "Recognizable people posing; publish once they agree."
   }
  },
  "descent": {
-  "hero": "92187ec039",
+  "hero": "6bd8d122c5",
   "finale": "aa6985ec85",
   "featured": [
    "6617f52098",
@@ -699,7 +737,7 @@
   "finaleTitle": "Where the daylight came from."
  },
  "strata": {
-  "daylight": "Full sun. The shutter is open for a few thousandths of a second.",
+  "daylight": "The brightest frames in the archive, often the sun itself low over water. The shutter is open for a few thousandths of a second.",
   "shade": "Under trees, awnings and cloud. The light steps down a stop or two.",
   "dusk": "The sun is low or gone. Colour cools, and the sea turns to pewter.",
   "lamplight": "Now the light comes from stages, screens and aquarium glass.",

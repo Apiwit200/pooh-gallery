@@ -102,6 +102,9 @@ const pos = (ev: number) => ((EV_SCALE.top - ev) / span) * 100;
 <script>
   import { formatEv } from "@/lib/format";
 
+  // The marker reads the light at the middle of the viewport: it interpolates between the
+  // measured frames above and below, holds through headings and gaps, and only leaves the
+  // scale (∞) once the deep-sky frames take the middle of the screen.
   const rail = document.querySelector<HTMLElement>("[data-rail]");
   const marker = rail?.querySelector<HTMLElement>("[data-rail-marker]");
   const reading = rail?.querySelector<HTMLElement>("[data-rail-reading]");
@@ -109,38 +112,51 @@ const pos = (ev: number) => ((EV_SCALE.top - ev) / span) * 100;
     const top = Number(rail.dataset.top);
     const bottom = Number(rail.dataset.bottom);
     const scale = rail.querySelector<HTMLElement>(".rail__scale")!;
-    const visible = new Map<Element, IntersectionObserverEntry>();
-    let current: Element | null = null;
+    const frames = [...document.querySelectorAll<HTMLElement>("[data-ev]")].map((el) => ({
+      el,
+      ev: el.dataset.ev ? Number(el.dataset.ev) : null,
+      deep: !!el.closest(".stratum--deep-sky, [data-deep-sky]"),
+    }));
+    let last = "";
 
-    const render = (el: Element | null) => {
-      if (el === current) return;
-      current = el;
-      const raw = el?.getAttribute("data-ev");
-      const ev = raw ? Number(raw) : null;
+    const show = (ev: number | null) => {
       const h = scale.clientHeight;
       const y = ev == null ? h + 14 : ((top - Math.max(bottom, Math.min(top, ev))) / (top - bottom)) * h;
       marker.style.setProperty("--marker", `${y}px`);
-      reading.textContent = el ? (ev == null ? "EV — beyond the scale" : formatEv(ev)) : "";
+      const text = ev == null ? "EV — beyond the scale" : formatEv(ev);
+      if (text !== last) reading.textContent = last = text;
     };
 
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const e of entries) {
-          if (e.isIntersecting) visible.set(e.target, e);
-          else visible.delete(e.target);
-        }
-        let best: Element | null = null;
-        let bestDist = Infinity;
-        const mid = innerHeight / 2;
-        for (const el of visible.keys()) {
-          const r = el.getBoundingClientRect();
-          const d = Math.abs(r.top + r.height / 2 - mid);
-          if (d < bestDist) [best, bestDist] = [el, d];
-        }
-        render(best);
-      },
-      { rootMargin: "-35% 0px -35% 0px" },
-    );
-    document.querySelectorAll("[data-ev]").forEach((el) => io.observe(el));
+    const update = () => {
+      const mid = innerHeight / 2;
+      let above: { y: number; ev: number } | null = null;
+      let below: { y: number; ev: number } | null = null;
+      let deepAtMid = false;
+      for (const f of frames) {
+        const r = f.el.getBoundingClientRect();
+        if (r.height === 0) continue;
+        if (f.deep && r.top < mid && r.bottom > mid) deepAtMid = true;
+        if (f.ev == null) continue;
+        const y = r.top + r.height / 2;
+        if (y <= mid && (!above || y > above.y)) above = { y, ev: f.ev };
+        if (y > mid && (!below || y < below.y)) below = { y, ev: f.ev };
+      }
+      if (deepAtMid) return show(null);
+      if (above && below) return show(above.ev + ((mid - above.y) / (below.y - above.y)) * (below.ev - above.ev));
+      if (above || below) return show((above ?? below)!.ev);
+    };
+
+    let queued = false;
+    const schedule = () => {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(() => {
+        queued = false;
+        update();
+      });
+    };
+    addEventListener("scroll", schedule, { passive: true });
+    addEventListener("resize", schedule);
+    update();
   }
 </script>

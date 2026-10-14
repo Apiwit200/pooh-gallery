@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-14T02:31:32.083Z",
+ "generatedAt": "2026-10-14T02:47:11.483Z",
  "widths": [
   480,
   1080,
@@ -10950,7 +10950,9 @@
     "iso": 640,
     "taken": "2025-05-04T07:58:15",
     "software": "Digital Camera X-H2S Ver7.20"
-   }
+   },
+   "hidden": true,
+   "heldReason": "Recognizable people posing; publish once they agree."
   },
   {
    "id": "ebd89ef11c",
@@ -10982,7 +10984,9 @@
     "iso": 640,
     "taken": "2025-05-04T07:59:03",
     "software": "Digital Camera X-H2S Ver7.20"
-   }
+   },
+   "hidden": true,
+   "heldReason": "Recognizable people posing; publish once they agree."
   },
   {
    "id": "8e1575b83d",
@@ -11015,6 +11019,8 @@
     "taken": "2025-05-04T07:59:05",
     "software": "Digital Camera X-H2S Ver7.20"
    },
+   "hidden": true,
+   "heldReason": "Recognizable people posing; publish once they agree.",
    "similarTo": "ebd89ef11c"
   },
   {
@@ -11943,7 +11949,9 @@
     "iso": 640,
     "taken": "2025-05-04T15:23:39",
     "software": "Digital Camera X-H2S Ver7.20"
-   }
+   },
+   "hidden": true,
+   "heldReason": "Recognizable people posing; publish once they agree."
   },
   {
    "id": "86f00f717e",
@@ -11975,7 +11983,9 @@
     "iso": 640,
     "taken": "2025-05-04T15:23:50",
     "software": "Digital Camera X-H2S Ver7.20"
-   }
+   },
+   "hidden": true,
+   "heldReason": "Recognizable people posing; publish once they agree."
   },
   {
    "id": "7d358659e1",
@@ -12679,7 +12689,9 @@
     "iso": 640,
     "taken": "2025-05-04T15:55:45",
     "software": "Digital Camera X-H2S Ver7.20"
-   }
+   },
+   "hidden": true,
+   "heldReason": "Recognizable people posing; publish once they agree."
   },
   {
    "id": "b53b2ce326",
@@ -12711,7 +12723,9 @@
     "iso": 640,
     "taken": "2025-05-04T15:55:49",
     "software": "Digital Camera X-H2S Ver7.20"
-   }
+   },
+   "hidden": true,
+   "heldReason": "Recognizable people posing; publish once they agree."
   },
   {
    "id": "4001ebce55",

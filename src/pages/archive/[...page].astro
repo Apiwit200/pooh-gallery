@@ -26,8 +26,7 @@ const title = index === 0 ? "Archive" : `Archive, page ${index + 1}`;
   <header class="head" data-ground-zone={ground}>
     <h1 class="display head__title">Archive</h1>
     <p class="head__text">
-      Every public frame, {descent.length} in all, ordered by the light it caught. This page holds frames
-      {index * PER_PAGE + 1}–{index * PER_PAGE + frames.length}.
+      {`Every public frame, ${descent.length} in all, ordered by the light it caught. This page holds frames ${index * PER_PAGE + 1}–${index * PER_PAGE + frames.length}.`}
     </p>
     <p class="mono head__range">{range}</p>
   </header>

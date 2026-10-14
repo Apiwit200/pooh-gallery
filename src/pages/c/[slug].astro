@@ -46,10 +46,10 @@ const ground = c.stratum.key;
         transitionName={`cover-${c.slug}`}
       />
       <div class="head__text">
-        <p class="mono head__trail"><a href={url("/index/")}>Index</a> / {c.stratum.name}</p>
         <h1 class="display head__title">{c.title}</h1>
         <p class="head__intro">{intro}</p>
         <dl class="mono head__facts">
+          <div><dt>Stratum</dt><dd>{c.stratum.name}</dd></div>
           <div><dt>Frames</dt><dd>{c.photos.length}</dd></div>
           {c.ev && <div><dt>Light</dt><dd>{formatEv(c.ev.top)} → {formatEv(c.ev.bottom)}</dd></div>}
           {when && <div><dt>Made</dt><dd>{when}</dd></div>}
@@ -210,7 +210,7 @@ const ground = c.stratum.key;
     padding-inline: var(--gutter) calc(var(--gutter) + var(--rail));
   }
   .block--full {
-    padding-inline: 0;
+    padding-inline: 0 var(--rail);
   }
   .block--full :global(.frame) {
     max-height: 100svh;
@@ -230,7 +230,7 @@ const ground = c.stratum.key;
   .block--pair,
   .block--strip {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: clamp(0.75rem, 2.5vw, 2.5rem);
     align-items: start;
   }
@@ -248,7 +248,7 @@ const ground = c.stratum.key;
     width: clamp(11rem, 24vw, 22rem);
   }
   .sequence--portrait .block--pair {
-    grid-template-columns: 4fr 5fr;
+    grid-template-columns: minmax(0, 4fr) minmax(0, 5fr);
     padding-right: clamp(var(--gutter), 14vw, 14rem);
   }
   @media (max-width: 48rem) {

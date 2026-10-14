@@ -1,5 +1,5 @@
 {
- "builtAt": "2026-10-14T02:31:32.148Z",
+ "builtAt": "2026-10-14T02:47:11.544Z",
  "inventory": 2417,
  "analysed": 2417,
  "missingLocally": 0,
@@ -839,10 +839,10 @@
  "nearDuplicatePairs": 34,
  "unassignedFolders": [],
  "manifest": 2251,
- "public": 1976,
- "held": 275,
+ "public": 1969,
+ "held": 282,
  "withEv": 1528,
- "publicAssetMB": 657.9,
+ "publicAssetMB": 654.7,
  "failedDownloads": [],
  "skippedNonJpeg": 82
 }
