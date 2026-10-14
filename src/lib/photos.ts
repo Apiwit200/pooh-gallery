@@ -144,7 +144,12 @@ function build(c: CurationCollection): Collection | null {
     sequence,
     ev,
     dates: dates.length ? { from: dates[0]!, to: dates[dates.length - 1]! } : null,
-    stratum: c.slug === DEEP_SKY_SLUG ? DEEP_SKY : stratumFor(ev?.median ?? null),
+    stratum:
+      c.slug === DEEP_SKY_SLUG
+        ? DEEP_SKY
+        : ev
+          ? stratumFor(ev.median)
+          : photoStratum([...list].sort((a, b) => a.luma - b.luma)[Math.floor(list.length / 2)]!),
   };
 }
 
@@ -155,13 +160,21 @@ export const collections: Collection[] = curation.collections
   .filter((c): c is Collection => c !== null)
   .sort((a, b) => {
     if (a.stratum === DEEP_SKY !== (b.stratum === DEEP_SKY)) return a.stratum === DEEP_SKY ? 1 : -1;
-    return (b.ev?.median ?? -99) - (a.ev?.median ?? -99);
+    const depth = (c: Collection) => [...STRATA, DEEP_SKY].indexOf(c.stratum);
+    if (depth(a) !== depth(b)) return depth(a) - depth(b);
+    // Within a stratum, measured collections lead; unmeasured ones follow by median brightness.
+    if ((a.ev == null) !== (b.ev == null)) return a.ev == null ? 1 : -1;
+    if (a.ev && b.ev) return b.ev.median - a.ev.median;
+    const mid = (c: Collection) => [...c.photos].sort((x, y) => x.luma - y.luma)[Math.floor(c.photos.length / 2)]!.luma;
+    return mid(b) - mid(a);
   });
 
 export const collection = (slug: string) => collections.find((c) => c.slug === slug);
 
 /** All public photos ordered by descent: measured EV first (brightest to darkest), then unmeasured frames by luminance. */
 export const descent: Photo[] = [...photos].sort((a, b) => {
+  const depth = (p: Photo) => [...STRATA, DEEP_SKY].indexOf(photoStratum(p));
+  if (depth(a) !== depth(b)) return depth(a) - depth(b);
   if ((a.ev == null) !== (b.ev == null)) return a.ev == null ? 1 : -1;
   return a.ev != null && b.ev != null ? b.ev - a.ev : b.luma - a.luma;
 });
