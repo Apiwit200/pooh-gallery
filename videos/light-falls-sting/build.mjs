@@ -5,7 +5,7 @@ import { join } from "node:path";
 
 const SITE = new URL("../../", import.meta.url).pathname;
 const HERE = new URL("./", import.meta.url).pathname;
-const IDS = ["92187ec039", "f022a8230f", "a594ec96d4", "35872fe992", "34703e9932", "1e2f12a7a6", "c709572997"];
+const IDS = ["92187ec039", "f022a8230f", "a594ec96d4", "35872fe992", "ef35c47010", "1e2f12a7a6", "c709572997"];
 const DURATION = 10;
 const TITLE_AT = 7.4;
 
@@ -38,13 +38,15 @@ const html = `<!doctype html>
       html, body { margin: 0; overflow: hidden; background: #04060a; }
       #root { width: 100%; height: 100%; position: relative; overflow: hidden; background: #04060a; color: #ebe7dd; }
       .plate { position: absolute; inset: 0; overflow: hidden; }
+      #scrim { position: absolute; inset: 0; background: linear-gradient(to top, rgb(4 6 10 / 0.55), rgb(4 6 10 / 0) 34%), linear-gradient(to left, rgb(4 6 10 / 0.35), rgb(4 6 10 / 0) 18%); }
       .plate img { display: block; width: 100%; height: 100%; object-fit: cover; }
+      .plate--last { background: #04060a; }
       .plate--last img { object-fit: contain; }
-      #meter { position: absolute; top: 120px; bottom: 170px; right: 96px; width: 40px; border-left: 2px solid rgb(235 231 221 / 0.28); }
+      #meter { position: absolute; top: 96px; bottom: 170px; right: 96px; width: 40px; border-left: 2px solid rgb(235 231 221 / 0.28); }
       #meter .tick { position: absolute; left: 0; width: 12px; height: 2px; background: rgb(235 231 221 / 0.28); }
       #marker { position: absolute; left: -6px; top: 0; width: 46px; height: 3px; background: #ebe7dd; }
-      #reading { position: absolute; left: 96px; bottom: 84px; width: 900px; height: 34px; font: 400 30px/1 "Geist Mono", monospace; letter-spacing: 0.04em; }
-      #reading .r { position: absolute; left: 0; top: 0; display: block; white-space: nowrap; opacity: 0; }
+      #reading { position: absolute; right: 96px; bottom: 96px; width: 520px; height: 34px; text-align: right; font: 400 30px/1 "Geist Mono", monospace; letter-spacing: 0.04em; }
+      #reading .r { position: absolute; right: 0; top: 0; display: block; white-space: nowrap; opacity: 0; }
       #title { position: absolute; left: 92px; bottom: 150px; font: 560 236px/0.86 "Mona Sans", sans-serif; font-stretch: 75%; letter-spacing: -0.035em; }
       #credit { position: absolute; left: 100px; bottom: 96px; font: 400 34px/1 "Mona Sans", sans-serif; font-stretch: 90%; }
     </style>
@@ -53,15 +55,16 @@ const html = `<!doctype html>
     <div id="root" data-composition-id="main" data-start="0" data-duration="${DURATION}" data-width="1920" data-height="1080">
 ${frames
   .map(
-    (f, i) => `      <div id="plate-${i}" class="plate${i === frames.length - 1 ? " plate--last" : ""}"><img id="img-${i}" src="assets/${f.name}" alt="" style="object-position:${Math.round(f.focus[0] * 100)}% ${Math.round(f.focus[1] * 100)}%" /></div>`,
+    (f, i) => `      <div id="plate-${i}" data-layout-allow-overflow class="plate${i === frames.length - 1 ? " plate--last" : ""}"><img id="img-${i}" src="assets/${f.name}" alt="" style="object-position:${Math.round(f.focus[0] * 100)}% ${Math.round(f.focus[1] * 100)}%" /></div>`,
   )
   .join("\n")}
+      <div id="scrim"></div>
       <div id="meter">
 ${Array.from({ length: top - bottom + 1 }, (_, i) => `        <span class="tick" style="top:${((i / (top - bottom)) * 100).toFixed(2)}%"></span>`).join("\n")}
         <span id="marker"></span>
       </div>
       <div id="reading">
-${frames.map((f, i) => `        <span id="r-${i}" class="r">${ev(f.ev)}${f.ev == null ? " · beyond the scale" : ""}</span>`).join("\n")}
+${frames.map((f, i) => `        <span id="r-${i}" class="r" data-layout-allow-overlap>${ev(f.ev)}${f.ev == null ? " · beyond the scale" : ""}</span>`).join("\n")}
       </div>
       <h1 id="title">Light Falls</h1>
       <p id="credit">Photographs by Apiwit Nathong</p>

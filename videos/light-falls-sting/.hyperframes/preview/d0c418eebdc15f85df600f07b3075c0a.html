@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script data-hf-gsap-fallback>
+(function(){
+  var cdnBase="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/";
+  var loaded={};
+  function loadFallback(file){
+    if(loaded[file])return loaded[file];
+    return loaded[file]=new Promise(function(ok,fail){
+      var s=document.createElement("script");
+      s.src=cdnBase+file;s.hfGsapFallback=true;s.onload=ok;s.onerror=fail;
+      document.head.appendChild(s);
+    });
+  }
+  document.addEventListener("error",function(e){
+    var t=e.target;
+    if(!t||t.tagName!=="SCRIPT"||!t.src||t.hfGsapFallback)return;
+    var m=t.src.match(/gsap[^/]*\/dist\/(.+\.js)/);
+    if(m)loadFallback(m[1]).catch(function(){
+      reportError(new Error("GSAP could not load from "+t.src+" or "+cdnBase+m[1]+", so this preview's animations will not play."));
+    });
+  },true);
+})();
+</script>
+<meta name="hyperframes-studio-preview"><script>(function(){var seen=window.__hfPreviewErrors=[];
+addEventListener("error",function(e){seen.push(e.message||String(e))});})();</script>
+<base href="/api/projects/light-falls-sting/preview/"><style data-hyperframes-text-rendering="true">html,body,*{text-rendering:geometricPrecision}</style><script data-hf-after-fonts-fallback="">document.addEventListener("DOMContentLoaded", function () {
+  if (window.__hfAfterFontsClaimed) return;
+  var T = "text/hf-after-fonts";
+  var all = [].slice.call(document.querySelectorAll('script[type="text/hf-after-fonts"], script[type="text/hf-after-fonts+module"]'));
+  if (!all.length) return;
+  console.warn("[hyperframes] the runtime has no web-font gate; composition scripts run without waiting for fonts");
+  var late = function (el) { return el.type !== T || el.matches('[defer][src], [defer][data-hf-inlined-src]'); };
+  var queue = all.filter(function (el) { return !late(el); }).concat(all.filter(late));
+  (function next() {
+    var el = queue.shift();
+    if (!el) return;
+    var s = document.createElement("script");
+    for (var i = 0; i < el.attributes.length; i++) s.setAttribute(el.attributes[i].name, el.attributes[i].value);
+    if (el.type === T) s.removeAttribute("type"); else s.type = "module";
+    s.async = el.hasAttribute("async");
+    s.text = el.text;
+    var waits = s.type !== "module" && s.hasAttribute("src") && !s.async && !s.noModule;
+    if (waits) { s.addEventListener("load", next); s.addEventListener("error", next); }
+    el.replaceWith(s);
+    if (!waits) next();
+  })();
+});
+//# sourceURL=hyperframes://after-fonts-fallback</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, height=1080">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Mona Sans"; src: url("assets/mona.woff2") format("woff2"); font-weight: 200 900; font-stretch: 75% 125%; }
+      @font-face { font-family: "Geist Mono"; src: url("assets/geist-mono.woff2") format("woff2"); font-weight: 100 900; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; overflow: hidden; background: #04060a; }
+      #root { width: 100%; height: 100%; position: relative; overflow: hidden; background: #04060a; color: #ebe7dd; }
+      .plate { position: absolute; inset: 0; overflow: hidden; }
+      #scrim { position: absolute; inset: 0; background: linear-gradient(to top, rgb(4 6 10 / 0.55), rgb(4 6 10 / 0) 34%), linear-gradient(to left, rgb(4 6 10 / 0.35), rgb(4 6 10 / 0) 18%); }
+      .plate img { display: block; width: 100%; height: 100%; object-fit: cover; }
+      .plate--last { background: #04060a; }
+      .plate--last img { object-fit: contain; }
+      #meter { position: absolute; top: 96px; bottom: 170px; right: 96px; width: 40px; border-left: 2px solid rgb(235 231 221 / 0.28); }
+      #meter .tick { position: absolute; left: 0; width: 12px; height: 2px; background: rgb(235 231 221 / 0.28); }
+      #marker { position: absolute; left: -6px; top: 0; width: 46px; height: 3px; background: #ebe7dd; }
+      #reading { position: absolute; right: 96px; bottom: 96px; width: 520px; height: 34px; text-align: right; font: 400 30px/1 "Geist Mono", monospace; letter-spacing: 0.04em; }
+      #reading .r { position: absolute; right: 0; top: 0; display: block; white-space: nowrap; opacity: 0; }
+      #title { position: absolute; left: 92px; bottom: 150px; font: 560 236px/0.86 "Mona Sans", sans-serif; font-stretch: 75%; letter-spacing: -0.035em; }
+      #credit { position: absolute; left: 100px; bottom: 96px; font: 400 34px/1 "Mona Sans", sans-serif; font-stretch: 90%; }
+    </style>
+  
+<script data-hyperframes-preview-runtime="1" src="/api/runtime.js"></script>
+<meta name="hyperframes-project-signature" content="9d8d20b35e021f89f8fd1130">
+</head>
+  <body>
+    <div data-hf-id="hf-199x" id="root" data-composition-id="main" data-start="0" data-duration="10" data-width="1920" data-height="1080">
+      <div data-hf-id="hf-goka" id="plate-0" data-layout-allow-overflow="" class="plate"><img data-hf-id="hf-3pwc" id="img-0" src="assets/f0.avif" alt="" style="object-position:0% 50%"></div>
+      <div data-hf-id="hf-kmob" id="plate-1" data-layout-allow-overflow="" class="plate"><img data-hf-id="hf-sp8q" id="img-1" src="assets/f1.avif" alt="" style="object-position:37% 34%"></div>
+      <div data-hf-id="hf-9r6o" id="plate-2" data-layout-allow-overflow="" class="plate"><img data-hf-id="hf-vomk" id="img-2" src="assets/f2.avif" alt="" style="object-position:41% 44%"></div>
+      <div data-hf-id="hf-aiuh" id="plate-3" data-layout-allow-overflow="" class="plate"><img data-hf-id="hf-or9j" id="img-3" src="assets/f3.avif" alt="" style="object-position:31% 0%"></div>
+      <div data-hf-id="hf-1uym" id="plate-4" data-layout-allow-overflow="" class="plate"><img data-hf-id="hf-n134" id="img-4" src="assets/f4.avif" alt="" style="object-position:72% 0%"></div>
+      <div data-hf-id="hf-5t2n" id="plate-5" data-layout-allow-overflow="" class="plate"><img data-hf-id="hf-0zgu" id="img-5" src="assets/f5.avif" alt="" style="object-position:53% 50%"></div>
+      <div data-hf-id="hf-jrkq" id="plate-6" data-layout-allow-overflow="" class="plate plate--last"><img data-hf-id="hf-yu0j" id="img-6" src="assets/f6.avif" alt="" style="object-position:50% 47%"></div>
+      <div data-hf-id="hf-wmg9" id="scrim"></div>
+      <div data-hf-id="hf-x2n0" id="meter">
+        <span data-hf-id="hf-80b2" class="tick" style="top:0.00%"></span>
+        <span data-hf-id="hf-0p7r" class="tick" style="top:5.00%"></span>
+        <span data-hf-id="hf-dxa3" class="tick" style="top:10.00%"></span>
+        <span data-hf-id="hf-syne" class="tick" style="top:15.00%"></span>
+        <span data-hf-id="hf-cdgm" class="tick" style="top:20.00%"></span>
+        <span data-hf-id="hf-gjxb" class="tick" style="top:25.00%"></span>
+        <span data-hf-id="hf-1j1h" class="tick" style="top:30.00%"></span>
+        <span data-hf-id="hf-fh1w" class="tick" style="top:35.00%"></span>
+        <span data-hf-id="hf-3ivc" class="tick" style="top:40.00%"></span>
+        <span data-hf-id="hf-rjwx" class="tick" style="top:45.00%"></span>
+        <span data-hf-id="hf-iyun" class="tick" style="top:50.00%"></span>
+        <span data-hf-id="hf-ywvq" class="tick" style="top:55.00%"></span>
+        <span data-hf-id="hf-shuy" class="tick" style="top:60.00%"></span>
+        <span data-hf-id="hf-dghn" class="tick" style="top:65.00%"></span>
+        <span data-hf-id="hf-et2h" class="tick" style="top:70.00%"></span>
+        <span data-hf-id="hf-5ee8" class="tick" style="top:75.00%"></span>
+        <span data-hf-id="hf-tp7w" class="tick" style="top:80.00%"></span>
+        <span data-hf-id="hf-r3od" class="tick" style="top:85.00%"></span>
+        <span data-hf-id="hf-i2g3" class="tick" style="top:90.00%"></span>
+        <span data-hf-id="hf-f95e" class="tick" style="top:95.00%"></span>
+        <span data-hf-id="hf-sn2z" class="tick" style="top:100.00%"></span>
+        <span data-hf-id="hf-o554" id="marker"></span>
+      </div>
+      <div data-hf-id="hf-yk1z" id="reading">
+        <span data-hf-id="hf-tsuh" id="r-0" class="r" data-layout-allow-overlap="">EV 12.3</span>
+        <span data-hf-id="hf-vv7x" id="r-1" class="r" data-layout-allow-overlap="">EV 10.8</span>
+        <span data-hf-id="hf-z4ko" id="r-2" class="r" data-layout-allow-overlap="">EV 6.3</span>
+        <span data-hf-id="hf-s424" id="r-3" class="r" data-layout-allow-overlap="">EV 3.5</span>
+        <span data-hf-id="hf-rvux" id="r-4" class="r" data-layout-allow-overlap="">EV 2.2</span>
+        <span data-hf-id="hf-hk57" id="r-5" class="r" data-layout-allow-overlap="">EV −0.7</span>
+        <span data-hf-id="hf-0u1m" id="r-6" class="r" data-layout-allow-overlap="">EV — · beyond the scale</span>
+      </div>
+      <h1 data-hf-id="hf-5jrn" id="title">Light Falls</h1>
+      <p data-hf-id="hf-ghoa" id="credit">Photographs by Apiwit Nathong</p>
+    </div>
+    
+  <script type="text/hf-after-fonts">const frames = [{ "ev": 12.3, "label": "EV 12.3", "y": 18.499999999999996 }, { "ev": 10.8, "label": "EV 10.8", "y": 25.999999999999996 }, { "ev": 6.3, "label": "EV 6.3", "y": 48.5 }, { "ev": 3.5, "label": "EV 3.5", "y": 62.5 }, { "ev": 2.2, "label": "EV 2.2", "y": 69 }, { "ev": -0.7, "label": "EV \u22120.7", "y": 83.5 }, { "ev": null, "label": "EV \u2014", "y": 104 }];
+const slot = 1.2333;
+const tl = gsap.timeline({ paused: true });
+const meter = document.getElementById("meter");
+frames.forEach((f, i) => {
+  const plate = "#plate-" + i;
+  const img = "#img-" + i;
+  const at = i * slot;
+  tl.fromTo(plate, { opacity: 0 }, { opacity: 1, duration: i === 0 ? 0.8 : 0.55, ease: "power1.inOut" }, i === 0 ? 0 : at - 0.35);
+  tl.fromTo(img, { scale: 1.12 }, { scale: 1, duration: slot + 0.9, ease: "none" }, Math.max(0, at - 0.35));
+  tl.to("#marker", { y: f.y / 100 * meter.clientHeight, duration: i === 0 ? 0.01 : 0.6, ease: "expo.out" }, Math.max(0, at - 0.2));
+  tl.fromTo("#r-" + i, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, Math.max(0, at - 0.15));
+  if (i > 0) tl.to("#r-" + (i - 1), { opacity: 0, y: -14, duration: 0.3, ease: "power2.in" }, at - 0.2);
+});
+tl.fromTo("#title", { yPercent: 40, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 1.2, ease: "expo.out" }, 7.4 + 0.2);
+tl.fromTo("#credit", { opacity: 0 }, { opacity: 1, duration: 0.8, ease: "power2.out" }, 7.4 + 0.7);
+tl.to(["#meter", "#reading"], { opacity: 0, duration: 0.8 }, 7.4 + 0.4);
+window.__timelines["main"] = tl;
+tl.seek(0);</script></body>
+</html>
