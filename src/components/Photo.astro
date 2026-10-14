@@ -1,5 +1,5 @@
 ---
-import { altFor, asset, facts, formatDate, formatEv, formatTime, WIDTHS, type Photo } from "@/lib/photos";
+import { altFor, asset, facts, formatDate, formatTime, WIDTHS, type Photo } from "@/lib/photos";
 
 interface Props {
   photo: Photo;
@@ -12,11 +12,11 @@ interface Props {
   /** Wrap in a link that opens the full, uncropped frame in the viewer. */
   view?: boolean;
   transitionName?: string;
-  /** Hold the image until the develop reveal paints it (opening frame only). */
-  develop?: boolean;
+  /** Large, featured frame: gets the RGB fringe and the pixel develop. */
+  crt?: boolean;
 }
 
-const { photo: p, sizes = "100vw", eager = false, class: cls, ratio, position, view = true, transitionName, develop = false } = Astro.props;
+const { photo: p, sizes = "100vw", eager = false, class: cls, ratio, position, view = true, transitionName, crt = false } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const widths = [...new Set(WIDTHS.map((w) => Math.min(w, p.width)))];
 const srcset = WIDTHS.map((w, i) => `${asset(base, p, w)} ${widths[Math.min(i, widths.length - 1)]}w`)
@@ -24,7 +24,7 @@ const srcset = WIDTHS.map((w, i) => `${asset(base, p, w)} ${widths[Math.min(i, w
   .join(", ");
 const largest = WIDTHS[WIDTHS.length - 1]!;
 const scale = Math.min(1, largest / p.width);
-const caption = [p.title, p.exif.taken ? `${formatDate(p.exif.taken)}, ${formatTime(p.exif.taken)}` : "", formatEv(p.ev), ...facts(p)]
+const caption = [p.title, p.exif.taken ? `${formatDate(p.exif.taken)}, ${formatTime(p.exif.taken)}` : "", ...facts(p)]
   .filter(Boolean)
   .join(" · ");
 const style = [
@@ -40,8 +40,7 @@ const Tag = view ? "a" : "div";
 <Tag
   class:list={["frame", cls]}
   style={style}
-  data-ev={p.ev ?? ""}
-  data-develop={develop || undefined}
+  data-crt={crt || undefined}
   data-pid={p.id}
   {...view
     ? {

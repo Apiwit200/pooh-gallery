@@ -5,8 +5,8 @@ import { site, url } from "@/lib/site";
 const ready = Boolean(site.email || site.links.length);
 ---
 
-<Base title="Contact" description={`Get in touch with ${site.photographer}.`} ground="night" rail={false} noindex={!ready}>
-  <section class="contact" data-ground-zone="night">
+<Base title="Contact" description={`Get in touch with ${site.photographer}.`} noindex={!ready}>
+  <section class="contact field-blue">
     <h1 class="display contact__title">Write to {site.photographer.split(" ")[0]}</h1>
     {
       ready ? (
@@ -32,7 +32,7 @@ const ready = Boolean(site.email || site.links.length);
         <p class="contact__pending">Contact details are not published yet.</p>
       )
     }
-    <a class="mono contact__back" href={url("/")}>Back to the descent</a>
+    <a class="chip" href={url("/")}>Back to the first channel</a>
   </section>
 </Base>
 
@@ -50,7 +50,6 @@ const ready = Boolean(site.email || site.links.length);
     margin-left: -0.04em;
   }
   .contact__email {
-    font-variation-settings: "wdth" 80;
     font-size: clamp(1.5rem, 4vw, 3.5rem);
     letter-spacing: -0.02em;
     word-break: break-all;

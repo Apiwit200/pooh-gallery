@@ -1,46 +1,23 @@
 ---
+import Ornament from "@/components/Ornament.astro";
 import Photo from "@/components/Photo.astro";
 import Starfield from "@/components/Starfield.astro";
+import TestCard from "@/components/TestCard.astro";
+import TossTable from "@/components/TossTable.astro";
+import Tuner from "@/components/Tuner.astro";
 import Base from "@/layouts/Base.astro";
-import { compose } from "@/lib/compose";
-import {
-  collections,
-  DEEP_SKY,
-  DEEP_SKY_SLUG,
-  descent,
-  featured,
-  finale,
-  formatEv,
-  hero,
-  photoStratum,
-  STRATA,
-  strataLines,
-} from "@/lib/photos";
+import { asset, channelLabel, collection, collectionHref, collections, DEEP_SKY_SLUG, home, photos } from "@/lib/photos";
 import { site, url } from "@/lib/site";
-import curation from "@/data/curation.json";
 
-const finaleTitle = (curation.descent as { finaleTitle?: string }).finaleTitle ?? "Where the daylight came from.";
-
-const measured = descent.filter((p) => p.ev != null && p.collection !== DEEP_SKY_SLUG);
-const brightest = measured[0]?.ev ?? null;
-const darkest = measured[measured.length - 1]?.ev ?? null;
-
-const chapters = [...STRATA, DEEP_SKY]
-  .map((stratum) => {
-    const frames = featured.filter((p) => p.id !== hero.id && p.id !== finale?.id && photoStratum(p) === stratum);
-    const evs = frames.flatMap((p) => (p.ev == null ? [] : [p.ev]));
-    return {
-      stratum,
-      line: strataLines[stratum.key],
-      blocks: compose(frames),
-      range: evs.length ? ([Math.max(...evs), Math.min(...evs)] as const) : null,
-      collections: collections.filter((c) => c.stratum === stratum),
-      count: frames.length,
-    };
-  })
-  .filter((c) => c.count > 0);
-
-const href = (slug: string) => url(slug === DEEP_SKY_SLUG ? "/deep-sky/" : `/c/${slug}/`);
+const base = import.meta.env.BASE_URL;
+const [inlineA, inlineB] = home.inline;
+const years = photos.flatMap((p) => (p.exif.taken ? [Number(p.exif.taken.slice(0, 4))] : []));
+const span = years.length ? `${Math.min(...years)}–${Math.max(...years)}` : "";
+const channels = collections.filter((c) => c.slug !== DEEP_SKY_SLUG);
+const deep = collection(DEEP_SKY_SLUG);
+const inlineIds = new Set(home.inline.map((p) => p.id));
+const table = home.featured.filter((p) => !inlineIds.has(p.id) && p.collection !== DEEP_SKY_SLUG).slice(0, 10);
+const trail = home.trail.filter((p) => p.collection !== DEEP_SKY_SLUG).slice(0, 10);
 const jsonld = {
   "@context": "https://schema.org",
   "@type": "ImageGallery",
@@ -50,345 +27,367 @@ const jsonld = {
 };
 ---
 
-<Base image={hero} preload={hero} ground="daylight" jsonld={jsonld}>
-  <section class="opening" data-ground-zone="daylight" data-nav-over aria-labelledby="title">
-    <Photo photo={hero} eager class="opening__photo" ratio="auto" sizes={`(max-aspect-ratio: ${hero.width}/${hero.height}) calc(100svh * ${(hero.width / hero.height).toFixed(3)}), 100vw`} view={false} develop />
-    <div class="opening__type" data-parallax="-0.35">
-      <h1 id="title" class="display opening__title">{site.title}</h1>
-      <p class="opening__by">Photographs by {site.photographer}</p>
+<Base jsonld={jsonld}>
+  <section class="open field-blue" data-trail aria-labelledby="title">
+    <div class="open__trail" aria-hidden="true">
+      {
+        trail.map((p) => (
+          <img
+            class="open__flung"
+            data-trail-item
+            src={asset(base, p, 480)}
+            alt=""
+            width={p.width}
+            height={p.height}
+            loading="lazy"
+            decoding="async"
+          />
+        ))
+      }
     </div>
-    <p class="opening__note mono">
-      {descent.length} frames · {formatEv(brightest)} to {formatEv(darkest)} · then the sky
+
+    <div class="open__stack">
+      <Ornament size="clamp(3.5rem, 6vw, 5.5rem)" class="open__mark" />
+      <p class="pixel open__tag">[ Now transmitting · {channels.length} channels{span && ` · ${span}`} ]</p>
+      <h1 id="title" class="display open__title">
+        <span class="open__line">Light Falls</span>
+        <span class="open__line">
+          {photos.length} frames
+          {inlineA && <img class="open__inline" src={asset(base, inlineA, 480)} alt="" width="96" height="64" style={`object-position:${Math.round(inlineA.focus[0] * 100)}% ${Math.round(inlineA.focus[1] * 100)}%`} />}
+          from the road
+        </span>
+        <span class="open__line">
+          to
+          {inlineB && <img class="open__inline" src={asset(base, inlineB, 480)} alt="" width="96" height="64" style={`object-position:${Math.round(inlineB.focus[0] * 100)}% ${Math.round(inlineB.focus[1] * 100)}%`} />}
+          Andromeda
+        </span>
+      </h1>
+      <p class="pixel open__by">Photographs by {site.photographer}</p>
+      <ul class="open__chips" aria-label="Channels">
+        {channels.slice(0, 6).map((c) => (
+          <li>
+            <a class="chip" href={url(collectionHref(c.slug))}>{c.title}</a>
+          </li>
+        ))}
+      </ul>
+      <Ornament size="clamp(2rem, 3.5vw, 3rem)" kind="star" class="open__mark" />
+    </div>
+
+    <p class="pixel open__corner open__corner--left">
+      Light Falls<br />Channel guide inside
     </p>
-    <a class="opening__descend mono" href="#prologue">Descend</a>
+    <div class="open__tiles">
+      <a class="open__tile open__tile--lime" href="#transmission" aria-label="Scroll to the transmission">
+        <Ornament size="60%" />
+      </a>
+      {inlineA && (
+        <span class="open__tile" aria-hidden="true">
+          <img src={asset(base, inlineA, 480)} alt="" loading="lazy" />
+        </span>
+      )}
+    </div>
   </section>
 
-  <section id="prologue" class="prologue" data-ground-zone="daylight">
-    <p class="prologue__text">
-      Every photograph here is placed by the light it caught. The camera wrote down how bright each scene was. The
-      page starts at the brightest noon in the archive and goes down, frame by frame, through shade and dusk into
-      lamplight, night, and the sky past it.
+  <section id="transmission" class="say field-blue" aria-label="About this site">
+    <p class="lede say__text" data-gather>
+      These are photographs from roads, zoos, cafés, beaches and temples in Thailand and Taiwan, and from the sky above
+      them. They play here as channels. Change the channel, stay on one, or open the whole archive and let it run.
     </p>
-    <p class="mono prologue__key">The scale on the right reads each frame's exposure value as you pass it.</p>
+    <p class="pixel say__hint">Hover any photograph to clear the screen in front of it.</p>
+    <div class="say__card">
+      <TestCard photo={home.finale} caption="Please stand by · Light Falls" />
+    </div>
+  </section>
+
+  <Tuner list={channels} heading={`Channel guide · ${channels.length} channels`} headingId="guide" />
+
+  <section class="tossed field-blue" aria-labelledby="tossed-title">
+    <header class="tossed__head">
+      <h2 id="tossed-title" class="display tossed__title" data-scramble>Prints on the table</h2>
+      <p class="pixel">Drag a print to move it. Click to see it whole.</p>
+    </header>
+    <TossTable photos={table} label="Selected photographs, scattered like prints" />
   </section>
 
   {
-    chapters.map(({ stratum, line, blocks, range, collections: cs }) => (
-      <section
-        class:list={["stratum", `stratum--${stratum.key}`]}
-        data-ground-zone={stratum.key}
-        aria-labelledby={`s-${stratum.key}`}
-        id={stratum.key}
-      >
-        {stratum === DEEP_SKY && <Starfield />}
-        <header class="stratum__head">
-          <h2 id={`s-${stratum.key}`} class="display stratum__name" data-parallax="0.12" data-rise>
-            <span class="rise__line"><span>{stratum.name}</span></span>
-          </h2>
-          <div class="stratum__meta">
-            <p class="stratum__line">{line}</p>
-            <p class="mono stratum__range">
-              {range ? `${formatEv(range[0])} → ${formatEv(range[1])}` : stratum === DEEP_SKY ? "Beyond the scale" : ""}
-            </p>
-            <ul class="stratum__links">
-              {cs.map((c) => (
-                <li>
-                  <a class="trace" href={href(c.slug)}>{c.title}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </header>
-
-        {blocks.map((b) => (
-          <div class:list={["block", `block--${b.kind}`, b.kind === "offset" && `block--${b.side}`]} data-reveal={b.kind}>
-            {b.kind === "full" && <Photo photo={b.photo} sizes="100vw" />}
-            {b.kind === "offset" && <Photo photo={b.photo} sizes="(min-width: 64rem) 58vw, 100vw" />}
-            {b.kind === "pair" && b.photos.map((p) => <Photo photo={p} sizes="(min-width: 48rem) 40vw, 100vw" />)}
-            {b.kind === "strip" && (
-              <div class="strip" data-strip>
-                <div class="strip__track" data-strip-track>
-                  {b.photos.map((p) => (
-                    <Photo photo={p} sizes="(min-width: 48rem) 70vh, 85vw" />
-                  ))}
-                </div>
-              </div>
-            )}
-            {b.kind === "quiet" && <Photo photo={b.photo} sizes="(min-width: 48rem) 26vw, 60vw" />}
-          </div>
-        ))}
+    deep && (
+      <section class="sky field-deep" aria-labelledby="sky-title">
+        <Starfield />
+        <p class="pixel sky__ch">{channelLabel(deep.channel)} · last channel</p>
+        <h2 id="sky-title" class="display sky__title" data-scramble>
+          Beyond the frame
+        </h2>
+        <p class="sky__text">
+          The Moon, the Sun, Jupiter, the Pleiades, Orion and the Andromeda Galaxy: all {deep.photos.length} frames,
+          ordered by how long their light travelled.
+        </p>
+        <div class="sky__row">
+          {[...deep.photos]
+            .sort((a, b) => (a.lightSeconds ?? 0) - (b.lightSeconds ?? 0))
+            .slice(-5)
+            .map((p) => (
+              <Photo photo={p} ratio="3 / 4" sizes="(min-width: 64rem) 18vw, 40vw" />
+            ))}
+        </div>
+        <a class="chip" href={url("/deep-sky/")}>Tune in to the deep sky</a>
       </section>
-    ))
+    )
   }
 
-  <section class="finale" data-ground-zone="deep-sky" aria-labelledby="finale-title">
-    {finale && <Photo photo={finale} class="finale__photo" sizes="(min-width: 48rem) 50vw, 90vw" />}
-    <h2 id="finale-title" class="display finale__title">{finaleTitle}</h2>
-    <nav class="finale__links" aria-label="Keep looking">
-      <a class="trace" href={url("/index/")}>Every collection</a>
-      <a class="trace" href={url("/archive/")}>The whole archive, by light</a>
-      <a class="trace" href={url("/deep-sky/")}>Beyond the frame</a>
+  <section class="end field-lime" aria-labelledby="end-title">
+    <Ornament size="clamp(4rem, 8vw, 7rem)" />
+    <h2 id="end-title" class="display end__title">End of transmission</h2>
+    <nav class="end__links" aria-label="Keep watching">
+      <a class="chip chip--blue" href={url("/index/")}>Every channel</a>
+      <a class="chip chip--blue" href={url("/archive/")}>The whole archive</a>
+      <a class="chip chip--blue" href={url("/about/")}>About</a>
     </nav>
-    <p class="mono finale__credit">© {new Date().getFullYear()} {site.photographer}</p>
+    <p class="pixel end__credit">© {new Date().getFullYear()} {site.photographer}</p>
   </section>
 </Base>
 
 <script>
-  import "@/scripts/descent";
+  import "@/scripts/motion";
 </script>
 
 <style>
-  .opening {
+  .open {
     position: relative;
-    height: 100svh;
-    min-height: 32rem;
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    padding: 5.5rem var(--gutter) 7rem;
     overflow: clip;
-    color: #f4f1ea;
+    text-align: center;
   }
-  .opening :global(.opening__photo) {
+  .open__trail {
     position: absolute;
     inset: 0;
-    width: 100%;
-    height: 100%;
-  }
-  .opening::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(to bottom, rgb(20 14 10 / 0.34), transparent 45%),
-      linear-gradient(to top, rgb(10 8 6 / 0.4), transparent 22%);
+    z-index: 0;
     pointer-events: none;
   }
-  .opening__type {
+  .open__flung {
     position: absolute;
+    left: 0;
+    top: 0;
+    width: clamp(9rem, 16vw, 15rem);
+    height: auto;
+    visibility: hidden;
+    box-shadow: 0 0 0 6px var(--color-white);
+  }
+  .open__stack {
+    position: relative;
     z-index: 1;
-    left: var(--gutter);
-    right: calc(var(--gutter) + var(--rail));
-    top: calc(var(--nav-h) + clamp(1.5rem, 8vh, 6rem));
+    display: grid;
+    justify-items: center;
+    gap: 1.25rem;
+    pointer-events: none;
   }
-  .opening__title {
-    font-size: clamp(4.5rem, 17vw, 15rem);
+  .open__stack a {
+    pointer-events: auto;
+  }
+  .open__mark {
+    color: var(--color-lime);
+  }
+  .open__tag {
     margin: 0;
-    margin-left: -0.04em;
   }
-  .opening__by {
-    margin: 1.75rem 0 0 0.2em;
-    font-size: clamp(1rem, 1.2vw + 0.6rem, 1.375rem);
-    font-variation-settings: "wdth" 88;
+  .open__title {
+    margin: 0;
+    font-size: clamp(3.25rem, 9vw, 9.5rem);
+    line-height: 0.92;
   }
-  .opening__note,
-  .opening__descend {
+  .open__line {
+    display: block;
+  }
+  .open__inline {
+    display: inline-block;
+    width: 1.4em;
+    height: 0.82em;
+    object-fit: cover;
+    vertical-align: -0.04em;
+    margin-inline: 0.06em;
+    box-shadow: 0 0 0 3px var(--color-lime);
+  }
+  .open__by {
+    margin: 0.5rem 0 0;
+    font-size: 0.875rem;
+  }
+  .open__chips {
+    list-style: none;
+    margin: 0.25rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.4rem;
+    max-width: 40rem;
+  }
+  .open__corner {
     position: absolute;
     z-index: 1;
     bottom: 1.5rem;
+    margin: 0;
+    text-align: left;
   }
-  .opening__note {
+  .open__corner--left {
     left: var(--gutter);
-    max-width: 60%;
   }
-  .opening__descend {
-    right: calc(var(--gutter) + var(--rail));
-    text-decoration: none;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid currentColor;
+  .open__tiles {
+    position: absolute;
+    z-index: 1;
+    right: var(--gutter);
+    bottom: 1.5rem;
+    display: flex;
+    gap: 0.5rem;
+  }
+  .open__tile {
+    display: grid;
+    place-items: center;
+    width: clamp(4.5rem, 8vw, 7rem);
+    aspect-ratio: 1;
+    overflow: hidden;
+  }
+  .open__tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .open__tile--lime {
+    background: var(--color-lime);
+    color: var(--color-ink);
+  }
+  .open__tile--lime:hover {
+    background: var(--color-white);
+  }
+  @media (max-width: 40rem) {
+    .open__corner {
+      display: none;
+    }
+    .open__tiles {
+      right: 50%;
+      translate: 50% 0;
+    }
   }
 
-  .prologue {
-    padding: var(--section) calc(var(--gutter) + var(--rail)) var(--section) var(--gutter);
+  .say {
+    padding: var(--section) var(--gutter);
     display: grid;
     gap: 2rem;
-  }
-  .prologue__text {
-    margin: 0;
-    max-width: 40rem;
-    font-size: clamp(1.375rem, 1.6vw + 0.8rem, 2.25rem);
-    line-height: 1.22;
-    letter-spacing: -0.012em;
-    font-variation-settings: "wdth" 92;
-    text-wrap: pretty;
-  }
-  .prologue__key {
-    margin: 0;
-    color: var(--fg-dim);
-  }
-  @media (min-width: 64rem) {
-    .prologue {
-      padding-left: 33%;
-    }
-  }
-
-  .stratum {
-    position: relative;
-    padding: var(--section) 0;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: clamp(4rem, 12vh, 9rem);
-  }
-  .stratum__head {
-    position: relative;
-    z-index: 1;
-    padding-inline: var(--gutter) calc(var(--gutter) + var(--rail));
-    display: grid;
-    gap: 1.5rem;
-  }
-  .stratum__name {
-    margin: 0;
-    font-size: clamp(4rem, 14vw, 13rem);
-  }
-  .stratum__meta {
-    display: grid;
-    gap: 0.75rem;
-    max-width: 30rem;
-  }
-  .stratum__line {
-    margin: 0;
-    font-size: 1.125rem;
-    line-height: 1.45;
-    text-wrap: pretty;
-  }
-  .stratum__range {
-    margin: 0;
-    color: var(--fg-dim);
-  }
-  .stratum__links {
-    list-style: none;
-    padding: 0;
-    margin: 0.5rem 0 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.25rem 1.25rem;
-    font-size: 0.875rem;
-  }
-
-  @media (min-width: 64rem) {
-    .stratum__head {
-      grid-template-columns: 1fr 22rem;
-      align-items: end;
-    }
-    .stratum__meta {
-      padding-bottom: 1rem;
-    }
-  }
-
-  .block {
-    padding-inline: var(--gutter) calc(var(--gutter) + var(--rail));
-  }
-  .block--full {
-    padding-inline: var(--gutter) calc(var(--gutter) + var(--rail));
-  }
-  .block--full :global(.frame) {
-    max-height: 100svh;
-    margin-inline: auto;
-  }
-  .block--offset :global(.frame) {
-    width: min(100%, 58rem);
-    max-width: 58vw;
-  }
-  .block--right {
-    display: flex;
-    justify-content: flex-end;
-  }
-  .block--left {
-    padding-left: clamp(var(--gutter), 9vw, 10rem);
-  }
-  .block--pair {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: clamp(0.75rem, 2.5vw, 2.5rem);
-    align-items: start;
-  }
-  .block--pair :global(.frame:nth-child(2)) {
-    margin-top: clamp(3rem, 16vh, 12rem);
-  }
-  @media (min-width: 64rem) {
-    .block--pair {
-      grid-template-columns: minmax(0, 5fr) minmax(0, 4fr);
-      padding-left: 16%;
-    }
-  }
-  .block--quiet {
-    display: flex;
-    justify-content: center;
-    padding-block: clamp(2rem, 10vh, 8rem);
-  }
-  .block--quiet :global(.frame) {
-    width: clamp(11rem, 24vw, 22rem);
-  }
-  @media (max-width: 48rem) {
-    .block--offset :global(.frame) {
-      max-width: none;
-      width: 88%;
-    }
-    .block--left {
-      padding-left: var(--gutter);
-    }
-  }
-
-  .block--strip {
-    padding-inline: 0;
-    min-width: 0;
-    margin-right: var(--rail);
     overflow: clip;
   }
-  .strip {
-    max-width: 100%;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
+  .say__text {
+    margin: 0;
+    max-width: 44rem;
   }
-  .strip__track {
-    display: flex;
-    gap: clamp(0.75rem, 1.5vw, 1.5rem);
-    width: max-content;
-    padding-inline: var(--gutter);
+  .say__hint {
+    margin: 0;
+    color: var(--color-lime);
   }
-  .strip__track :global(.frame) {
-    height: min(70vh, 44rem);
-    width: auto;
-    scroll-snap-align: center;
+  .say__card {
+    width: min(100%, 30rem);
   }
-  @media (max-width: 48rem) {
-    .strip__track :global(.frame) {
-      height: auto;
-      width: 85vw;
+  @media (min-width: 64rem) {
+    .say {
+      grid-template-columns: 1.3fr 1fr;
+      align-items: center;
+      column-gap: 4rem;
+    }
+    .say__card {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      justify-self: end;
     }
   }
 
-  .stratum--deep-sky {
-    color: var(--color-paper);
-    background: var(--color-deep);
-    isolation: isolate;
+  .tossed {
+    padding: var(--section) var(--gutter);
+    overflow: clip;
+  }
+  .tossed__head {
+    display: grid;
+    gap: 1rem;
+    justify-items: center;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .tossed__head p {
+    margin: 0;
+  }
+  .tossed__title {
+    margin: 0;
+    font-size: clamp(3rem, 8vw, 8rem);
+  }
+  @media (max-width: 47.99rem) {
+    .tossed {
+      padding-inline: 0;
+    }
   }
 
-  .finale {
-    min-height: 100svh;
-    padding: var(--section) calc(var(--gutter) + var(--rail)) 2rem var(--gutter);
+  .sky {
+    position: relative;
+    isolation: isolate;
+    padding: var(--section) var(--gutter);
     display: grid;
-    grid-template-rows: 1fr auto auto auto;
     justify-items: center;
-    gap: 2.5rem;
+    gap: 1.5rem;
     text-align: center;
-    color: var(--color-paper);
-    background: var(--color-deep);
+    overflow: clip;
   }
-  .finale :global(.finale__photo) {
-    width: min(100%, 34rem);
-    align-self: center;
-  }
-  .finale__title {
+  .sky__ch {
     margin: 0;
-    font-size: clamp(2.5rem, 6vw, 5.5rem);
-    max-width: 14ch;
+    color: var(--color-lime);
   }
-  .finale__links {
+  .sky__title {
+    margin: 0;
+    font-size: clamp(3.5rem, 11vw, 11rem);
+  }
+  .sky__text {
+    margin: 0;
+    max-width: 34rem;
+    font-size: 1.125rem;
+    line-height: 1.45;
+  }
+  .sky__row {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: clamp(0.5rem, 1.5vw, 1rem);
+    margin-block: 1.5rem;
+  }
+  @media (max-width: 47.99rem) {
+    .sky__row {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .sky__row > :global(.frame:nth-child(n + 5)) {
+      display: none;
+    }
+  }
+
+  .end {
+    min-height: 80svh;
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: 2rem;
+    padding: var(--section) var(--gutter);
+    text-align: center;
+  }
+  .end :global(.ornament) {
+    color: var(--color-blue);
+  }
+  .end__title {
+    margin: 0;
+    font-size: clamp(3.5rem, 10vw, 10rem);
+    color: var(--color-blue);
+  }
+  .end__links {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 0.75rem 2rem;
+    gap: 0.5rem;
   }
-  .finale__credit {
-    margin: 2rem 0 0;
-    opacity: 0.72;
+  .end__credit {
+    margin: 0;
   }
 </style>

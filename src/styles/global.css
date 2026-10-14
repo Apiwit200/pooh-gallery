@@ -1,132 +1,171 @@
 @import "tailwindcss";
-@import "@fontsource-variable/mona-sans/wdth.css";
-@import "@fontsource-variable/geist-mono/index.css";
+@import "@fontsource/jacquard-24/index.css";
+@import "@fontsource/geist-pixel/index.css";
+@import "@fontsource-variable/geist/index.css";
 @import "photoswipe/style.css";
 
 @theme {
-  --font-sans: "Mona Sans Variable", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "Geist Mono Variable", ui-monospace, monospace;
+  --font-display: "Jacquard 24", ui-serif, serif;
+  --font-pixel: "Geist Pixel", ui-monospace, monospace;
+  --font-sans: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
 
-  /* The descent. Each stratum owns one ground; the page steps between them at chapter boundaries. */
-  --color-daylight: #e6e8ea;
-  --color-shade: #b8c1b2;
-  --color-dusk: #86a59c;
-  --color-lamplight: #1d4652;
-  --color-night: #0c1824;
-  --color-deep: #04060a;
-
-  --color-ink: #10181b;
-  --color-paper: #ebe7dd;
+  --color-blue: #350aff;
+  --color-blue-deep: #1a0080;
+  --color-lime: #bcf015;
+  --color-paper: #ebedf5;
+  --color-ink: #120d2b;
+  --color-deep: #03000f;
+  --color-white: #f4f4ff;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-in-out-quint: cubic-bezier(0.83, 0, 0.17, 1);
+  --ease-snap: cubic-bezier(0.7, 0, 0.2, 1);
 }
 
+/* One field per section. Text colour follows the field; nothing else picks a colour. */
 :root {
-  --ground: var(--color-daylight);
-  --fg: var(--color-ink);
-  --fg-dim: color-mix(in oklab, var(--fg) 84%, var(--ground));
-  --hair: color-mix(in oklab, var(--fg) 22%, transparent);
-  --gutter: clamp(1rem, 3.2vw, 2.75rem);
-  --rail: clamp(2.25rem, 4vw, 4.5rem);
-  --section: clamp(6rem, 16vh, 11rem);
-  --nav-h: 3.5rem;
+  --field: var(--color-blue);
+  --fg: var(--color-white);
+  --fg-dim: color-mix(in oklab, var(--fg) 78%, var(--field));
+  --hair: color-mix(in oklab, var(--fg) 24%, transparent);
+  --gutter: clamp(1rem, 3vw, 2.5rem);
+  --section: clamp(5rem, 14vh, 10rem);
 
-  color-scheme: light;
-  background: var(--ground);
+  color-scheme: dark;
+  background: var(--color-blue);
   color: var(--fg);
   font-family: var(--font-sans);
-  font-variation-settings: "wdth" 100;
-  font-size: 100%;
   -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  scrollbar-color: var(--hair) transparent;
-  transition:
-    background-color 0.9s var(--ease-out-expo),
-    color 0.9s var(--ease-out-expo);
+  scrollbar-color: var(--color-lime) var(--color-blue-deep);
 }
 
-:root[data-ground="lamplight"],
-:root[data-ground="night"],
-:root[data-ground="deep-sky"],
-:root.dark {
-  --fg: var(--color-paper);
-  color-scheme: dark;
+.field-blue,
+.field-paper,
+.field-lime,
+.field-deep {
+  --fg-dim: color-mix(in oklab, var(--fg) 78%, var(--field));
+  --hair: color-mix(in oklab, var(--fg) 24%, transparent);
+  background: var(--field);
+  color: var(--fg);
 }
-:root[data-ground="daylight"] { --ground: var(--color-daylight); }
-:root[data-ground="shade"] { --ground: var(--color-shade); }
-:root[data-ground="dusk"] { --ground: var(--color-dusk); }
-:root[data-ground="lamplight"] { --ground: var(--color-lamplight); }
-:root[data-ground="night"] { --ground: var(--color-night); }
-:root[data-ground="deep-sky"] { --ground: var(--color-deep); }
-
-@view-transition {
-  navigation: auto;
+.field-blue {
+  --field: var(--color-blue);
+  --fg: var(--color-white);
 }
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation-duration: 0.5s;
-  animation-timing-function: var(--ease-out-expo);
+.field-paper {
+  --field: var(--color-paper);
+  --fg: var(--color-ink);
+}
+.field-lime {
+  --field: var(--color-lime);
+  --fg: var(--color-ink);
+}
+.field-deep {
+  --field: var(--color-deep);
+  --fg: var(--color-white);
 }
 
 body {
   min-height: 100svh;
-  background: var(--ground);
-  transition: background-color 0.9s var(--ease-out-expo);
+  background: var(--color-blue);
 }
 
 ::selection {
-  background: var(--fg);
-  color: var(--ground);
+  background: var(--color-lime);
+  color: var(--color-ink);
 }
 
 :focus-visible {
-  outline: 1.5px solid currentColor;
-  outline-offset: 4px;
+  outline: 2px solid var(--color-lime);
+  outline-offset: 3px;
+}
+.field-lime :focus-visible,
+.field-paper :focus-visible {
+  outline-color: var(--color-blue);
 }
 
 a {
   color: inherit;
   text-decoration-thickness: 1px;
-  text-underline-offset: 0.28em;
+  text-underline-offset: 0.25em;
 }
 
 img {
   user-select: none;
 }
 
-.mono {
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  line-height: 1.5;
-  letter-spacing: 0.02em;
-  font-variant-numeric: tabular-nums;
-  text-transform: uppercase;
-}
-
+/* Type */
 .display {
-  font-variation-settings: "wdth" 75;
-  font-weight: 560;
-  letter-spacing: -0.035em;
-  line-height: 0.86;
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 0.82;
+  letter-spacing: 0;
   text-wrap: balance;
 }
-
-.prose-measure {
-  max-width: 34rem;
-  font-size: clamp(1.0625rem, 0.4vw + 0.95rem, 1.25rem);
-  line-height: 1.5;
+.pixel {
+  font-family: var(--font-pixel);
+  font-size: 0.75rem;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+}
+.lede {
+  font-size: clamp(1.375rem, 1.6vw + 0.9rem, 2.5rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  font-weight: 450;
   text-wrap: pretty;
+}
+
+/* Chips: square tags, the only coloured controls. */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  padding: 0.4rem 0.55rem;
+  font-family: var(--font-pixel);
+  font-size: 0.75rem;
+  line-height: 1;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: var(--color-lime);
+  color: var(--color-ink);
+  transition:
+    background-color 0.18s steps(2),
+    color 0.18s steps(2);
+}
+.chip:hover,
+.chip:focus-visible {
+  background: var(--color-white);
+}
+.chip--blue {
+  background: var(--color-blue);
+  color: var(--color-white);
+}
+.chip--blue:hover,
+.chip--blue:focus-visible {
+  background: var(--color-ink);
+  color: var(--color-white);
+}
+.chip--ghost {
+  background: transparent;
+  color: inherit;
+  box-shadow: inset 0 0 0 1px var(--hair);
+}
+.chip--ghost:hover,
+.chip--ghost:focus-visible {
+  background: var(--color-lime);
+  color: var(--color-ink);
 }
 
 .skip-link {
   position: fixed;
   left: var(--gutter);
   top: 0.75rem;
-  z-index: 100;
+  z-index: 3000;
   padding: 0.5rem 0.75rem;
-  background: var(--fg);
-  color: var(--ground);
+  background: var(--color-lime);
+  color: var(--color-ink);
   transform: translateY(-200%);
 }
 .skip-link:focus-visible {
@@ -147,7 +186,7 @@ img {
   height: 100%;
   object-fit: cover;
   opacity: 0;
-  transition: opacity 0.7s var(--ease-out-expo);
+  transition: opacity 0.4s steps(4);
 }
 .frame > img.is-loaded,
 .frame > img[data-eager] {
@@ -159,24 +198,107 @@ img {
   }
 }
 
-.sr-only-focusable:not(:focus-visible) {
+/* The CRT: five fixed layers over the whole screen. A rectangular hole follows the photograph
+   under the pointer, so the one you are looking at plays clean. */
+.crt {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  pointer-events: none;
+  -webkit-mask:
+    linear-gradient(#000 0 0),
+    linear-gradient(#000 0 0) var(--hole-x, -9999px) var(--hole-y, -9999px) / var(--hole-w, 0px) var(--hole-h, 0px) no-repeat;
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0),
+    linear-gradient(#000 0 0) var(--hole-x, -9999px) var(--hole-y, -9999px) / var(--hole-w, 0px) var(--hole-h, 0px) no-repeat;
+  mask-composite: exclude;
+  transition: opacity 0.3s;
+}
+.crt > * {
   position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
+  inset: 0;
+}
+.crt__scan {
+  background: repeating-linear-gradient(to bottom, rgb(0 0 0 / 0.16) 0 1px, transparent 1px 3px);
+}
+.crt__glare {
+  background: radial-gradient(ellipse 80% 50% at 28% 18%, rgb(255 255 255 / 0.07), transparent 60%);
+}
+.crt__vignette {
+  background: radial-gradient(ellipse 130% 95% at 50% 50%, transparent 62%, rgb(0 0 20 / 0.4) 100%);
+}
+.crt__bezel {
+  box-shadow:
+    inset 0 0 70px 12px rgb(0 0 20 / 0.32),
+    inset 0 0 180px 40px rgb(0 0 20 / 0.14);
+}
+.crt__grain {
+  inset: -50%;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.8'/></svg>");
+  animation: crt-grain 0.45s steps(4) infinite;
+}
+@keyframes crt-grain {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-3%, 2%);
+  }
+  50% {
+    transform: translate(2%, -3%);
+  }
+  75% {
+    transform: translate(-2%, -2%);
+  }
+}
+html.viewer-open .crt {
+  opacity: 0;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  :root,
-  body,
-  .frame > img {
-    transition: none;
+/* RGB fringe on large photographs and display type; lifted from the photograph you look at. */
+@media (min-width: 769px) and (hover: hover) {
+  .frame[data-crt] > img,
+  .display {
+    filter: url(#crt-fringe);
   }
-  ::view-transition-old(root),
-  ::view-transition-new(root) {
-    animation: none;
+  .frame.is-looked-at > img {
+    filter: none;
   }
+}
+@supports (-webkit-hyphens: none) {
+  .frame[data-crt] > img,
+  .display {
+    filter: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .crt__grain {
+    display: none;
+  }
+  .crt__scan {
+    background: repeating-linear-gradient(to bottom, rgb(0 0 0 / 0.11) 0 1px, transparent 1px 4px);
+  }
+}
+
+/* Page change: a field of pixels snaps on, then off on the next page. */
+.pixwipe {
+  position: fixed;
+  inset: 0;
+  z-index: 2500;
+  display: grid;
+  grid-template-columns: repeat(var(--cols, 16), 1fr);
+  grid-auto-rows: 1fr;
+  pointer-events: none;
+}
+.pixwipe > i {
+  background: var(--color-blue);
+  opacity: 0;
+}
+.pixwipe > i:nth-child(11n + 4) {
+  background: var(--color-lime);
 }
 
 /* Developing frames: a temporary canvas over the untouched image. */
@@ -185,30 +307,14 @@ img {
   inset: 0;
   width: 100%;
   height: 100%;
+  image-rendering: pixelated;
 }
-.frame.is-developing > img,
-.can-develop .frame[data-develop]:not(.is-developed) > img {
+.frame.is-developing > img {
   opacity: 0 !important;
   transition: none;
 }
-/* The canvas's last frame is the photograph, so the handover must be instant. */
-.frame.is-developed > img {
-  opacity: 1;
-  transition: none;
-}
 
-/* Masked rise for display headings: each line slides up out of its own clip. */
-.rise__line {
-  display: block;
-  overflow: clip;
-  padding-bottom: 0.08em;
-  margin-bottom: -0.08em;
-}
-.rise__line > span {
-  display: block;
-}
-
-/* Directional trace: enters from the left, leaves to the right, never rewinds. */
+/* Directional trace: enters from the left, leaves to the right. */
 .trace {
   position: relative;
   text-decoration: none;
@@ -218,7 +324,7 @@ img {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -0.15em;
+  bottom: -0.2em;
   height: 1px;
   background: currentColor;
   transform: scaleX(0);
@@ -231,27 +337,20 @@ img {
   transform: scaleX(1);
   transform-origin: left;
 }
-@media (prefers-reduced-motion: reduce) {
-  .trace::after {
-    transition: none;
-  }
-}
 
-/* The viewer: the deepest ground, the photograph alone, its facts set like a meter reading. */
+/* The viewer plays the photograph alone on the deepest field, its facts in pixel type. */
 .pswp {
   --pswp-bg: var(--color-deep);
-  --pswp-icon-color: var(--color-paper);
+  --pswp-icon-color: var(--color-white);
   --pswp-icon-color-secondary: var(--color-deep);
   --pswp-icon-stroke-color: var(--color-deep);
-  --pswp-placeholder-bg: #0b0f14;
-  font-family: var(--font-sans);
+  --pswp-placeholder-bg: var(--color-blue-deep);
+  font-family: var(--font-pixel);
 }
 .pswp__counter {
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  letter-spacing: 0.04em;
-  color: var(--color-paper);
-  opacity: 0.7;
+  font-family: var(--font-pixel);
+  font-size: 0.75rem;
+  color: var(--color-lime);
   margin: 1.25rem 0 0 1.25rem;
   height: auto;
   line-height: 1;
@@ -262,22 +361,29 @@ img {
   right: 0;
   bottom: 0;
   padding: 1.25rem 1.5rem calc(1.25rem + env(safe-area-inset-bottom));
-  color: var(--color-paper);
+  color: var(--color-white);
+  font-family: var(--font-pixel);
+  font-size: 0.75rem;
+  text-transform: uppercase;
   text-align: center;
   pointer-events: none;
-  opacity: 0.85;
   transition: opacity 0.3s;
 }
 .pswp:not(.pswp--ui-visible) .pswp__facts {
   opacity: 0;
 }
 .pswp__button:focus-visible {
-  outline: 1.5px solid var(--color-paper);
+  outline: 2px solid var(--color-lime);
   outline-offset: -4px;
 }
-@media (max-width: 40rem) {
-  .pswp__facts {
-    font-size: 0.625rem;
-    text-align: left;
+
+@media (prefers-reduced-motion: reduce) {
+  .crt__grain {
+    animation: none;
+  }
+  .frame > img,
+  .chip,
+  .trace::after {
+    transition: none;
   }
 }

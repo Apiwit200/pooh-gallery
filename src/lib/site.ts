@@ -2,7 +2,7 @@ export const site = {
   title: "Light Falls",
   photographer: "Apiwit Nathong",
   description:
-    "Photographs by Apiwit Nathong, arranged as one descent through light: from noon on the roads of Thailand and Taiwan down to the Moon, Orion and Andromeda.",
+    "Photographs by Apiwit Nathong, played like late-night television: channels of roads, zoos, cafés, beaches and temples in Thailand and Taiwan, and the deep sky above them.",
   locale: "en",
   // Fill these in to show them on the About and Contact pages. Leave empty to hide.
   // A short statement in the photographer's own words, one paragraph per entry.

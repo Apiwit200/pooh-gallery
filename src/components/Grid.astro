@@ -7,15 +7,17 @@ interface Props {
   /** Target row height; rows justify around it using each frame's real aspect ratio. */
   row?: string | undefined;
   label?: string;
+  /** How many leading frames load eagerly (they sit above the fold). */
+  eager?: number;
 }
-const { photos, row = "clamp(9rem, 22vw, 17rem)", label } = Astro.props;
+const { photos, row = "clamp(9rem, 22vw, 17rem)", label, eager = 0 } = Astro.props;
 ---
 
 <ul class="grid" style={`--row:${row}`} aria-label={label}>
   {
-    photos.map((p) => (
+    photos.map((p, i) => (
       <li style={`--r:${(p.width / p.height).toFixed(4)}`}>
-        <Photo photo={p} sizes="(min-width: 64rem) 30vw, (min-width: 40rem) 45vw, 90vw" />
+        <Photo photo={p} eager={i < eager} sizes="(min-width: 64rem) 30vw, (min-width: 40rem) 45vw, 90vw" />
       </li>
     ))
   }

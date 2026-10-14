@@ -1,103 +1,104 @@
 ---
 import Grid from "@/components/Grid.astro";
 import Base from "@/layouts/Base.astro";
-import { descent, formatEv, photoStratum, type Photo } from "@/lib/photos";
+import { chronological, collectionHref, collections, formatDate, type Photo } from "@/lib/photos";
 import { url } from "@/lib/site";
 
 export function getStaticPaths() {
   const PER_PAGE = 120;
-  const pages = Math.max(1, Math.ceil(descent.length / PER_PAGE));
+  const pages = Math.max(1, Math.ceil(chronological.length / PER_PAGE));
   return Array.from({ length: pages }, (_, i) => ({
     params: { page: i === 0 ? undefined : String(i + 1) },
-    props: { index: i, pages, frames: descent.slice(i * PER_PAGE, (i + 1) * PER_PAGE) },
+    props: { index: i, pages, frames: chronological.slice(i * PER_PAGE, (i + 1) * PER_PAGE) },
   }));
 }
 
 const { index, pages, frames } = Astro.props as { index: number; pages: number; frames: Photo[] };
 const PER_PAGE = 120;
 const pageUrl = (i: number) => url(i === 0 ? "/archive/" : `/archive/${i + 1}/`);
-const evs = frames.flatMap((p) => (p.ev == null ? [] : [p.ev]));
-const range = evs.length ? `${formatEv(Math.max(...evs))} → ${formatEv(Math.min(...evs))}` : "Beyond the scale";
-const ground = photoStratum(frames[Math.floor(frames.length / 2)]!).key;
+const dated = frames.flatMap((p) => (p.exif.taken ? [p.exif.taken] : []));
+const range = dated.length ? `${formatDate(dated[0]!)} → ${formatDate(dated[dated.length - 1]!)}` : "Undated frames";
 const title = index === 0 ? "Archive" : `Archive, page ${index + 1}`;
 ---
 
-<Base title={title} description={`Every public photograph, ordered by measured light. Page ${index + 1} of ${pages}: ${range}.`} ground={ground}>
-  <header class="head" data-ground-zone={ground}>
+<Base title={title} description={`Every public photograph, newest first. Page ${index + 1} of ${pages}: ${range}.`}>
+  <header class="head field-blue">
     <h1 class="display head__title">Archive</h1>
-    <p class="head__text">
-      {`Every public frame, ${descent.length} in all, ordered by the light it caught. This page holds frames ${index * PER_PAGE + 1}–${index * PER_PAGE + frames.length}.`}
+    <p class="lede head__text">
+      {`Every public frame, ${chronological.length} in all, newest first. This page holds frames ${index * PER_PAGE + 1}–${index * PER_PAGE + frames.length}.`}
     </p>
-    <p class="mono head__range">{range}</p>
+    <p class="pixel head__range">On air: {range}</p>
+    <ul class="head__chips" aria-label="Jump to a channel">
+      {collections.map((c) => (
+        <li>
+          <a class="chip chip--ghost" href={url(collectionHref(c.slug))}>{c.title}</a>
+        </li>
+      ))}
+    </ul>
   </header>
-  <section class="frames" aria-label={`Frames ${index * PER_PAGE + 1} to ${index * PER_PAGE + frames.length}`}>
-    <Grid photos={frames} />
+  <section class="frames field-paper" aria-label={`Frames ${index * PER_PAGE + 1} to ${index * PER_PAGE + frames.length}`}>
+    <Grid photos={frames} eager={4} />
   </section>
-  <nav class="pager" aria-label="Archive pages">
-    {index > 0 ? <a class="pager__step" href={pageUrl(index - 1)} rel="prev">Higher</a> : <span aria-hidden="true"></span>}
+  <nav class="pager field-lime" aria-label="Archive pages">
+    {index > 0 ? <a class="chip chip--blue" href={pageUrl(index - 1)} rel="prev">◂ Newer</a> : <span aria-hidden="true"></span>}
     <ol class="pager__pages">
       {
         Array.from({ length: pages }, (_, i) => (
           <li>
-            <a href={pageUrl(i)} aria-current={i === index ? "page" : undefined} class="mono" aria-label={`Page ${i + 1}`}>
-              {i + 1}
+            <a href={pageUrl(i)} aria-current={i === index ? "page" : undefined} class="pixel">
+              <span class="sr-page">Page </span>
+              {String(i + 1).padStart(2, "0")}
             </a>
           </li>
         ))
       }
     </ol>
-    {
-      index < pages - 1 ? (
-        <a class="pager__step pager__step--deeper" href={pageUrl(index + 1)} rel="next">
-          Deeper
-        </a>
-      ) : (
-        <span aria-hidden="true" />
-      )
-    }
+    {index < pages - 1 ? <a class="chip chip--blue pager__next" href={pageUrl(index + 1)} rel="next">Older ▸</a> : <span aria-hidden="true"></span>}
   </nav>
 </Base>
 
+<script>
+  import "@/scripts/motion";
+</script>
+
 <style>
   .head {
-    padding: calc(var(--nav-h) + var(--section)) calc(var(--gutter) + var(--rail)) 3rem var(--gutter);
+    padding: calc(var(--section) + 2rem) var(--gutter) 3rem;
     display: grid;
     gap: 1.5rem;
   }
   .head__title {
     margin: 0;
-    font-size: clamp(4.5rem, 16vw, 14rem);
-    margin-left: -0.04em;
+    font-size: clamp(4.5rem, 15vw, 13rem);
   }
   .head__text {
     margin: 0;
-    max-width: 34rem;
-    font-size: 1.125rem;
-    line-height: 1.45;
+    max-width: 40rem;
   }
   .head__range {
     margin: 0;
-    color: var(--fg-dim);
+    color: var(--color-lime);
+  }
+  .head__chips {
+    list-style: none;
+    margin: 0.5rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
   }
   .frames {
-    padding: 0 calc(var(--gutter) + var(--rail)) 4rem var(--gutter);
+    padding: 2.5rem var(--gutter) 4rem;
   }
   .pager {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
     gap: 1rem;
-    padding: 2.5rem calc(var(--gutter) + var(--rail)) 5rem var(--gutter);
-    border-top: 1px solid var(--hair);
+    padding: 2rem var(--gutter);
   }
-  .pager__step {
-    font-variation-settings: "wdth" 76;
-    font-weight: 540;
-    font-size: clamp(1.5rem, 3vw, 2.5rem);
-    letter-spacing: -0.02em;
-  }
-  .pager__step--deeper {
-    text-align: right;
+  .pager__next {
+    justify-self: end;
   }
   .pager__pages {
     list-style: none;
@@ -115,12 +116,19 @@ const title = index === 0 ? "Archive" : `Archive, page ${index + 1}`;
     height: 2.75rem;
     text-decoration: none;
   }
+  .sr-page {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
   .pager__pages a[aria-current="page"] {
-    background: var(--fg);
-    color: var(--ground);
+    background: var(--color-blue);
+    color: var(--color-white);
   }
   .pager__pages a:not([aria-current]):hover {
-    text-decoration: underline;
+    background: var(--color-white);
   }
   @media (max-width: 40rem) {
     .pager {

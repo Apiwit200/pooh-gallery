@@ -40,7 +40,9 @@ for (const file of html) {
   }
   if (!/<title>[^<]{3,}<\/title>/.test(src)) fail(`${relative(DIST, file)} has no title`);
   if (!src.includes('name="description"')) fail(`${relative(DIST, file)} has no meta description`);
-  for (const img of src.matchAll(/<img\b[^>]*>/g)) if (!/\salt="[^"]+"/.test(img[0])) fail(`${relative(DIST, file)} has an <img> without alt text`);
+  // Content images need a description; decorative ones (trail, inline title images, previews) carry alt="" on purpose.
+  for (const img of src.matchAll(/<img\b[^>]*>/g)) if (!/\salt="/.test(img[0])) fail(`${relative(DIST, file)} has an <img> without an alt attribute`);
+  for (const a of src.matchAll(/<a\b[^>]*data-pswp-width[^>]*>\s*<img\b[^>]*>/g)) if (/\salt=""/.test(a[0])) fail(`${relative(DIST, file)} has a viewable photograph with empty alt text`);
 }
 for (const [ref, from] of refs) {
   const local = resolveLocal(ref);
@@ -55,7 +57,7 @@ const visible = manifest.photos.filter((p) => !p.held && !p.hidden && !hidden.ha
 const known = new Set(manifest.photos.map((p) => p.id));
 const stale = [
   ...curation.collections.flatMap((c) => [c.cover, ...(c.sequence ?? [])].filter(Boolean).map((id) => [c.slug, id])),
-  ...[curation.descent?.hero, curation.descent?.finale, ...(curation.descent?.featured ?? [])].filter(Boolean).map((id) => ["descent", id]),
+  ...[...(curation.home?.inline ?? []), curation.home?.finale, ...(curation.home?.trail ?? [])].filter(Boolean).map((id) => ["home", id]),
 ].filter(([, id]) => !known.has(id));
 const empty = curation.collections.filter((c) => !c.hidden && !visible.some((p) => p.collection === c.slug)).map((c) => c.slug);
 if (stale.length) console.warn(`warning: ${stale.length} curation id(s) no longer in the manifest: ${[...new Set(stale.map(([s]) => s))].join(", ")}`);

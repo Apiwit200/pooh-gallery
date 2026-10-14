@@ -63,7 +63,9 @@ async function setup() {
     const pid = (lightbox!.pswp?.currSlide?.data as { pid?: string } | undefined)?.pid;
     if (pid) history.replaceState(history.state, "", `#p=${pid}`);
   });
+  lightbox.on("openingAnimationStart", () => document.documentElement.classList.add("viewer-open"));
   lightbox.on("close", () => {
+    document.documentElement.classList.remove("viewer-open");
     history.replaceState(history.state, "", location.pathname + location.search);
     document.dispatchEvent(new Event("pswp-closed"));
   });

@@ -1,5 +1,5 @@
 {
- "$comment": "Edit titles, intros, featured photos and visibility here, then run npm run photos:build. Per-photo overrides go in photos, keyed by photo id: title, alt, featured, hidden. Titles marked with titleNote were written by the designer and are meant to be edited.",
+ "$comment": "Edit titles, intros, covers and visibility here, then run npm run photos:build. home.inline: two photos set inside the title. home.trail: photos the pointer throws on the opening screen. home.featured: frames the homepage may show. Per-photo overrides go in photos, keyed by photo id: title, alt, hidden. Titles with titleNote were written by the designer and are meant to be edited.",
  "collections": [
   {
    "slug": "2025-i",
@@ -680,9 +680,62 @@
    "heldReason": "Recognizable people posing; publish once they agree."
   }
  },
- "descent": {
-  "hero": "6bd8d122c5",
-  "finale": "aa6985ec85",
+ "home": {
+  "inline": [
+   "f022a8230f",
+   "c709572997"
+  ],
+  "trail": [
+   "6617f52098",
+   "20852a07e9",
+   "c67d6529c3",
+   "6c146e5b8e",
+   "35872fe992",
+   "7c2a0cb856",
+   "6bd8d122c5",
+   "b53cb9a899",
+   "78c0610901",
+   "8632a8eba9",
+   "f022a8230f",
+   "e63023808b",
+   "92187ec039",
+   "932604d0b5",
+   "a21a1dc564",
+   "615a916bfb",
+   "34703e9932",
+   "3c5c75ad42",
+   "c850bb19e9",
+   "87830cdd0d",
+   "ef35c47010",
+   "32e3b66392",
+   "472b1c6422",
+   "be15cae6e9",
+   "1e2f12a7a6",
+   "c24b9268a9",
+   "c1d302cbe7",
+   "9c15e4b88a",
+   "8854f5a93b",
+   "b101eaabd4",
+   "faa254ec24",
+   "ed411baa7e",
+   "a594ec96d4",
+   "9ff6a7ca75",
+   "e4ec7516e5",
+   "722a81765f",
+   "117ba4fe82",
+   "6904dd1390",
+   "ebde0dcf8f",
+   "930cd7cb45",
+   "aa8c488949",
+   "c525dc9d1c",
+   "fd0ec3834e",
+   "5d174c2737",
+   "c709572997",
+   "a3a0da4b8a",
+   "0568ae3063",
+   "fa9b24a1e8",
+   "92ebe02629"
+  ],
   "featured": [
    "6617f52098",
    "20852a07e9",
@@ -734,14 +787,6 @@
    "fa9b24a1e8",
    "92ebe02629"
   ],
-  "finaleTitle": "Where the daylight came from."
- },
- "strata": {
-  "daylight": "The brightest frames in the archive, often the sun itself low over water. The shutter is open for a few thousandths of a second.",
-  "shade": "Under trees, awnings and cloud. The light steps down a stop or two.",
-  "dusk": "The sun is low or gone. Colour cools, and the sea turns to pewter.",
-  "lamplight": "Now the light comes from stages, screens and aquarium glass.",
-  "night": "Fires, fireworks, a street lamp. Everything else is dark.",
-  "deep-sky": "The Moon, the Sun and the deep sky. Some of this light left its source long before there were cameras to catch it."
+  "finale": "aa6985ec85"
  }
 }

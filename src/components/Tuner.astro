@@ -1,0 +1,219 @@
+---
+import Photo from "@/components/Photo.astro";
+import { asset, channelLabel, collectionHref, formatDate, type Collection } from "@/lib/photos";
+import { url } from "@/lib/site";
+
+interface Props {
+  list: Collection[];
+  heading?: string;
+  headingId?: string;
+}
+const { list, heading, headingId = "tuner" } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const year = (c: Collection) => c.dates?.to.slice(0, 4) ?? "";
+
+// Frames each channel sends into the corridor: its curated sequence first, then the rest sampled evenly.
+const surf = list.map((c) => {
+  const rest = c.photos.filter((p) => !c.sequence.includes(p) && p.id !== c.cover.id);
+  const step = Math.max(1, Math.floor(rest.length / 12));
+  const picks = [c.cover, ...c.sequence, ...rest.filter((_, i) => i % step === 0)].slice(0, 18);
+  return picks.map((p, i) => ({
+    src: asset(base, p, 480),
+    w: Math.min(480, p.width),
+    h: Math.round((p.height * Math.min(480, p.width)) / p.width),
+    label: `(${i + 1}) ${c.title}${p.exif.taken ? ` / ${formatDate(p.exif.taken)}` : ""}`,
+    href: url(collectionHref(c.slug)),
+  }));
+});
+---
+
+<section class="tuner field-paper" data-tuner aria-labelledby={heading ? headingId : undefined}>
+  {heading && <h2 id={headingId} class="pixel tuner__heading">{heading}</h2>}
+  <div class="tuner__screen" aria-hidden="true">
+    <div class="tuner__glass">
+      <div class="tuner__surf" data-surf></div>
+      {
+        list.map((c, i) => (
+          <div class:list={["tuner__still", { "is-on": i === 0 }]} data-tuner-screen>
+            <img
+              src={asset(base, c.cover, 1080)}
+              srcset={`${asset(base, c.cover, 480)} 480w, ${asset(base, c.cover, 1080)} 1080w`}
+              sizes="(min-width: 64rem) 46vw, 92vw"
+              alt=""
+              loading={i < 2 ? "eager" : "lazy"}
+              fetchpriority={i === 0 ? "high" : "auto"}
+              decoding="async"
+              style={`object-position:${Math.round(c.cover.focus[0] * 100)}% ${Math.round(c.cover.focus[1] * 100)}%`}
+            />
+          </div>
+        ))
+      }
+    </div>
+    <p class="pixel tuner__label" data-tuner-label>{list[0] && `${channelLabel(list[0].channel)} · ${list[0].photos.length} frames`}</p>
+  </div>
+  <ol class="tuner__list">
+    {
+      list.map((c, i) => (
+        <li class:list={{ "is-on": i === 0 }} data-tuner-item data-tuner-label={`${channelLabel(c.channel)} · ${c.photos.length} frames${year(c) ? ` · ${year(c)}` : ""}`}>
+          <a href={url(collectionHref(c.slug))}>
+            <span class="pixel tuner__ch">{channelLabel(c.channel)}</span>
+            <span class="display tuner__name">{c.title}</span>
+            <span class="tuner__thumb">
+              <Photo photo={c.cover} view={false} ratio="1 / 1" sizes="4rem" />
+            </span>
+          </a>
+        </li>
+      ))
+    }
+  </ol>
+  <script type="application/json" data-surf-data set:html={JSON.stringify(surf)} />
+</section>
+
+<style>
+  .tuner {
+    position: relative;
+    display: grid;
+    gap: 2rem;
+    padding: var(--section) var(--gutter);
+  }
+  .tuner__heading {
+    margin: 0;
+    color: var(--color-blue);
+  }
+  .tuner__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .tuner__list a {
+    display: grid;
+    grid-template-columns: 4.25rem 1fr auto;
+    align-items: center;
+    gap: 0.75rem;
+    padding-block: 0.2rem;
+    text-decoration: none;
+  }
+  .tuner__name {
+    font-size: clamp(2.5rem, 6vw, 5.5rem);
+    color: color-mix(in oklab, var(--fg) 62%, var(--field));
+    transition: color 0.2s steps(2);
+  }
+  .tuner__ch {
+    justify-self: start;
+    padding: 0.3rem 0.4rem;
+    color: color-mix(in oklab, var(--fg) 82%, var(--field));
+  }
+  .tuner__thumb {
+    width: 3.25rem;
+  }
+  li.is-on .tuner__name {
+    color: var(--color-blue);
+  }
+  li.is-on .tuner__ch {
+    background: var(--color-lime);
+    color: var(--color-ink);
+  }
+  .tuner__screen {
+    position: sticky;
+    top: 4rem;
+    z-index: 1;
+    align-self: start;
+  }
+  .tuner__glass {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    background: var(--color-ink);
+    overflow: hidden;
+  }
+  .tuner__still {
+    position: absolute;
+    inset: 0;
+    visibility: hidden;
+  }
+  .tuner__still.is-on {
+    visibility: visible;
+  }
+  .tuner__still img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* The corridor replaces the still once it is running. */
+  .tuner__surf {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .tuner__glass:has(:global(.tuner__surf.is-surfing)) {
+    background: var(--field);
+    box-shadow: inset 0 0 0 1px var(--hair);
+  }
+  .tuner__glass:has(:global(.tuner__surf.is-surfing)) .tuner__still {
+    visibility: hidden;
+  }
+  .tuner__surf :global(.surf__track) {
+    position: absolute;
+    inset: 0;
+    pointer-events: auto;
+  }
+  .tuner__surf :global(.surf__card) {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    translate: 0 -50%;
+    display: block;
+    transform-origin: 50% 50%;
+    will-change: transform;
+    box-shadow: 0 0 0 4px var(--color-white), 0 10px 24px -14px rgb(3 0 15 / 0.6);
+  }
+  .tuner__surf :global(.surf__card img) {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .tuner__surf :global(.surf__card:hover) {
+    box-shadow: 0 0 0 4px var(--color-lime), 0 10px 24px -14px rgb(3 0 15 / 0.6);
+  }
+  .tuner__label {
+    margin: 0.6rem 0 0;
+    min-height: 1.2em;
+  }
+  @media (max-width: 63.99rem) {
+    .tuner__screen {
+      top: 3.75rem;
+      width: min(100%, 26rem);
+      justify-self: end;
+    }
+    .tuner__glass {
+      aspect-ratio: 16 / 9;
+    }
+  }
+  @media (min-width: 64rem) {
+    .tuner {
+      grid-template-columns: 0.9fr 1.2fr;
+      column-gap: 2.5rem;
+    }
+    .tuner__heading {
+      grid-column: 1 / -1;
+    }
+    .tuner__list {
+      grid-column: 1;
+      grid-row: 2;
+    }
+    .tuner__screen {
+      grid-column: 2;
+      grid-row: 2;
+      top: 5rem;
+    }
+    .tuner__glass {
+      aspect-ratio: auto;
+      height: min(78svh, 46rem);
+    }
+    .tuner__thumb {
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,78 @@
+---
+import Photo from "@/components/Photo.astro";
+import type { Photo as P } from "@/lib/photos";
+
+interface Props {
+  photos: P[];
+  label: string;
+}
+const { photos, label } = Astro.props;
+
+// Deterministic scatter: same layout every build, cards spread over the table with a slight tilt.
+let seed = 1971;
+const rand = () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646;
+const cards = photos.map((p, i) => {
+  const cols = 5;
+  const col = i % cols;
+  const row = Math.floor(i / cols);
+  return {
+    p,
+    left: 4 + col * 18 + rand() * 8,
+    top: 6 + row * 42 + rand() * 14,
+    rotate: (rand() * 2 - 1) * 9,
+    width: p.orientation === "portrait" ? 14 + rand() * 4 : 20 + rand() * 6,
+  };
+});
+const rows = Math.ceil(photos.length / 5);
+---
+
+<div class="toss" data-toss style={`--rows:${rows}`} aria-label={label} role="group">
+  {
+    cards.map((c) => (
+      <div class="toss__card" data-toss-card style={`left:${c.left.toFixed(2)}%;top:${c.top.toFixed(2)}%;width:${c.width.toFixed(2)}%;rotate:${c.rotate.toFixed(2)}deg`}>
+        <Photo photo={c.p} sizes="(min-width: 48rem) 26vw, 70vw" />
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  .toss {
+    position: relative;
+    height: calc(var(--rows) * clamp(18rem, 32vw, 30rem));
+  }
+  .toss__card {
+    position: absolute;
+    padding: 0.5rem 0.5rem 1.6rem;
+    background: var(--color-white);
+    box-shadow: 0 10px 24px -12px rgb(3 0 15 / 0.6);
+    cursor: grab;
+    touch-action: pan-y;
+    transition: box-shadow 0.2s;
+  }
+  .toss__card:hover {
+    box-shadow: 0 18px 36px -14px rgb(3 0 15 / 0.7);
+  }
+  :global(.toss__card.is-dragging) {
+    cursor: grabbing;
+  }
+  @media (max-width: 47.99rem) {
+    .toss {
+      height: auto;
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding: 1.5rem var(--gutter) 2.5rem;
+      scrollbar-width: none;
+    }
+    .toss__card {
+      position: relative;
+      left: auto !important;
+      top: auto !important;
+      flex: 0 0 70vw;
+      width: auto !important;
+      scroll-snap-align: center;
+    }
+  }
+</style>

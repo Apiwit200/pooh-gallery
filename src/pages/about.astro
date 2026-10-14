@@ -1,21 +1,21 @@
 ---
 import Photo from "@/components/Photo.astro";
 import Base from "@/layouts/Base.astro";
-import { collections, DEEP_SKY_SLUG, descent, formatEv, photos } from "@/lib/photos";
+import { chronological, collections, DEEP_SKY_SLUG, photos } from "@/lib/photos";
 import { site, url } from "@/lib/site";
 
 const count = <T,>(xs: T[]) => [...xs.reduce((m, x) => m.set(x, (m.get(x) ?? 0) + 1), new Map<T, number>())].sort((a, b) => b[1] - a[1]);
 const cameras = count(photos.flatMap((p) => (p.exif.model ? [p.exif.model] : [])));
-const lenses = count(photos.flatMap((p) => (p.exif.lens ? [p.exif.lens] : []))).slice(0, 4);
+// Only real lens names: exports without LensModel carry a numeric LensInfo array instead.
+const lenses = count(photos.flatMap((p) => (p.exif.lens && !/NaN|^[\d.,\s]+$/.test(p.exif.lens) ? [p.exif.lens] : []))).slice(0, 4);
 const focals = count(photos.flatMap((p) => (p.exif.focal ? [p.exif.focal] : []))).slice(0, 3);
 const years = [...new Set(photos.flatMap((p) => (p.exif.taken ? [p.exif.taken.slice(0, 4)] : [])))].sort();
-const measured = descent.filter((p) => p.ev != null && p.collection !== DEEP_SKY_SLUG);
-const portrait = descent.find((p) => p.collection === DEEP_SKY_SLUG && p.orientation === "portrait") ?? descent[Math.floor(descent.length / 3)]!;
+const portrait = chronological.find((p) => p.collection === DEEP_SKY_SLUG && p.orientation === "portrait") ?? chronological[0]!;
 const places = collections.filter((c) => c.slug !== DEEP_SKY_SLUG).map((c) => c.title);
 ---
 
-<Base title="About" description={`About ${site.photographer} and how this archive of photographs is arranged.`} ground="shade">
-  <article class="about" data-ground-zone="shade">
+<Base title="About" description={`About ${site.photographer} and how this archive of photographs is arranged.`} >
+  <article class="about field-paper">
     <h1 class="display about__title">{site.photographer}</h1>
     {
       site.statement.length > 0 && (
@@ -29,35 +29,33 @@ const places = collections.filter((c) => c.slug !== DEEP_SKY_SLUG).map((c) => c.
     <div class="about__colophon">
       <p class="about__lead">
         This site holds {photos.length} photographs by {site.photographer}{years.length ? `, made between ${years[0]} and ${years[years.length - 1]}` : ""}.
-        They are not arranged by date or place but by light: each frame sits where its own exposure puts it, from
-        {measured[0] ? ` ${formatEv(measured[0].ev)}` : " the brightest"} at noon to
-        {measured.at(-1) ? ` ${formatEv(measured.at(-1)!.ev)}` : " the darkest"} at night, and then the sky.
+        They are grouped into channels by the trip or day they came from, and the last channel is the night sky.
       </p>
       <dl class="facts">
         {cameras.length > 0 && (
           <div>
-            <dt class="mono">Camera</dt>
+            <dt class="pixel">Camera</dt>
             <dd>{cameras.map(([m, n]) => `${m} (${n} frames)`).join(", ")}</dd>
           </div>
         )}
         {lenses.length > 0 && (
           <div>
-            <dt class="mono">Lenses most used</dt>
+            <dt class="pixel">Lenses most used</dt>
             <dd>{lenses.map(([l]) => l).join(", ")}</dd>
           </div>
         )}
         {focals.length > 0 && (
           <div>
-            <dt class="mono">Focal lengths most used</dt>
+            <dt class="pixel">Focal lengths most used</dt>
             <dd>{focals.map(([f]) => `${f}mm`).join(", ")}</dd>
           </div>
         )}
         <div>
-          <dt class="mono">Collections</dt>
+          <dt class="pixel">Collections</dt>
           <dd>{places.join(", ")}</dd>
         </div>
         <div>
-          <dt class="mono">Deep sky</dt>
+          <dt class="pixel">Deep sky</dt>
           <dd>
             <a href={url("/deep-sky/")}>The Moon, the Sun, Jupiter, the Pleiades, Orion and Andromeda</a>
           </dd>
@@ -80,7 +78,7 @@ const places = collections.filter((c) => c.slug !== DEEP_SKY_SLUG).map((c) => c.
 
 <style>
   .about {
-    padding: calc(var(--nav-h) + var(--section)) calc(var(--gutter) + var(--rail)) var(--section) var(--gutter);
+    padding: calc(var(--section) + 2rem) var(--gutter) var(--section);
     display: grid;
     gap: 3rem;
   }

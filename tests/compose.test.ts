@@ -12,8 +12,6 @@ const frame = (id: string, orientation: Photo["orientation"]): Photo => ({
   width: orientation === "portrait" ? 2 : 3,
   height: orientation === "portrait" ? 3 : 2,
   orientation,
-  ev: 10,
-  luma: 0.2,
   color: "#000000",
   focus: [0.5, 0.5],
   lqip: "",

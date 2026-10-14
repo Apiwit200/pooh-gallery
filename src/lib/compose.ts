@@ -10,10 +10,10 @@ export type Block =
 const wide = (p: Photo) => p.orientation === "landscape";
 
 /**
- * Turns one stratum's photographs, already in descent order, into a sequence of compositions.
+ * Turns a run of photographs into a sequence of compositions.
  * The orientation of the actual frames decides the layout: runs of landscapes become a filmstrip,
  * neighbouring portraits pair up, single frames alternate between full bleed and offset,
- * and the stratum always ends on one small frame in open ground.
+ * and the run always ends on one small frame in open ground.
  */
 export function compose(photos: Photo[]): Block[] {
   const blocks: Block[] = [];

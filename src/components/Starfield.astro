@@ -49,10 +49,9 @@
         const a = still ? s.a : s.a * (0.75 + 0.25 * Math.sin(s.ph + (t / 1000) * s.tw));
         const y = (s.y - drift * s.r + h) % h;
         ctx.globalAlpha = a;
-        ctx.fillStyle = "#dfe6ef";
-        ctx.beginPath();
-        ctx.arc(s.x, y, s.r, 0, 6.2832);
-        ctx.fill();
+        ctx.fillStyle = s.r > 0.8 ? "#bcf015" : "#f4f4ff";
+        const size = s.r > 0.8 ? 3 : 2;
+        ctx.fillRect(Math.round(s.x), Math.round(y), size, size);
       }
     };
 

@@ -247,7 +247,7 @@ await pool(publicPhotos, (p) => variants(byId.get(p.id), p));
 /** Social cards: JPEG, because most link unfurlers still reject AVIF. Only for frames that represent a page. */
 const OG = join(ROOT, "public/og");
 await mkdir(OG, { recursive: true });
-const shareIds = new Set([curation.descent?.hero, curation.descent?.finale, ...curation.collections.map((c) => c.cover)].filter(Boolean));
+const shareIds = new Set([...(curation.home?.inline ?? []), curation.home?.finale, ...curation.collections.map((c) => c.cover)].filter(Boolean));
 const shareFiles = new Set();
 for (const p of publicPhotos.filter((p) => shareIds.has(p.id))) {
   const out = join(OG, `${p.file}.jpg`);

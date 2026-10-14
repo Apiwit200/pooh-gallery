@@ -1,138 +1,121 @@
 ---
-import { collections, STRATA, DEEP_SKY, formatEv } from "@/lib/photos";
+import Ornament from "@/components/Ornament.astro";
+import { channelLabel, collectionHref, collections } from "@/lib/photos";
 import { site, url } from "@/lib/site";
 
 const current = Astro.url.pathname;
 const links = [
-  { href: url("/index/"), label: "Index" },
+  { href: url("/index/"), label: "Channels" },
   { href: url("/archive/"), label: "Archive" },
   { href: url("/deep-sky/"), label: "Deep sky" },
   { href: url("/about/"), label: "About" },
 ];
-const strata = [...STRATA, DEEP_SKY]
-  .map((s) => ({ ...s, collections: collections.filter((c) => c.stratum.key === s.key) }))
-  .filter((s) => s.collections.length);
-const isCurrent = (href: string) => current === href || (href !== url("/") && current.startsWith(href));
+const isCurrent = (href: string) => current === href || current.startsWith(href);
 ---
 
-<header class="nav">
-  <a class="nav__mark" href={url("/")} aria-current={current === url("/") ? "page" : undefined}>
-    <span class="nav__title">{site.title}</span>
-    <span class="nav__by">{site.photographer}</span>
+<header class="pill">
+  <a class="pill__mark" href={url("/")} aria-current={current === url("/") ? "page" : undefined}>
+    <Ornament size="1.1rem" />
+    <span>{site.title}</span>
   </a>
-  <nav aria-label="Primary" class="nav__links">
+  <nav aria-label="Primary" class="pill__links pixel">
     {links.map((l) => <a class="trace" href={l.href} aria-current={isCurrent(l.href) ? "page" : undefined}>{l.label}</a>)}
   </nav>
-  <button class="nav__open" type="button" aria-haspopup="dialog" aria-controls="menu" data-menu-open>Index</button>
+  <button class="pill__menu" type="button" aria-haspopup="dialog" aria-controls="menu" data-menu-open>
+    <span class="sr-only">Open the channel list</span>
+    <svg viewBox="0 0 16 10" width="18" height="12" shape-rendering="crispEdges" aria-hidden="true"><path d="M0 0h16v2H0zM0 4h16v2H0zM0 8h16v2H0z" fill="currentColor"></path></svg>
+  </button>
 </header>
 
-<dialog id="menu" class="menu" aria-label="Index of the descent">
+<dialog id="menu" class="menu field-blue" aria-label="Channels">
   <div class="menu__bar">
-    <span class="menu__title">{site.title}</span>
-    <button type="button" class="menu__close" data-menu-close>Close</button>
+    <span class="pixel">Now showing · {collections.length} channels</span>
+    <button type="button" class="chip" data-menu-close>Close</button>
   </div>
-  <nav aria-label="Index">
-    <ol class="menu__strata">
+  <nav aria-label="Channels">
+    <ol class="menu__list">
       {
-        strata.map((s) => (
-          <li class="menu__stratum">
-            <span class="menu__stratum-name">{s.name}</span>
-            <ul class="menu__collections">
-              {s.collections.map((c) => (
-                <li>
-                  <a href={url(c.slug === "beyond-the-frame" ? "/deep-sky/" : `/c/${c.slug}/`)}>
-                    <span>{c.title}</span>
-                    <span class="mono">{c.ev ? formatEv(c.ev.median) : "EV —"} · {c.photos.length}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
+        collections.map((c) => (
+          <li>
+            <a href={url(collectionHref(c.slug))}>
+              <span class="pixel menu__ch">{channelLabel(c.channel)}</span>
+              <span class="display menu__title">{c.title}</span>
+              <span class="pixel menu__count">{c.photos.length}</span>
+            </a>
           </li>
         ))
       }
     </ol>
     <ul class="menu__more">
-      {[{ href: url("/"), label: "The descent" }, ...links].map((l) => <li><a href={l.href}>{l.label}</a></li>)}
-      {(site.email || site.links.length > 0) && <li><a href={url("/contact/")}>Contact</a></li>}
+      {[{ href: url("/"), label: "Home" }, ...links].map((l) => (
+        <li>
+          <a class="chip chip--ghost" href={l.href}>{l.label}</a>
+        </li>
+      ))}
+      {(site.email || site.links.length > 0) && (
+        <li>
+          <a class="chip chip--ghost" href={url("/contact/")}>Contact</a>
+        </li>
+      )}
     </ul>
   </nav>
 </dialog>
 
 <style>
-  .nav {
+  .pill {
     position: fixed;
-    inset: 0 0 auto 0;
-    z-index: 40;
-    height: var(--nav-h);
+    z-index: 1500;
+    top: 0.75rem;
+    left: 50%;
+    translate: -50% 0;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
-    padding-inline: var(--gutter) calc(var(--gutter) + var(--rail));
-    color: var(--fg);
-    background: var(--ground);
-    border-bottom: 1px solid var(--hair);
-    pointer-events: none;
-    transition:
-      background-color 0.6s var(--ease-out-expo),
-      color 0.6s var(--ease-out-expo),
-      border-color 0.6s var(--ease-out-expo);
+    gap: clamp(0.75rem, 2vw, 1.75rem);
+    padding: 0.35rem 0.4rem 0.35rem 0.75rem;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    box-shadow: 0 0 0 1px rgb(18 13 43 / 0.12), 0 6px 18px -8px rgb(3 0 15 / 0.45);
+    border-radius: 4px;
+    max-width: calc(100vw - 2 * var(--gutter));
   }
-  :global(html[data-nav-over]) .nav {
-    color: #f4f1ea;
-    background: transparent;
-    border-color: transparent;
-  }
-  .nav > * {
-    pointer-events: auto;
-  }
-  .nav__mark {
+  .pill__mark {
     display: flex;
-    align-items: baseline;
-    gap: 0.75rem;
+    align-items: center;
+    gap: 0.5rem;
     text-decoration: none;
+    color: var(--color-blue);
   }
-  .nav__title {
-    font-variation-settings: "wdth" 75;
-    font-weight: 620;
-    font-size: 1.0625rem;
-    letter-spacing: -0.01em;
+  .pill__mark span {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    line-height: 1;
+    color: var(--color-ink);
+    white-space: nowrap;
   }
-  .nav__by {
-    font-size: 0.8125rem;
-    opacity: 0.75;
-  }
-  .nav__links {
+  .pill__links {
     display: none;
-    gap: clamp(1rem, 2.4vw, 2.25rem);
-    font-size: 0.875rem;
+    gap: 1.25rem;
   }
-  .nav__links a {
-    padding-block: 0.5rem;
+  .pill__links a {
+    padding-block: 0.4rem;
   }
-  .nav__links :global(.trace::after) {
-    bottom: 0.3rem;
-  }
-  .nav__open {
-    font: inherit;
-    font-size: 0.875rem;
-    background: none;
+  .pill__menu {
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.25rem;
     border: 0;
-    color: inherit;
-    padding: 0.75rem 0;
+    background: var(--color-blue);
+    color: var(--color-white);
+    border-radius: 2px;
     cursor: pointer;
   }
-  @media (min-width: 52rem) {
-    .nav__links {
-      display: flex;
-    }
-    .nav__open {
-      display: none;
-    }
+  .pill__menu:hover {
+    background: var(--color-ink);
   }
-  @media (max-width: 30rem) {
-    .nav__by {
-      display: none;
+  @media (min-width: 56rem) {
+    .pill__links {
+      display: flex;
     }
   }
 
@@ -146,22 +129,20 @@ const isCurrent = (href: string) => current === href || (href !== url("/") && cu
     margin: 0;
     padding: 0 var(--gutter) 3rem;
     border: 0;
-    background: var(--color-night);
-    color: var(--color-paper);
     overflow-y: auto;
     overscroll-behavior: contain;
-    opacity: 0;
+    clip-path: inset(0 0 100% 0);
     transition:
-      opacity 0.45s var(--ease-out-expo),
+      clip-path 0.45s steps(9),
       display 0.45s allow-discrete,
       overlay 0.45s allow-discrete;
   }
   .menu[open] {
-    opacity: 1;
+    clip-path: inset(0 0 0 0);
   }
   @starting-style {
     .menu[open] {
-      opacity: 0;
+      clip-path: inset(0 0 100% 0);
     }
   }
   .menu::backdrop {
@@ -170,79 +151,52 @@ const isCurrent = (href: string) => current === href || (href !== url("/") && cu
   .menu__bar {
     position: sticky;
     top: 0;
+    z-index: 1;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: var(--nav-h);
-    background: var(--color-night);
+    padding-block: 1rem;
+    background: var(--field);
   }
-  .menu__title {
-    font-variation-settings: "wdth" 75;
-    font-weight: 620;
-  }
-  .menu__close {
-    font: inherit;
-    font-size: 0.875rem;
-    color: inherit;
-    background: none;
-    border: 0;
-    padding: 0.75rem 0;
-    cursor: pointer;
-  }
-  .menu__strata {
+  .menu__list {
     list-style: none;
+    margin: 1rem 0 0;
     padding: 0;
-    margin: 2rem 0 0;
   }
-  .menu__stratum {
-    border-top: 1px solid color-mix(in oklab, var(--color-paper) 18%, transparent);
-    padding-block: 1.25rem 2rem;
+  .menu__list a {
     display: grid;
-    gap: 1rem;
-  }
-  .menu__stratum-name {
-    font-variation-settings: "wdth" 75;
-    font-weight: 560;
-    font-size: clamp(2.5rem, 9vw, 5.5rem);
-    letter-spacing: -0.035em;
-    line-height: 0.9;
-  }
-  .menu__collections {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    columns: 15rem auto;
-    column-gap: 2rem;
-  }
-  .menu__collections a {
-    display: flex;
-    justify-content: space-between;
+    grid-template-columns: 4.5rem 1fr auto;
     align-items: baseline;
     gap: 1rem;
-    padding-block: 0.55rem;
+    padding-block: 0.6rem;
+    border-bottom: 1px solid var(--hair);
     text-decoration: none;
-    break-inside: avoid;
-    border-bottom: 1px solid color-mix(in oklab, var(--color-paper) 10%, transparent);
   }
-  .menu__collections a:hover span:first-child {
-    text-decoration: underline;
+  .menu__title {
+    font-size: clamp(2.25rem, 6vw, 4.75rem);
   }
-  .menu__collections .mono {
-    opacity: 0.75;
+  .menu__ch,
+  .menu__count {
+    color: var(--color-lime);
+  }
+  .menu__list a:hover .menu__title,
+  .menu__list a:focus-visible .menu__title {
+    color: var(--color-lime);
   }
   .menu__more {
     list-style: none;
     padding: 0;
-    margin: 2.5rem 0 0;
+    margin: 2rem 0 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem 2rem;
+    gap: 0.5rem;
   }
-  @media (min-width: 64rem) {
-    .menu__stratum {
-      grid-template-columns: minmax(16rem, 1fr) 2fr;
-      align-items: start;
-    }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
   }
   @media (prefers-reduced-motion: reduce) {
     .menu {
@@ -252,14 +206,6 @@ const isCurrent = (href: string) => current === href || (href !== url("/") && cu
 </style>
 
 <script>
-  const over = document.querySelector("[data-nav-over]");
-  if (over) {
-    const root = document.documentElement;
-    root.toggleAttribute("data-nav-over", true);
-    new IntersectionObserver(([e]) => root.toggleAttribute("data-nav-over", !!e?.isIntersecting), {
-      rootMargin: "0px 0px -100% 0px",
-    }).observe(over);
-  }
   const menu = document.getElementById("menu") as HTMLDialogElement | null;
   document.addEventListener("click", (e) => {
     const t = e.target as HTMLElement;

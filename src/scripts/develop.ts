@@ -1,5 +1,5 @@
 /**
- * "Light falls in": a frame develops brightest-first, from the top, out of the page ground.
+ * Signal acquired: a frame resolves from coarse, posterised pixels to the photograph.
  * The canvas exists only while a frame is developing; at progress 1 it is removed and the
  * original <img> is shown untouched, so the photograph itself is never altered.
  */
@@ -15,25 +15,24 @@ uniform vec2 focus;
 uniform vec3 ground;
 uniform float progress;
 
-float hash(vec2 q){return fract(sin(dot(q,vec2(127.1,311.7)))*43758.5453);}
-float noise(vec2 q){vec2 i=floor(q),f=fract(q);f=f*f*(3.-2.*f);
-  return mix(mix(hash(i),hash(i+vec2(1,0)),f.x),mix(hash(i+vec2(0,1)),hash(i+vec2(1,1)),f.x),f.y);}
-
 void main(){
-  // object-fit: cover with object-position = focus, so the last frame matches the <img> exactly.
+  // Cover-fit with object-position = focus, so the final frame matches the <img> exactly.
   float s=max(box.x/img.x,box.y/img.y);
   vec2 shown=img*s;
   vec2 offset=(box-shown)*focus;
   vec2 px=vec2(v.x,1.-v.y)*box;
-  vec2 uv=(px-offset)/shown;
-  vec4 c=texture2D(tex,uv);
-  float lum=dot(c.rgb,vec3(.2126,.7152,.0722));
-  float grain=noise(px/2.3)*.35+noise(px/11.)*.35+noise(px/41.)*.3;
-  // Light arrives from above and finds the brightest surfaces first.
-  float arrival=(1.-lum)*.55+(1.-v.y)*.45+grain*.22;
-  float t=progress*1.25;
-  float m=smoothstep(arrival-.2,arrival,t);
-  gl_FragColor=vec4(mix(ground,c.rgb,m),1.);
+  // Resolve: blocks shrink from 56px to one pixel while the palette widens from 3 levels to full.
+  float t=clamp(progress,0.,1.);
+  float block=max(1.,floor(mix(56.,1.,pow(t,.55))));
+  vec2 cell=(floor(px/block)+.5)*block;
+  vec2 uv=(cell-offset)/shown;
+  vec3 c=texture2D(tex,uv).rgb;
+  float levels=mix(3.,256.,t*t);
+  c=floor(c*levels+.5)/levels;
+  // The screen is dark until the signal arrives; blocks switch on in a scattered order.
+  float h=fract(sin(dot(floor(px/56.),vec2(12.9898,78.233)))*43758.5453);
+  float on=step(h,t*1.6);
+  gl_FragColor=vec4(mix(ground,c,on),1.);
 }`;
 
 interface Developing {
@@ -45,8 +44,17 @@ interface Developing {
 
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-function groundColor(): [number, number, number] {
-  const probe = getComputedStyle(document.body).backgroundColor.match(/[\d.]+/g)?.map(Number) ?? [231, 227, 217];
+function groundColor(frame: HTMLElement): [number, number, number] {
+  let el: HTMLElement | null = frame.parentElement;
+  let bg = "rgb(53, 10, 255)";
+  for (; el; el = el.parentElement) {
+    const c = getComputedStyle(el).backgroundColor;
+    if (c && !c.endsWith(", 0)") && c !== "transparent") {
+      bg = c;
+      break;
+    }
+  }
+  const probe = bg.match(/[\d.]+/g)?.map(Number) ?? [53, 10, 255];
   return [probe[0]! / 255, probe[1]! / 255, probe[2]! / 255];
 }
 
@@ -95,7 +103,7 @@ function prepare(frame: HTMLElement): Developing | null {
   gl.uniform2f(u("box"), rect.width, rect.height);
   gl.uniform2f(u("img"), img.naturalWidth, img.naturalHeight);
   gl.uniform2f(u("focus"), fx ?? 0.5, fy ?? 0.5);
-  gl.uniform3fv(u("ground"), groundColor());
+  gl.uniform3fv(u("ground"), groundColor(frame));
   const progress = u("progress");
 
   frame.append(canvas);
