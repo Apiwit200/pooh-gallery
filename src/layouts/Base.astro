@@ -59,7 +59,7 @@ const groundColor = { daylight: "#e6e8ea", shade: "#b8c1b2", dusk: "#86a59c", la
           type="image/avif"
           fetchpriority="high"
           imagesrcset={`${asset(base, preload, 480)} 480w, ${asset(base, preload, 1080)} 1080w, ${asset(base, preload, 1920)} 1920w`}
-          imagesizes="100vw"
+          imagesizes={`(max-aspect-ratio: ${preload.width}/${preload.height}) calc(100svh * ${(preload.width / preload.height).toFixed(3)}), 100vw`}
         />
       )
     }

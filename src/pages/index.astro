@@ -52,7 +52,7 @@ const jsonld = {
 
 <Base image={hero} preload={hero} ground="daylight" jsonld={jsonld}>
   <section class="opening" data-ground-zone="daylight" data-nav-over aria-labelledby="title">
-    <Photo photo={hero} eager class="opening__photo" ratio="auto" sizes="100vw" view={false} develop />
+    <Photo photo={hero} eager class="opening__photo" ratio="auto" sizes={`(max-aspect-ratio: ${hero.width}/${hero.height}) calc(100svh * ${(hero.width / hero.height).toFixed(3)}), 100vw`} view={false} develop />
     <div class="opening__type" data-parallax="-0.35">
       <h1 id="title" class="display opening__title">{site.title}</h1>
       <p class="opening__by">Photographs by {site.photographer}</p>
@@ -275,7 +275,7 @@ const jsonld = {
     padding-inline: var(--gutter) calc(var(--gutter) + var(--rail));
   }
   .block--full {
-    padding-inline: 0 var(--rail);
+    padding-inline: var(--gutter) calc(var(--gutter) + var(--rail));
   }
   .block--full :global(.frame) {
     max-height: 100svh;

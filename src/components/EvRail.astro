@@ -117,6 +117,7 @@ const pos = (ev: number) => ((EV_SCALE.top - ev) / span) * 100;
       ev: el.dataset.ev ? Number(el.dataset.ev) : null,
       deep: !!el.closest(".stratum--deep-sky, [data-deep-sky]"),
     }));
+    const deepZones = [...document.querySelectorAll<HTMLElement>('[data-ground-zone="deep-sky"], [data-deep-sky]')];
     let last = "";
 
     const show = (ev: number | null) => {
@@ -131,7 +132,10 @@ const pos = (ev: number) => ((EV_SCALE.top - ev) / span) * 100;
       const mid = innerHeight / 2;
       let above: { y: number; ev: number } | null = null;
       let below: { y: number; ev: number } | null = null;
-      let deepAtMid = false;
+      let deepAtMid = deepZones.some((z) => {
+        const r = z.getBoundingClientRect();
+        return r.top < mid && r.bottom > mid;
+      });
       for (const f of frames) {
         const r = f.el.getBoundingClientRect();
         if (r.height === 0) continue;
