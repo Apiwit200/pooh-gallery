@@ -73,7 +73,7 @@ A photo id is the first 10 hex characters of the SHA-1 of its Google Drive file 
 
 `public/_headers` gives `/photos/*` and `/_astro/*` a one-year immutable cache.
 
-Free-plan limits checked against this project: 20,000 files per site, 25 MiB per file, 500 builds a month, and a 20-minute build timeout. The site ships about 6,000 AVIF files, each under 1 MB. Images are pre-built, so the Cloudflare build only runs Astro. `npm run validate` fails the build if the file count passes 20,000.
+Free-plan limits checked against this project: 20,000 files per site, 25 MiB per file, 500 builds a month, and a 20-minute build timeout. The site ships about 5,900 AVIF files (about 650 MB), each under 1 MB. Images are pre-built, so the Cloudflare build only runs Astro. `npm run validate` fails the build if the file count passes 20,000.
 
 ### GitHub Pages (fallback)
 
@@ -82,7 +82,7 @@ Free-plan limits checked against this project: 20,000 files per site, 25 MiB per
 1. Go to Settings, then Pages, and set Source to GitHub Actions.
 2. Either run the workflow by hand, or set the repository variable `ENABLE_GITHUB_PAGES` to `true` so it runs on every push to `main`.
 
-GitHub Pages limits: 1 GB published site, a 100 GB/month soft bandwidth cap, and a 10-minute deployment timeout. The image set is about 0.5 GB, inside those limits.
+GitHub Pages limits: 1 GB published site, a 100 GB/month soft bandwidth cap, and a 10-minute deployment timeout. The image set is about 650 MB, inside the 1 GB limit but not by a wide margin. If the archive grows past roughly 1.4x its current size, drop the 1920 variant for non-featured frames or move GitHub Pages out of the plan.
 
 ### Continuous integration
 

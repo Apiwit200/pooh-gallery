@@ -90,8 +90,8 @@ export const WIDTHS: readonly number[] = manifest.widths;
 const curation = curationData as { collections: CurationCollection[] };
 const hiddenCollections = new Set(curation.collections.filter((c) => c.hidden).map((c) => c.slug));
 
-export const photos: Photo[] = (manifest.photos as Photo[]).filter(
-  (p) => !p.hidden && !hiddenCollections.has(p.collection),
+export const photos: Photo[] = (manifest.photos as unknown as (Photo & { held?: boolean })[]).filter(
+  (p) => !p.held && !p.hidden && !hiddenCollections.has(p.collection),
 );
 const byId = new Map(photos.map((p) => [p.id, p]));
 

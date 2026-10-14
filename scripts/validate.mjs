@@ -51,7 +51,15 @@ for (const [ref, from] of refs) {
 const manifest = JSON.parse(await readFile(join(ROOT, "src/data/photos.json"), "utf8"));
 const curation = JSON.parse(await readFile(join(ROOT, "src/data/curation.json"), "utf8"));
 const hidden = new Set(curation.collections.filter((c) => c.hidden).map((c) => c.slug));
-const visible = manifest.photos.filter((p) => !p.hidden && !hidden.has(p.collection));
+const visible = manifest.photos.filter((p) => !p.held && !p.hidden && !hidden.has(p.collection));
+const known = new Set(manifest.photos.map((p) => p.id));
+const stale = [
+  ...curation.collections.flatMap((c) => [c.cover, ...(c.sequence ?? [])].filter(Boolean).map((id) => [c.slug, id])),
+  ...[curation.descent?.hero, curation.descent?.finale, ...(curation.descent?.featured ?? [])].filter(Boolean).map((id) => ["descent", id]),
+].filter(([, id]) => !known.has(id));
+const empty = curation.collections.filter((c) => !c.hidden && !visible.some((p) => p.collection === c.slug)).map((c) => c.slug);
+if (stale.length) console.warn(`warning: ${stale.length} curation id(s) no longer in the manifest: ${[...new Set(stale.map(([s]) => s))].join(", ")}`);
+if (empty.length) console.warn(`warning: collections with no public photos (not built): ${empty.join(", ")}`);
 
 const deepSky = await readFile(join(DIST, "deep-sky/index.html"), "utf8").catch(() => "");
 const astro = visible.filter((p) => p.collection === "beyond-the-frame");

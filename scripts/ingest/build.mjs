@@ -267,7 +267,14 @@ const wanted = new Set(publicPhotos.flatMap((p) => WIDTHS.map((w) => `${p.file}-
 const stale = (await readdir(PUBLIC)).filter((n) => n.endsWith(".avif") && !wanted.has(n));
 if (LIMIT === Infinity) for (const n of stale) await rm(join(PUBLIC, n));
 
-for (const p of photos) delete p.dhash;
+for (const p of photos) {
+  delete p.dhash;
+  // Held photos stay in the manifest so curation can refer to them, but publish nothing visual or personal.
+  if (!publicPhotos.includes(p)) {
+    for (const k of ["lqip", "color", "focus", "luma", "exif", "ev", "width", "height", "file"]) delete p[k];
+    p.held = true;
+  }
+}
 await mkdir(join(ROOT, "src/data"), { recursive: true });
 await writeFile(MANIFEST, JSON.stringify({ generatedAt: new Date().toISOString(), widths: WIDTHS, photos }, null, 1) + "\n");
 
