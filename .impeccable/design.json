@@ -1,399 +1,453 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-14T03:16:55+00:00",
+  "generatedAt": "2026-10-14T09:58:45+00:00",
   "title": "Design System: Light Falls",
   "extensions": {
     "colorMeta": {
-      "daylight": {
+      "blue": {
         "role": "primary",
-        "displayName": "Film White",
-        "canonical": "#e6e8ea",
-        "oklch": "oklch(93.0% 0.003 248)",
+        "displayName": "Broadcast Ultramarine",
+        "canonical": "#350aff",
+        "oklch": "oklch(47.0% 0.301 271)",
         "tonalRamp": [
-          "#0a0b0d",
-          "#242527",
-          "#414244",
-          "#606163",
-          "#818284",
-          "#a3a5a7",
-          "#c7c9cb",
-          "#edeff1"
+          "#040037",
+          "#130076",
+          "#2500c1",
+          "#382cff",
+          "#5771fe",
+          "#859efd",
+          "#b5c7ff",
+          "#e9eefd"
         ]
       },
-      "shade": {
+      "blue-deep": {
         "role": "primary",
-        "displayName": "Sage Shade",
-        "canonical": "#b8c1b2",
-        "oklch": "oklch(80.0% 0.023 133)",
+        "displayName": "Dead-Air Indigo",
+        "canonical": "#1a0080",
+        "oklch": "oklch(28.3% 0.181 273)",
         "tonalRamp": [
-          "#080d04",
-          "#21281c",
-          "#3d4538",
-          "#5c6457",
-          "#7d8577",
-          "#a0a89a",
-          "#c3cdbd",
-          "#e9f2e2"
+          "#060036",
+          "#170075",
+          "#2a2b9f",
+          "#4450c5",
+          "#6274ec",
+          "#899dfd",
+          "#b8c6fe",
+          "#eaeefd"
         ]
       },
-      "dusk": {
-        "role": "primary",
-        "displayName": "Sea Teal",
-        "canonical": "#86a59c",
-        "oklch": "oklch(69.6% 0.037 176)",
+      "lime": {
+        "role": "secondary",
+        "displayName": "Test-Card Lime",
+        "canonical": "#bcf015",
+        "oklch": "oklch(88.7% 0.217 124)",
         "tonalRamp": [
-          "#00100a",
-          "#0f2b24",
-          "#2c4941",
-          "#4b6860",
-          "#6c8a81",
-          "#8eada4",
-          "#b1d1c8",
-          "#d6f7ed"
-        ]
-      },
-      "lamplight": {
-        "role": "primary",
-        "displayName": "Deep Teal",
-        "canonical": "#1d4652",
-        "oklch": "oklch(37.0% 0.050 220)",
-        "tonalRamp": [
-          "#000f19",
-          "#002a36",
-          "#1f4854",
-          "#3f6875",
-          "#608a97",
-          "#82adbb",
-          "#a6d1e0",
-          "#caf7ff"
-        ]
-      },
-      "night": {
-        "role": "primary",
-        "displayName": "Ink Navy",
-        "canonical": "#0c1824",
-        "oklch": "oklch(20.4% 0.030 249)",
-        "tonalRamp": [
-          "#030c17",
-          "#1a2633",
-          "#364351",
-          "#556372",
-          "#758494",
-          "#97a7b7",
-          "#bbcbdc",
-          "#e0f1ff"
-        ]
-      },
-      "deep": {
-        "role": "primary",
-        "displayName": "Near Black",
-        "canonical": "#04060a",
-        "oklch": "oklch(12.1% 0.012 259)",
-        "tonalRamp": [
-          "#080b10",
-          "#22252b",
-          "#3e4248",
-          "#5d6268",
-          "#7e838a",
-          "#a1a5ad",
-          "#c5c9d1",
-          "#eaeff7"
-        ]
-      },
-      "ink": {
-        "role": "neutral",
-        "displayName": "Ink",
-        "canonical": "#10181b",
-        "oklch": "oklch(20.2% 0.013 223)",
-        "tonalRamp": [
-          "#060c0f",
-          "#1e272a",
-          "#3b4447",
-          "#596367",
-          "#7a8488",
-          "#9da7ab",
-          "#c0cbcf",
-          "#e5f1f5"
+          "#070e00",
+          "#1e2a00",
+          "#384a03",
+          "#536c01",
+          "#70900d",
+          "#8eb60b",
+          "#adde04",
+          "#daff91"
         ]
       },
       "paper": {
         "role": "neutral",
-        "displayName": "Paper",
-        "canonical": "#ebe7dd",
-        "oklch": "oklch(92.8% 0.014 89)",
+        "displayName": "Studio Paper",
+        "canonical": "#ebedf5",
+        "oklch": "oklch(94.7% 0.011 275)",
         "tonalRamp": [
-          "#0e0b05",
-          "#28251d",
-          "#45423a",
-          "#646158",
-          "#868279",
-          "#a8a59b",
-          "#cdc9bf",
-          "#f2eee4"
+          "#0a0b10",
+          "#23252a",
+          "#404248",
+          "#5f6168",
+          "#808289",
+          "#a3a5ac",
+          "#c7c9d0",
+          "#eceef6"
         ]
       },
-      "photo-white": {
+      "ink": {
         "role": "neutral",
-        "displayName": "Photo White",
-        "canonical": "#f4f1ea",
-        "oklch": "oklch(95.9% 0.010 87)",
+        "displayName": "Night Ink",
+        "canonical": "#120d2b",
+        "oklch": "oklch(18.6% 0.058 287)",
         "tonalRamp": [
-          "#0d0b07",
-          "#272520",
-          "#44423c",
-          "#63615b",
-          "#85827c",
-          "#a8a59e",
-          "#ccc9c2",
-          "#f1eee7"
+          "#0b0522",
+          "#232040",
+          "#403d60",
+          "#5f5c81",
+          "#7f7da4",
+          "#a2a0c8",
+          "#c6c4ee",
+          "#edecfe"
+        ]
+      },
+      "deep": {
+        "role": "neutral",
+        "displayName": "Deep Sky",
+        "canonical": "#03000f",
+        "oklch": "oklch(8.8% 0.049 292)",
+        "tonalRamp": [
+          "#0c061e",
+          "#25203b",
+          "#423d5a",
+          "#615c7b",
+          "#827d9e",
+          "#a5a0c2",
+          "#c9c4e7",
+          "#eeecfe"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "Phosphor White",
+        "canonical": "#f4f4ff",
+        "oklch": "oklch(97.0% 0.015 286)",
+        "tonalRamp": [
+          "#0b0a11",
+          "#24242c",
+          "#41414a",
+          "#606069",
+          "#81818b",
+          "#a4a4ae",
+          "#c8c8d3",
+          "#ededf8"
         ]
       }
-    },
-    "derivedColors": [
-      {
-        "name": "fg-dim",
-        "value": "color-mix(in oklab, var(--fg) 84%, var(--ground))",
-        "purpose": "Secondary text; follows every ground."
-      },
-      {
-        "name": "hair",
-        "value": "color-mix(in oklab, var(--fg) 22%, transparent)",
-        "purpose": "1px rules, rail scale and ticks."
-      },
-      {
-        "name": "starfield",
-        "value": "#dfe6ef",
-        "purpose": "Star points in the deep-sky canvas only."
-      }
-    ],
-    "grounds": {
-      "mechanism": "root data-ground attribute set by the chapter holding the viewport middle; steps, never interpolates",
-      "order": [
-        "daylight",
-        "shade",
-        "dusk",
-        "lamplight",
-        "night",
-        "deep"
-      ],
-      "lightText": [
-        "daylight",
-        "shade",
-        "dusk"
-      ],
-      "darkText": [
-        "lamplight",
-        "night",
-        "deep"
-      ]
     },
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "Chapter names and page titles at poster scale; size set per surface."
+        "purpose": "Page titles in Jacquard 24; the opening title runs at clamp(3.25rem, 9vw, 9.5rem) with 0.92 leading so photographs can sit inline."
       },
       "headline": {
         "displayName": "Headline",
-        "purpose": "Finale line, neighbouring-collection titles, index-menu stratum names."
+        "purpose": "Homepage section titles."
       },
       "title": {
         "displayName": "Title",
-        "purpose": "Index rows, pager steps."
+        "purpose": "Channel names in the guide and menu, dial titles, deep-sky object names."
       },
-      "lead": {
-        "displayName": "Lead",
-        "purpose": "Homepage prologue and about statement."
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "Transmission paragraph and page intros, max about 44rem."
       },
       "body": {
         "displayName": "Body",
-        "purpose": "Intros and chapter lines, 30 to 36rem measure."
+        "purpose": "Short reading text, max 34 to 40rem."
       },
       "label": {
-        "displayName": "Label",
-        "purpose": "Nav links, chapter collection links, menu controls."
-      },
-      "reading": {
-        "displayName": "Reading",
-        "purpose": "Measurements only: EV, ranges, counts, dates, exposure facts. Uppercase, tabular."
+        "displayName": "Pixel Label",
+        "purpose": "Every measurement, chip, nav link and caption; uppercase."
       }
     },
-    "shadows": [],
+    "fields": [
+      {
+        "name": "field-blue",
+        "field": "blue",
+        "fg": "white"
+      },
+      {
+        "name": "field-paper",
+        "field": "paper",
+        "fg": "ink"
+      },
+      {
+        "name": "field-lime",
+        "field": "lime",
+        "fg": "ink"
+      },
+      {
+        "name": "field-deep",
+        "field": "deep",
+        "fg": "white"
+      },
+      {
+        "name": "derived",
+        "fgDim": "color-mix(in oklab, var(--fg) 78%, var(--field))",
+        "hair": "color-mix(in oklab, var(--fg) 24%, transparent)"
+      }
+    ],
+    "shadows": [
+      {
+        "name": "print-rest",
+        "value": "0 10px 24px -12px rgb(3 0 15 / 0.6)",
+        "purpose": "Tossed prints on the table."
+      },
+      {
+        "name": "print-lifted",
+        "value": "0 18px 36px -14px rgb(3 0 15 / 0.7)",
+        "purpose": "Tossed print under the pointer."
+      },
+      {
+        "name": "matted-frame",
+        "value": "0 0 0 clamp(0.4rem, 0.8vw, 0.7rem) var(--color-white), 0 14px 30px -14px rgb(3 0 15 / 0.45)",
+        "purpose": "Tilted frames in a collection sequence."
+      },
+      {
+        "name": "corridor-print",
+        "value": "0 0 0 4px var(--color-white), 0 10px 24px -14px rgb(3 0 15 / 0.6)",
+        "purpose": "Prints in the channel-guide corridor; mat turns lime on hover."
+      },
+      {
+        "name": "floating-nav",
+        "value": "0 0 0 1px rgb(18 13 43 / 0.12), 0 6px 18px -8px rgb(3 0 15 / 0.45)",
+        "purpose": "The pill nav only."
+      },
+      {
+        "name": "screen-edge",
+        "value": "0 0 0 1px var(--hair)",
+        "purpose": "Bezels of the test card and collection cover screen."
+      },
+      {
+        "name": "crt-bezel",
+        "value": "inset 0 0 70px 12px rgb(0 0 20 / 0.32), inset 0 0 180px 40px rgb(0 0 20 / 0.14)",
+        "purpose": "Inner shadow of the CRT glass, part of the fixed CRT layer."
+      }
+    ],
+    "crt": {
+      "zIndex": 2000,
+      "layers": {
+        "scan": "repeating-linear-gradient(to bottom, rgb(0 0 20 / 0.26) 0 1px, transparent 1px 3px)",
+        "scanMobile": "repeating-linear-gradient(to bottom, rgb(0 0 0 / 0.11) 0 1px, transparent 1px 4px)",
+        "glare": "radial-gradient(ellipse 80% 50% at 28% 18%, rgb(255 255 255 / 0.07), transparent 60%)",
+        "vignette": "radial-gradient(ellipse 130% 95% at 50% 50%, transparent 62%, rgb(0 0 20 / 0.4) 100%)",
+        "grain": "fractal noise at 0.11 opacity, 0.45s steps(4), hidden at 768px and below",
+        "fringe": "SVG filter #crt-fringe: red +0.9px, blue -0.9px, on display type and featured frames, desktop hover devices only, off in Safari"
+      },
+      "hole": "Rectangular mask hole sized to the hovered or focused .frame via --hole-x/y/w/h; that frame drops its fringe.",
+      "viewer": "html.viewer-open hides the CRT (opacity 0, 0.3s)."
+    },
     "motion": [
       {
         "name": "ease-out-expo",
         "value": "cubic-bezier(0.16, 1, 0.3, 1)",
-        "purpose": "Every state and ground transition."
+        "purpose": "Physical movement: underline trace, frame tilt, grid hover scale."
       },
       {
-        "name": "ground-change",
-        "value": "background-color 0.9s ease-out-expo",
-        "purpose": "Ground and text colour stepping between chapters; the rail marker moves on the same timing."
+        "name": "state-step",
+        "value": "0.18s steps(2)",
+        "purpose": "Chip and channel-name colour changes."
       },
       {
-        "name": "image-land",
-        "value": "opacity 0.7s ease-out-expo",
-        "purpose": "Photograph fading in over its placeholder."
+        "name": "frame-fade",
+        "value": "opacity 0.4s steps(4)",
+        "purpose": "Photograph arriving over its placeholder."
       },
       {
-        "name": "trace",
-        "value": "transform 0.35s ease-out-expo",
-        "purpose": "Directional link underline."
+        "name": "menu-wipe",
+        "value": "clip-path 0.45s steps(9)",
+        "purpose": "Channel menu wipes down."
       },
       {
-        "name": "reveal-scrub",
-        "value": "clip-path inset, scrubbed by scroll (scrub 0.6 to 0.8)",
-        "purpose": "Full and offset frames open from an inset; pairs drift; quiet frames fade up."
+        "name": "static-burst",
+        "value": "0.26s steps(3)",
+        "purpose": "Static between channels in the corridor."
       },
       {
-        "name": "rise",
-        "value": "yPercent from below, 1.1s expo.out, stagger 0.08",
-        "purpose": "Chapter names rise line by line out of their own clip."
+        "name": "scramble",
+        "value": "1.1s, stagger 0.03, chars ▯▮░▒",
+        "purpose": "Headings with data-scramble arrive as signal (on load or at 85% viewport)."
       },
       {
-        "name": "page-transition",
-        "value": "view-transition 0.5s ease-out-expo",
-        "purpose": "Cross-page navigation."
+        "name": "gather",
+        "value": "scrub 0.5, words from ±18% viewport width",
+        "purpose": "Transmission words gather as you scroll."
       },
       {
-        "name": "smooth-scroll",
-        "value": "Lenis lerp 0.11, wheelMultiplier 0.9",
-        "purpose": "Descent scroll feel; stops while the menu or viewer is open."
+        "name": "trail",
+        "value": "pop 0.3s back.out(2), shrink 0.4s expo.in after 1.6s, every 150px of pointer travel",
+        "purpose": "Opening photo trail, pool of ten."
+      },
+      {
+        "name": "toss",
+        "value": "enter 0.9s back.out(1.4) stagger 0.06; drag with inertia",
+        "purpose": "Prints on the table."
+      },
+      {
+        "name": "pixel-wipe",
+        "value": "cells snap on stagger 0.008 random, off 0.012 random; 16 cols (8 under 700px)",
+        "purpose": "Internal page change."
+      },
+      {
+        "name": "pixel-resolve",
+        "value": "blocks 56px to 1px, palette 3 levels to full; 1.6s on load or scroll-scrubbed",
+        "purpose": "Featured frames (data-crt)."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "all of the above off; channel tuning, menu and viewer remain",
+        "purpose": "prefers-reduced-motion: reduce."
       }
     ],
     "breakpoints": [
       {
-        "name": "phone",
+        "name": "xs",
         "value": "30rem"
       },
       {
-        "name": "small",
+        "name": "sm",
         "value": "40rem"
       },
       {
-        "name": "medium",
+        "name": "md",
         "value": "48rem"
       },
       {
         "name": "nav",
-        "value": "52rem"
+        "value": "56rem"
       },
       {
-        "name": "wide",
+        "name": "lg",
         "value": "64rem"
+      },
+      {
+        "name": "crt-mobile",
+        "value": "768px"
       }
     ]
   },
   "components": [
     {
-      "name": "Navigation Bar",
-      "kind": "nav",
-      "refersTo": "nav-bar",
-      "description": "Fixed 3.5rem bar on the current ground with a hairline; links draw a directional trace underline.",
-      "html": "<header class=\"ds-nav\"><a class=\"ds-nav-mark\" href=\"#\"><span class=\"ds-nav-title\">Light Falls</span><span class=\"ds-nav-by\">Apiwit Nathong</span></a><nav class=\"ds-nav-links\"><a class=\"ds-trace\" href=\"#\">Index</a><a class=\"ds-trace\" href=\"#\" aria-current=\"page\">Archive</a><a class=\"ds-trace\" href=\"#\">Deep sky</a><a class=\"ds-trace\" href=\"#\">About</a></nav></header>",
-      "css": ".ds-nav{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;height:3.5rem;padding:0 4.5rem 0 1.5rem;background:var(--color-daylight, #e6e8ea);color:var(--color-ink, #10181b);border-bottom:1px solid color-mix(in oklab,var(--color-ink, #10181b) 22%,transparent);font-family:'Mona Sans Variable',ui-sans-serif,system-ui,sans-serif}.ds-nav-mark{display:flex;align-items:baseline;gap:.75rem;color:inherit;text-decoration:none}.ds-nav-title{font-variation-settings:'wdth' 75;font-weight:620;font-size:1.0625rem;letter-spacing:-.01em}.ds-nav-by{font-size:.8125rem;opacity:.75}.ds-nav-links{display:flex;gap:2rem;font-size:.875rem}.ds-trace{position:relative;color:inherit;text-decoration:none;padding-block:.5rem}.ds-trace::after{content:'';position:absolute;left:0;right:0;bottom:.3rem;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .35s cubic-bezier(.16,1,.3,1)}.ds-trace:hover::after,.ds-trace:focus-visible::after,.ds-trace[aria-current='page']::after{transform:scaleX(1);transform-origin:left}.ds-trace:focus-visible{outline:1.5px solid currentColor;outline-offset:4px}"
-    },
-    {
-      "name": "EV Rail",
-      "kind": "custom",
-      "refersTo": "ev-rail",
-      "description": "Hairline light meter on the right edge: ghost ticks, dim numerals every 4 EV, one lit marker, vertical mono reading, ∞ below the scale.",
-      "html": "<div class=\"ds-rail\"><div class=\"ds-rail-scale\"><span class=\"ds-tick ds-tick-major\" style=\"top:0%\"><span class=\"ds-num\">16</span></span><span class=\"ds-tick\" style=\"top:10%\"></span><span class=\"ds-tick ds-tick-major\" style=\"top:20%\"><span class=\"ds-num\">12</span></span><span class=\"ds-tick\" style=\"top:30%\"></span><span class=\"ds-tick ds-tick-major\" style=\"top:40%\"><span class=\"ds-num\">8</span></span><span class=\"ds-tick\" style=\"top:50%\"></span><span class=\"ds-tick ds-tick-major\" style=\"top:60%\"><span class=\"ds-num\">4</span></span><span class=\"ds-tick\" style=\"top:70%\"></span><span class=\"ds-tick ds-tick-major\" style=\"top:80%\"><span class=\"ds-num\">0</span></span><span class=\"ds-tick\" style=\"top:90%\"></span><span class=\"ds-tick ds-tick-major\" style=\"top:100%\"><span class=\"ds-num\">−4</span></span><span class=\"ds-beyond\">∞</span><span class=\"ds-marker\" style=\"top:38%\"></span></div><p class=\"ds-reading\">EV 8.6</p></div>",
-      "css": ".ds-rail{position:relative;width:4rem;height:22rem;color:var(--color-ink, #10181b);background:var(--color-dusk, #86a59c);font-family:'Geist Mono Variable',ui-monospace,monospace;font-variant-numeric:tabular-nums;text-transform:uppercase;letter-spacing:.02em}.ds-rail-scale{position:absolute;inset:.5rem 0 3rem 0;margin-left:.75rem;border-left:1px solid color-mix(in oklab,currentColor 22%,transparent)}.ds-tick{position:absolute;left:0;width:.375rem;height:1px;background:color-mix(in oklab,currentColor 22%,transparent)}.ds-tick-major{width:.75rem}.ds-num{position:absolute;left:1.1rem;top:-.45rem;font-size:.625rem;opacity:.55}.ds-beyond{position:absolute;left:1.1rem;bottom:-1.6rem;font-size:.75rem;opacity:.35}.ds-marker{position:absolute;left:-.25rem;width:1.5rem;height:1.5px;background:currentColor;transition:top .9s cubic-bezier(.16,1,.3,1)}.ds-rail:hover .ds-marker{top:55%!important}.ds-reading{position:absolute;right:.5rem;bottom:0;margin:0;writing-mode:vertical-rl;transform:rotate(180deg);font-size:.6875rem;white-space:nowrap}"
-    },
-    {
-      "name": "Chapter Head",
-      "kind": "custom",
-      "refersTo": "display",
-      "description": "Poster-scale stratum name with a meta column: one line, the EV range in mono, collection links. No label above the name.",
-      "html": "<header class=\"ds-chapter\"><h2 class=\"ds-display\">Dusk</h2><div class=\"ds-meta\"><p class=\"ds-line\">The sun is low or gone. Colour cools, and the sea turns to pewter.</p><p class=\"ds-mono\">EV 8.4 → EV 6.3</p><ul class=\"ds-links\"><li><a class=\"ds-trace\" href=\"#\">Behind the Wire</a></li><li><a class=\"ds-trace\" href=\"#\">Dry Season</a></li><li><a class=\"ds-trace\" href=\"#\">Garden Café</a></li></ul></div></header>",
-      "css": ".ds-chapter{display:grid;gap:1.5rem;padding:3rem 1.5rem;background:var(--color-dusk, #86a59c);color:var(--color-ink, #10181b);font-family:'Mona Sans Variable',ui-sans-serif,system-ui,sans-serif}.ds-display{margin:0 0 0 -.04em;font-size:clamp(4rem,14vw,9rem);font-variation-settings:'wdth' 75;font-weight:560;letter-spacing:-.035em;line-height:.86}.ds-meta{display:grid;gap:.75rem;max-width:30rem}.ds-line{margin:0;font-size:1.125rem;line-height:1.45}.ds-mono{margin:0;font-family:'Geist Mono Variable',ui-monospace,monospace;font-size:.6875rem;letter-spacing:.02em;text-transform:uppercase;font-variant-numeric:tabular-nums;color:color-mix(in oklab,var(--color-ink, #10181b) 84%,var(--color-dusk, #86a59c))}.ds-links{list-style:none;padding:0;margin:.5rem 0 0;display:flex;flex-wrap:wrap;gap:.25rem 1.25rem;font-size:.875rem}.ds-trace{position:relative;color:inherit;text-decoration:none}.ds-trace::after{content:'';position:absolute;left:0;right:0;bottom:-.15em;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .35s cubic-bezier(.16,1,.3,1)}.ds-trace:hover::after,.ds-trace:focus-visible::after{transform:scaleX(1);transform-origin:left}.ds-trace:focus-visible{outline:1.5px solid currentColor;outline-offset:4px}"
-    },
-    {
-      "name": "Frame",
-      "kind": "card",
-      "refersTo": "frame",
-      "description": "A photograph with no card: square, unbordered, holding its aspect ratio over its mean colour until the pixels fade in.",
-      "html": "<a class=\"ds-frame\" href=\"#\" aria-label=\"View photograph full screen\"><span class=\"ds-frame-img\"></span></a>",
-      "css": ".ds-frame{display:block;width:18rem;aspect-ratio:3/2;overflow:hidden;background:#6c7a73}.ds-frame-img{display:block;width:100%;height:100%;background:linear-gradient(180deg,#c9b9a0 0%,#a2876a 55%,#3d4a3f 56%,#2c3530 100%);transition:transform .9s cubic-bezier(.16,1,.3,1)}.ds-frame:hover .ds-frame-img{transform:scale(1.025)}.ds-frame:focus-visible{outline:1.5px solid currentColor;outline-offset:4px}"
-    },
-    {
-      "name": "Index Row",
-      "kind": "custom",
-      "refersTo": "index-row",
-      "description": "Hairline-ruled collection row: EV in mono, title at title scale, count and dates in mono; the title nudges right on hover.",
-      "html": "<a class=\"ds-row\" href=\"#\"><span class=\"ds-mono\">EV 13.2</span><span class=\"ds-row-title\">Khao Yai</span><span class=\"ds-mono ds-row-meta\">77 frames · 2024</span></a>",
-      "css": ".ds-row{display:grid;grid-template-columns:6rem 1fr auto;align-items:center;gap:1rem;padding:.9rem 0;border-top:1px solid color-mix(in oklab,var(--color-ink, #10181b) 22%,transparent);border-bottom:1px solid color-mix(in oklab,var(--color-ink, #10181b) 22%,transparent);background:var(--color-daylight, #e6e8ea);color:var(--color-ink, #10181b);text-decoration:none;font-family:'Mona Sans Variable',ui-sans-serif,system-ui,sans-serif}.ds-mono{font-family:'Geist Mono Variable',ui-monospace,monospace;font-size:.6875rem;letter-spacing:.02em;text-transform:uppercase;font-variant-numeric:tabular-nums;opacity:.84}.ds-row-title{font-variation-settings:'wdth' 76;font-weight:540;font-size:clamp(1.75rem,3.6vw,3.25rem);letter-spacing:-.03em;line-height:1;transition:transform .6s cubic-bezier(.16,1,.3,1)}.ds-row-meta{text-align:right}.ds-row:hover .ds-row-title,.ds-row:focus-visible .ds-row-title{transform:translateX(.5rem)}.ds-row:focus-visible{outline:1.5px solid currentColor;outline-offset:4px}"
-    },
-    {
-      "name": "Pager",
+      "name": "Chip",
       "kind": "chip",
-      "refersTo": "pager-page-current",
-      "description": "Square mono page cells; the current page inverts ink and ground.",
-      "html": "<ul class=\"ds-pages\"><li><a href=\"#\">1</a></li><li><a href=\"#\" aria-current=\"page\">2</a></li><li><a href=\"#\">3</a></li><li><a href=\"#\">4</a></li></ul>",
-      "css": ".ds-pages{list-style:none;margin:0;padding:.5rem;display:flex;gap:.25rem;background:var(--color-daylight, #e6e8ea);color:var(--color-ink, #10181b);font-family:'Geist Mono Variable',ui-monospace,monospace;font-size:.6875rem;font-variant-numeric:tabular-nums}.ds-pages a{display:grid;place-items:center;min-width:2.75rem;height:2.75rem;color:inherit;text-decoration:none}.ds-pages a[aria-current='page']{background:var(--color-ink, #10181b);color:var(--color-daylight, #e6e8ea)}.ds-pages a:not([aria-current]):hover{text-decoration:underline}.ds-pages a:focus-visible{outline:1.5px solid currentColor;outline-offset:4px}"
+      "refersTo": "chip",
+      "description": "Default coloured control: lime square tag in pixel type, hover steps to white.",
+      "html": "<div class=\"ds-field-blue\"><a class=\"ds-chip\" href=\"#\">Toscana</a> <a class=\"ds-chip\" href=\"#\">Tune in to the deep sky</a></div>",
+      "css": ".ds-field-blue{background:#350aff;padding:24px;display:flex;gap:.4rem;flex-wrap:wrap}.ds-chip{display:inline-flex;align-items:center;gap:.4em;padding:.4rem .55rem;font-family:var(--font-pixel,'Geist Pixel',ui-monospace,monospace);font-size:.75rem;line-height:1;text-transform:uppercase;text-decoration:none;border:0;border-radius:0;background:var(--color-lime,#bcf015);color:var(--color-ink,#120d2b);transition:background-color .18s steps(2),color .18s steps(2);cursor:pointer}.ds-chip:hover,.ds-chip:focus-visible{background:var(--color-white,#f4f4ff)}.ds-chip:focus-visible{outline:2px solid var(--color-blue,#350aff);outline-offset:3px}"
     },
     {
-      "name": "Index Menu",
+      "name": "Blue Chip",
+      "kind": "chip",
+      "refersTo": "chip-blue",
+      "description": "Chip for lime fields (end card, pager, dial); hover steps to ink.",
+      "html": "<div class=\"ds-field-lime\"><a class=\"ds-chip ds-chip--blue\" href=\"#\">Every channel</a> <a class=\"ds-chip ds-chip--blue\" href=\"#\">Older <svg viewBox=\"0 0 7 7\" width=\"10\" height=\"10\" shape-rendering=\"crispEdges\" aria-hidden=\"true\"><path d=\"M3 0h1v1h-1zM4 1h1v1h-1zM5 2h1v1h-1zM0 3h7v1h-7zM5 4h1v1h-1zM4 5h1v1h-1zM3 6h1v1h-1z\" fill=\"currentColor\"/></svg></a></div>",
+      "css": ".ds-field-lime{background:#bcf015;padding:24px;display:flex;gap:.5rem}.ds-chip{display:inline-flex;align-items:center;gap:.4em;padding:.4rem .55rem;font-family:var(--font-pixel,'Geist Pixel',ui-monospace,monospace);font-size:.75rem;line-height:1;text-transform:uppercase;text-decoration:none;border:0;border-radius:0;background:var(--color-lime,#bcf015);color:var(--color-ink,#120d2b);transition:background-color .18s steps(2),color .18s steps(2);cursor:pointer}.ds-chip:hover,.ds-chip:focus-visible{background:var(--color-white,#f4f4ff)}.ds-chip:focus-visible{outline:2px solid var(--color-blue,#350aff);outline-offset:3px}.ds-chip--blue{background:var(--color-blue,#350aff);color:var(--color-white,#f4f4ff)}.ds-chip--blue:hover,.ds-chip--blue:focus-visible{background:var(--color-ink,#120d2b);color:var(--color-white,#f4f4ff)}"
+    },
+    {
+      "name": "Ghost Chip",
+      "kind": "chip",
+      "refersTo": "chip-ghost-hover",
+      "description": "Transparent chip with a field-mixed hairline; fills lime on hover. Archive channel jumps, menu links.",
+      "html": "<div class=\"ds-field-blue\"><a class=\"ds-chip ds-chip--ghost\" href=\"#\">Khao Yai</a> <a class=\"ds-chip ds-chip--ghost\" href=\"#\">The Zoo</a></div>",
+      "css": ".ds-field-blue{background:#350aff;color:#f4f4ff;padding:24px;display:flex;gap:.4rem}.ds-chip{display:inline-flex;align-items:center;gap:.4em;padding:.4rem .55rem;font-family:var(--font-pixel,'Geist Pixel',ui-monospace,monospace);font-size:.75rem;line-height:1;text-transform:uppercase;text-decoration:none;border:0;border-radius:0;background:var(--color-lime,#bcf015);color:var(--color-ink,#120d2b);transition:background-color .18s steps(2),color .18s steps(2);cursor:pointer}.ds-chip:hover,.ds-chip:focus-visible{background:var(--color-white,#f4f4ff)}.ds-chip:focus-visible{outline:2px solid var(--color-blue,#350aff);outline-offset:3px}.ds-chip--ghost{background:transparent;color:inherit;box-shadow:inset 0 0 0 1px color-mix(in oklab,#f4f4ff 24%,transparent)}.ds-chip--ghost:hover,.ds-chip--ghost:focus-visible{background:#bcf015;color:#120d2b}"
+    },
+    {
+      "name": "Pill Nav",
       "kind": "nav",
-      "refersTo": "index-menu",
-      "description": "Full-screen night dialog: stratum names at headline scale over hairline-ruled collection lists with median EV and count.",
-      "html": "<div class=\"ds-menu\"><div class=\"ds-menu-bar\"><span class=\"ds-menu-title\">Light Falls</span><button class=\"ds-menu-close\" type=\"button\">Close</button></div><div class=\"ds-stratum\"><span class=\"ds-stratum-name\">Night</span><ul class=\"ds-cols\"><li><a href=\"#\"><span>Harbour Lights</span><span class=\"ds-mono\">EV 1.8 · 24</span></a></li><li><a href=\"#\"><span>Concert Hall</span><span class=\"ds-mono\">EV 0.6 · 31</span></a></li></ul></div></div>",
-      "css": ".ds-menu{padding:0 1.5rem 2rem;background:var(--color-night, #0c1824);color:var(--color-paper, #ebe7dd);font-family:'Mona Sans Variable',ui-sans-serif,system-ui,sans-serif}.ds-menu-bar{display:flex;justify-content:space-between;align-items:center;height:3.5rem}.ds-menu-title{font-variation-settings:'wdth' 75;font-weight:620}.ds-menu-close{font:inherit;font-size:.875rem;color:inherit;background:none;border:0;padding:.75rem 0;cursor:pointer}.ds-menu-close:focus-visible{outline:1.5px solid currentColor;outline-offset:4px}.ds-stratum{border-top:1px solid color-mix(in oklab,var(--color-paper, #ebe7dd) 18%,transparent);padding:1.25rem 0 2rem;display:grid;gap:1rem}.ds-stratum-name{font-variation-settings:'wdth' 75;font-weight:560;font-size:clamp(2.5rem,9vw,4.5rem);letter-spacing:-.035em;line-height:.9}.ds-cols{list-style:none;padding:0;margin:0}.ds-cols a{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.55rem 0;color:inherit;text-decoration:none;border-bottom:1px solid color-mix(in oklab,var(--color-paper, #ebe7dd) 10%,transparent)}.ds-cols a:hover span:first-child{text-decoration:underline}.ds-cols a:focus-visible{outline:1.5px solid currentColor;outline-offset:4px}.ds-mono{font-family:'Geist Mono Variable',ui-monospace,monospace;font-size:.6875rem;letter-spacing:.02em;text-transform:uppercase;font-variant-numeric:tabular-nums;opacity:.75}"
+      "refersTo": "nav-pill",
+      "description": "Floating paper nav, 4px radius: pixel mark and Jacquard name, pixel links with a directional underline trace.",
+      "html": "<div class=\"ds-stage\"><header class=\"ds-pill\"><a class=\"ds-pill__mark\" href=\"#\"><svg viewBox=\"0 0 9 9\" width=\"16\" height=\"16\" shape-rendering=\"crispEdges\" aria-hidden=\"true\"><path d=\"M4 0h1v2h-1zM3 2h3v1h-3zM2 3h5v1h-5zM0 4h9v1h-9zM2 5h5v1h-5zM3 6h3v1h-3zM4 7h1v2h-1z\" fill=\"currentColor\"/></svg><span>Light Falls</span></a><nav class=\"ds-pill__links\"><a href=\"#\" aria-current=\"page\">Channels</a><a href=\"#\">Archive</a><a href=\"#\">Deep sky</a><a href=\"#\">About</a></nav><button class=\"ds-pill__menu\" type=\"button\" aria-label=\"Open the channel list\"><svg viewBox=\"0 0 16 10\" width=\"18\" height=\"12\" shape-rendering=\"crispEdges\" aria-hidden=\"true\"><path d=\"M0 0h16v2H0zM0 4h16v2H0zM0 8h16v2H0z\" fill=\"currentColor\"/></svg></button></header></div>",
+      "css": ".ds-stage{background:#350aff;padding:24px;display:flex;justify-content:center}.ds-pill{display:flex;align-items:center;gap:1.5rem;padding:.35rem .4rem .35rem .75rem;background:#ebedf5;color:#120d2b;border-radius:4px;box-shadow:0 0 0 1px rgb(18 13 43/.12),0 6px 18px -8px rgb(3 0 15/.45)}.ds-pill__mark{display:flex;align-items:center;gap:.5rem;color:#350aff;text-decoration:none}.ds-pill__mark span{font-family:'Jacquard 24',ui-serif,serif;font-size:1.35rem;line-height:1;color:#120d2b}.ds-pill__links{display:flex;gap:1.25rem;font-family:'Geist Pixel',ui-monospace,monospace;font-size:.75rem;text-transform:uppercase}.ds-pill__links a{position:relative;color:inherit;text-decoration:none;padding-block:.4rem}.ds-pill__links a::after{content:'';position:absolute;left:0;right:0;bottom:.1em;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .35s cubic-bezier(.16,1,.3,1)}.ds-pill__links a:hover::after,.ds-pill__links a:focus-visible::after,.ds-pill__links a[aria-current]::after{transform:scaleX(1);transform-origin:left}.ds-pill__menu{display:grid;place-items:center;width:2.5rem;height:2.25rem;border:0;background:#350aff;color:#f4f4ff;cursor:pointer}.ds-pill__menu:hover{background:#120d2b}.ds-pill :focus-visible{outline:2px solid #350aff;outline-offset:3px}"
+    },
+    {
+      "name": "Channel Guide Row",
+      "kind": "custom",
+      "refersTo": "channel-tag-on",
+      "description": "Channel list on paper: pixel channel tag, Jacquard name dimmed to 62%; the tuned row fills its tag lime and turns its name blue.",
+      "html": "<ol class=\"ds-tuner\"><li><a href=\"#\"><span class=\"ds-ch\">CH 07</span><span class=\"ds-name\">Khao Yai</span></a></li><li class=\"is-on\"><a href=\"#\"><span class=\"ds-ch\">CH 08</span><span class=\"ds-name\">Toscana</span></a></li><li><a href=\"#\"><span class=\"ds-ch\">CH 09</span><span class=\"ds-name\">The Zoo</span></a></li></ol>",
+      "css": ".ds-tuner{list-style:none;margin:0;padding:24px;background:#ebedf5;color:#120d2b}.ds-tuner a{display:grid;grid-template-columns:4.25rem 1fr;align-items:center;gap:.75rem;padding-block:.2rem;color:inherit;text-decoration:none}.ds-ch{justify-self:start;padding:.3rem .4rem;font-family:'Geist Pixel',ui-monospace,monospace;font-size:.75rem;text-transform:uppercase;color:color-mix(in oklab,#120d2b 82%,#ebedf5)}.ds-name{font-family:'Jacquard 24',ui-serif,serif;font-size:3rem;line-height:.82;color:color-mix(in oklab,#120d2b 62%,#ebedf5);transition:color .2s steps(2)}.ds-tuner li.is-on .ds-name,.ds-tuner a:hover .ds-name,.ds-tuner a:focus-visible .ds-name{color:#350aff}.ds-tuner li.is-on .ds-ch,.ds-tuner a:hover .ds-ch,.ds-tuner a:focus-visible .ds-ch{background:#bcf015;color:#120d2b}.ds-tuner a:focus-visible{outline:2px solid #350aff;outline-offset:3px}"
+    },
+    {
+      "name": "Tossed Print",
+      "kind": "card",
+      "refersTo": "print-card",
+      "description": "A photograph as a physical print: white mat, slight tilt, soft deep-toned shadow that lifts on hover.",
+      "html": "<div class=\"ds-table\"><div class=\"ds-print\"><div class=\"ds-photo\"></div></div><div class=\"ds-print ds-print--b\"><div class=\"ds-photo ds-photo--b\"></div></div></div>",
+      "css": ".ds-table{background:#350aff;padding:40px;display:flex;gap:32px}.ds-print{padding:.5rem .5rem 1.6rem;background:#f4f4ff;border-radius:0;rotate:-5deg;width:160px;box-shadow:0 10px 24px -12px rgb(3 0 15/.6);transition:box-shadow .2s,rotate .35s cubic-bezier(.16,1,.3,1);cursor:grab}.ds-print--b{rotate:7deg;margin-top:24px}.ds-print:hover{box-shadow:0 18px 36px -14px rgb(3 0 15/.7)}.ds-photo{aspect-ratio:3/2;background:#7e7d73}.ds-photo--b{background:#a39b87}"
+    },
+    {
+      "name": "Test Card",
+      "kind": "custom",
+      "refersTo": "test-card",
+      "description": "Ink-bezelled 4:3 card: seven palette bars, centre circle with a photograph and the lime aperture in difference blend, lime pixel caption.",
+      "html": "<figure class=\"ds-card\"><div class=\"ds-bars\"><span style=\"background:#f4f4ff\"></span><span style=\"background:#bcf015\"></span><span style=\"background:#350aff\"></span><span style=\"background:#120d2b\"></span><span style=\"background:#ebedf5\"></span><span style=\"background:#1a0080\"></span><span style=\"background:#bcf015\"></span></div><div class=\"ds-mid\"><div class=\"ds-circle\"><svg viewBox=\"0 0 9 9\" width=\"40%\" height=\"40%\" shape-rendering=\"crispEdges\" aria-hidden=\"true\"><path d=\"M4 0h1v2h-1zM3 2h3v1h-3zM2 3h5v1h-5zM0 4h9v1h-9zM2 5h5v1h-5zM3 6h3v1h-3zM4 7h1v2h-1z\" fill=\"currentColor\"/></svg></div></div><figcaption class=\"ds-cap\">Please stand by · Light Falls</figcaption></figure>",
+      "css": ".ds-card{margin:0;width:320px;display:grid;grid-template-rows:1fr auto;aspect-ratio:4/3;background:#120d2b;padding:.6rem}.ds-bars{grid-row:1;grid-column:1;display:grid;grid-template-columns:repeat(7,1fr)}.ds-mid{grid-row:1;grid-column:1;display:grid;place-items:center}.ds-circle{width:46%;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:#a39b87;color:#bcf015;box-shadow:0 0 0 6px #120d2b,0 0 0 9px #f4f4ff}.ds-circle svg{mix-blend-mode:difference}.ds-cap{margin:.5rem 0 0;color:#bcf015;text-align:center;font-family:'Geist Pixel',ui-monospace,monospace;font-size:.75rem;text-transform:uppercase}"
+    },
+    {
+      "name": "Pixel Ornament",
+      "kind": "custom",
+      "refersTo": "",
+      "description": "Authored pixel marks drawn as unit squares on a grid, filled with currentColor: star and arrows shown (aperture sun is 17x17).",
+      "html": "<div class=\"ds-orn\"><svg viewBox=\"0 0 9 9\" width=\"18\" height=\"18\" shape-rendering=\"crispEdges\" aria-hidden=\"true\"><path d=\"M4 0h1v2h-1zM3 2h3v1h-3zM2 3h5v1h-5zM0 4h9v1h-9zM2 5h5v1h-5zM3 6h3v1h-3zM4 7h1v2h-1z\" fill=\"currentColor\"/></svg><svg viewBox=\"0 0 7 7\" width=\"18\" height=\"18\" shape-rendering=\"crispEdges\" aria-hidden=\"true\"><path d=\"M3 0h1v1h-1zM4 1h1v1h-1zM5 2h1v1h-1zM0 3h7v1h-7zM5 4h1v1h-1zM4 5h1v1h-1zM3 6h1v1h-1z\" fill=\"currentColor\"/></svg></div>",
+      "css": ".ds-orn{display:flex;gap:16px;align-items:center;padding:24px;background:#bcf015;color:#350aff}"
     }
   ],
   "narrative": {
-    "northStar": "The Descent Through Light",
-    "overview": "The site is one committed field whose colour is a function of depth. Every photograph is placed by the exposure value its own EXIF records, and the page ground steps down with it: film-white daylight, sage shade, sea-teal dusk, deep-teal lamplight, ink-navy night, then near-black with stars. The photograph is always the loudest thing on the screen; the ground, the type and the meter exist to say how bright it was.\n\nDensity is low and the rhythm is vertical. Photographs arrive one composition at a time (full, offset, pair, strip, quiet) with generous open ground between them. Type works at two extremes only: a narrow grotesk at poster scale for chapter and page names, and a small mono for readings. A hairline light-meter rail on the right edge carries the whole EV scale in ghost ticks and lights only the current reading.\n\nThe world is flat and square. There are no cards, no rounded boxes and no glass panels; separation comes from ground colour, hairlines and open space.",
+    "northStar": "The Late-Night Broadcast",
+    "overview": "The archive is a surreal television set left on after midnight. An ultramarine screen plays photographs as channels: the visitor tunes in, photographs are thrown onto the glass as the pointer moves, a short transmission gathers itself out of scattered words, a channel guide flips between collections, and the night sky is the last channel before the lime \"End of transmission\" card. It is retro, surreal and abstract, but the photographs are always the programme; every broadcast device exists to frame them or to step aside for them.\n\nThe whole page sits under one CRT layer (scanlines, glare, vignette, bezel shadow, moving grain, and an RGB fringe on display type and featured frames). The CRT is not a texture applied to a surface; it is the glass between the visitor and the set, and it clears exactly over the photograph being looked at. Sections are flat, full-bleed colour fields with square edges. Depth comes from printed photographs (white mats, tilts, soft drop shadows) laid on those fields, never from glass panels or decorative gradients.\n\nDensity is low and theatrical: display type at broadcast scale in a pixel blackletter, small uppercase pixel labels for every measurement, and a plain humanist sans for the few sentences that need reading.",
     "keyCharacteristics": [
-      "One ground per chapter, stepped at chapter boundaries, never a gradient.",
-      "Photographs full-colour and unaltered, held inside the gutters, square-cornered.",
-      "Narrow Mona Sans at extreme scale for names; Geist Mono only for measurements.",
-      "A fixed EV rail on the right that widens the right gutter everywhere it appears.",
-      "Hairlines (1px) are the only rules; nothing is boxed."
+      "Four full-bleed fields (blue, paper, lime, deep); every section sits on exactly one, and its text colour follows from the field.",
+      "Jacquard 24 pixel blackletter for display only; Geist Pixel for labels and measurements; Geist for reading.",
+      "One CRT layer over everything, with a rectangular hole over the hovered or focused photograph.",
+      "Square corners everywhere except the floating nav (4px) and the test card's native circle.",
+      "Authored pixel ornaments (aperture sun, star, arrows) drawn on a grid; no glyph icons.",
+      "Stepped, signal-like motion: scramble, gather, throw, toss, corridor, pixel wipe, pixel resolve."
     ],
     "rules": [
       {
-        "name": "The One Ground Rule",
-        "body": "A screen shows one ground colour at a time, chosen by the chapter that holds the middle of the viewport. Grounds step at chapter boundaries; they do not interpolate, and no gradient ever stands in for depth.",
+        "name": "The Four Fields Rule",
+        "body": "Every section is one of four fields: blue (white text), paper (ink text), lime (ink text), deep (white text). The field sets `--field` and `--fg`; dimmed text (`--fg-dim`, 78% fg) and hairlines (`--hair`, 24% fg) are mixed from them, never picked.",
         "section": "colors"
       },
       {
-        "name": "The No Accent Rule",
-        "body": "There is no brand accent. Emphasis comes from scale, the lit rail marker, or inverting ink and ground (the current pager page, text selection). Never introduce a coloured highlight.",
+        "name": "The Cross-Accent Rule",
+        "body": "Accents cross over: lime marks small text and ornaments on dark fields; blue marks display type and ornaments on light fields. Lime is never used as text on paper or lime; blue is never used as text on blue or deep.",
         "section": "colors"
       },
       {
-        "name": "The Measurement Rule",
-        "body": "Mono is for measurements only: EV readings, ranges, counts, dates, focal lengths, exposure facts. A sentence, a call to action or a navigation label is never set in mono.",
+        "name": "The Chip Colour Rule",
+        "body": "Among interactive controls, colour fill belongs to chips. Links, list items and nav entries take the field's text colour and signal state with the directional underline, a lime \"on\" tag, or a colour change on the display name.",
+        "section": "colors"
+      },
+      {
+        "name": "The Display-Only Blackletter Rule",
+        "body": "Jacquard 24 is for display, headline and title roles only, at 2.5rem and above. It never sets a sentence, a label or a control.",
         "section": "typography"
       },
       {
-        "name": "The Two Extremes Rule",
-        "body": "Names are either poster-scale display or ordinary label size. There is no mid-scale heading voice and no label stacked above a heading: kicker and eyebrow lines are banned.",
+        "name": "The Pixel Measures Rule",
+        "body": "Every measurement (channel, count, date, camera, light-travel time, page number) is set in Geist Pixel. Facts that read as prose stay in Geist.",
         "section": "typography"
       },
       {
-        "name": "The Literal Depth Rule",
-        "body": "Depth means darker ground, not lift. No box-shadows, no stacked surfaces, no layered panels.",
+        "name": "The No-Kicker Rule",
+        "body": "No small label sits above a heading to announce it. A heading's supporting text follows it (a credit line, an \"in the order they were made\" tail) or sits in a definition list beside it.",
+        "section": "typography"
+      },
+      {
+        "name": "The Hole In The Glass Rule",
+        "body": "The CRT layer sits above every page (z-index 2000, pointer-events none) and a rectangular hole the exact size of the hovered or keyboard-focused photograph cuts through it; that photograph also drops its RGB fringe. The photo viewer hides the CRT entirely. Nothing else may sit above the CRT except the pixel wipe and the skip link.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Prints Not Panels Rule",
+        "body": "Shadows belong to photographs treated as physical prints. Text containers, fields and controls never take a drop shadow.",
         "section": "elevation"
       }
     ],
     "dos": [
-      "**Do** give each chapter one ground and step to the next at the chapter boundary (daylight #e6e8ea through deep #04060a).",
-      "**Do** keep every block (full, offset, pair, strip) inside the gutters, with the right gutter widened by the rail wherever the rail is shown.",
-      "**Do** set every EV value, count, date and exposure fact in Geist Mono at 0.6875rem, uppercase, tabular.",
-      "**Do** set names at poster scale in Mona Sans wdth 75, weight 560, line-height 0.86, tracking -0.035em.",
-      "**Do** let the EV rail interpolate between measured frames and read ∞ in the deep sky.",
-      "**Do** separate with 1px hairlines and open ground, never with boxes.",
-      "**Do** honour reduced motion: ground changes, reveals, rail marker and starfield all go still."
+      "**Do** put every new section on one of the four fields with the `field-*` class and let text, dim text and hairlines follow from it.",
+      "**Do** use lime as the accent on blue and deep fields and blue as the accent on paper and lime fields.",
+      "**Do** set every measurement (channel, count, date, camera, page) in uppercase Geist Pixel at 0.75rem with tabular numbers.",
+      "**Do** keep Jacquard 24 at 2.5rem and above, weight 400.",
+      "**Do** draw any new mark as a pixel grid in the ornament component, filled with the current colour.",
+      "**Do** treat photographs as prints when they need depth: a white mat, a small tilt, the print shadow.",
+      "**Do** use stepped timing (`steps(n)`) for colour and state changes and `cubic-bezier(0.16, 1, 0.3, 1)` for physical movement.",
+      "**Do** keep every photograph clickable through the CRT and register it so the hole can open over it.",
+      "**Do** disable scramble, gather, trail, toss, corridor, page wipe, pixel resolve, grain and transitions under reduced motion while keeping channel tuning, the menu and the viewer working."
     ],
     "donts": [
       "**Don't** put a kicker or eyebrow label above a heading.",
-      "**Don't** use mono for sentences, buttons or navigation labels; mono is for measurements only.",
-      "**Don't** interpolate or gradient the ground between chapters.",
-      "**Don't** round corners, add drop shadows, or use cards or glass panels.",
-      "**Don't** add an accent colour; the photographs carry the colour.",
-      "**Don't** grade, tint or filter a photograph at rest; the only colour change is the transient grid-hover dim of neighbouring frames, and the viewer always shows the full, uncropped frame."
+      "**Don't** use Unicode glyphs or icon fonts as icons; draw them on the pixel grid.",
+      "**Don't** fill links, buttons or list items with colour where a chip would do; chips are the coloured controls.",
+      "**Don't** round corners on fields, frames, chips or cards; the nav's 4px and the test card's circle are the only curves.",
+      "**Don't** add glass blur, translucent panels or decorative gradients; gradients live only in the CRT layer.",
+      "**Don't** place anything above the CRT layer except the page wipe and the skip link, and don't let the CRT cover the viewer.",
+      "**Don't** set Jacquard 24 for sentences, labels or controls, or synthesise weights it doesn't have.",
+      "**Don't** use colours outside the seven tokens; mix tints from the field with `color-mix` instead."
     ]
   }
 }

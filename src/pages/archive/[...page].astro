@@ -18,7 +18,7 @@ const { index, pages, frames } = Astro.props as { index: number; pages: number; 
 const PER_PAGE = 120;
 const pageUrl = (i: number) => url(i === 0 ? "/archive/" : `/archive/${i + 1}/`);
 const dated = frames.flatMap((p) => (p.exif.taken ? [p.exif.taken] : []));
-const range = dated.length ? `${formatDate(dated[0]!)} → ${formatDate(dated[dated.length - 1]!)}` : "Undated frames";
+const range = dated.length ? `${formatDate(dated[0]!)} – ${formatDate(dated[dated.length - 1]!)}` : "Undated frames";
 const title = index === 0 ? "Archive" : `Archive, page ${index + 1}`;
 ---
 

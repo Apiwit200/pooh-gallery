@@ -1,243 +1,257 @@
 ---
 name: Light Falls
-description: Photographs by Apiwit Nathong, ordered as one descent through light, from the brightest noon to the deep sky.
+description: Photographs by Apiwit Nathong, played as channels on a late-night ultramarine broadcast.
 colors:
-  daylight: "#e6e8ea"
-  shade: "#b8c1b2"
-  dusk: "#86a59c"
-  lamplight: "#1d4652"
-  night: "#0c1824"
-  deep: "#04060a"
-  ink: "#10181b"
-  paper: "#ebe7dd"
-  photo-white: "#f4f1ea"
+  blue: "#350aff"
+  blue-deep: "#1a0080"
+  lime: "#bcf015"
+  paper: "#ebedf5"
+  ink: "#120d2b"
+  deep: "#03000f"
+  white: "#f4f4ff"
 typography:
   display:
-    fontFamily: "Mona Sans Variable, ui-sans-serif, system-ui, sans-serif"
-    fontSize: "clamp(4rem, 14vw, 13rem)"
-    fontWeight: 560
-    lineHeight: 0.86
-    letterSpacing: "-0.035em"
-    fontVariation: "\"wdth\" 75"
+    fontFamily: "Jacquard 24, ui-serif, serif"
+    fontSize: "clamp(4rem, 13vw, 12rem)"
+    fontWeight: 400
+    lineHeight: 0.82
+    letterSpacing: "0"
   headline:
-    fontFamily: "Mona Sans Variable, ui-sans-serif, system-ui, sans-serif"
-    fontSize: "clamp(2.5rem, 6vw, 5.5rem)"
-    fontWeight: 560
-    lineHeight: 0.86
-    letterSpacing: "-0.035em"
-    fontVariation: "\"wdth\" 75"
+    fontFamily: "Jacquard 24, ui-serif, serif"
+    fontSize: "clamp(3.5rem, 10vw, 10rem)"
+    fontWeight: 400
+    lineHeight: 0.82
+    letterSpacing: "0"
   title:
-    fontFamily: "Mona Sans Variable, ui-sans-serif, system-ui, sans-serif"
-    fontSize: "clamp(1.75rem, 3.6vw, 3.25rem)"
-    fontWeight: 540
-    lineHeight: 1
-    letterSpacing: "-0.03em"
-    fontVariation: "\"wdth\" 76"
-  lead:
-    fontFamily: "Mona Sans Variable, ui-sans-serif, system-ui, sans-serif"
-    fontSize: "clamp(1.375rem, 1.6vw + 0.8rem, 2.25rem)"
+    fontFamily: "Jacquard 24, ui-serif, serif"
+    fontSize: "clamp(2.5rem, 6vw, 5.5rem)"
     fontWeight: 400
-    lineHeight: 1.22
-    letterSpacing: "-0.012em"
-    fontVariation: "\"wdth\" 92"
+    lineHeight: 0.82
+    letterSpacing: "0"
+  lede:
+    fontFamily: "Geist Variable, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "clamp(1.375rem, 1.6vw + 0.9rem, 2.5rem)"
+    fontWeight: 450
+    lineHeight: 1.12
+    letterSpacing: "-0.02em"
   body:
-    fontFamily: "Mona Sans Variable, ui-sans-serif, system-ui, sans-serif"
-    fontSize: "clamp(1.0625rem, 0.4vw + 0.95rem, 1.25rem)"
+    fontFamily: "Geist Variable, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "1.125rem"
     fontWeight: 400
-    lineHeight: 1.5
-    fontVariation: "\"wdth\" 100"
+    lineHeight: 1.45
   label:
-    fontFamily: "Mona Sans Variable, ui-sans-serif, system-ui, sans-serif"
-    fontSize: "0.875rem"
+    fontFamily: "Geist Pixel, ui-monospace, monospace"
+    fontSize: "0.75rem"
     fontWeight: 400
-    lineHeight: 1.5
-  reading:
-    fontFamily: "Geist Mono Variable, ui-monospace, monospace"
-    fontSize: "0.6875rem"
-    fontWeight: 400
-    lineHeight: 1.5
+    lineHeight: 1.35
     letterSpacing: "0.02em"
     fontFeature: "\"tnum\" 1"
 rounded:
-  none: "0"
+  none: "0px"
+  nav: "4px"
 spacing:
-  gutter: "clamp(1rem, 3.2vw, 2.75rem)"
-  rail: "clamp(2.25rem, 4vw, 4.5rem)"
-  section: "clamp(6rem, 16vh, 11rem)"
-  nav-h: "3.5rem"
-  block-gap: "clamp(4rem, 12vh, 9rem)"
-  pair-gap: "clamp(0.75rem, 2.5vw, 2.5rem)"
-  grid-gap: "clamp(0.375rem, 0.8vw, 0.75rem)"
+  gutter: "clamp(1rem, 3vw, 2.5rem)"
+  section: "clamp(5rem, 14vh, 10rem)"
+  chip-gap: "0.4rem"
+  chip-pad: "0.4rem 0.55rem"
+  print-mat: "0.5rem 0.5rem 1.6rem"
 components:
-  nav-bar:
-    backgroundColor: "{colors.daylight}"
+  chip:
+    backgroundColor: "{colors.lime}"
     textColor: "{colors.ink}"
     typography: "{typography.label}"
-    height: "{spacing.nav-h}"
-    padding: "0 calc(gutter + rail) 0 gutter"
-  nav-bar-over-photo:
-    textColor: "{colors.photo-white}"
-    height: "{spacing.nav-h}"
-  ev-rail:
+    rounded: "{rounded.none}"
+    padding: "{spacing.chip-pad}"
+  chip-hover:
+    backgroundColor: "{colors.white}"
     textColor: "{colors.ink}"
-    typography: "{typography.reading}"
-    width: "{spacing.rail}"
-  frame:
+  chip-blue:
+    backgroundColor: "{colors.blue}"
+    textColor: "{colors.white}"
+    typography: "{typography.label}"
     rounded: "{rounded.none}"
-  index-menu:
-    backgroundColor: "{colors.night}"
-    textColor: "{colors.paper}"
-    padding: "0 gutter 3rem"
-  index-row:
-    typography: "{typography.title}"
-    padding: "0.9rem 0"
-  pager-page-current:
+    padding: "{spacing.chip-pad}"
+  chip-blue-hover:
     backgroundColor: "{colors.ink}"
-    textColor: "{colors.daylight}"
-    typography: "{typography.reading}"
-    size: "2.75rem"
+    textColor: "{colors.white}"
+  chip-ghost-hover:
+    backgroundColor: "{colors.lime}"
+    textColor: "{colors.ink}"
+  nav-pill:
+    backgroundColor: "{colors.paper}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.nav}"
+    padding: "0.35rem 0.4rem 0.35rem 0.75rem"
+  print-card:
+    backgroundColor: "{colors.white}"
     rounded: "{rounded.none}"
+    padding: "{spacing.print-mat}"
+  test-card:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.lime}"
+    rounded: "{rounded.none}"
+    padding: "0.6rem"
+  channel-tag-on:
+    backgroundColor: "{colors.lime}"
+    textColor: "{colors.ink}"
+    typography: "{typography.label}"
+    padding: "0.3rem 0.4rem"
   viewer:
     backgroundColor: "{colors.deep}"
-    textColor: "{colors.paper}"
-    typography: "{typography.reading}"
+    textColor: "{colors.white}"
+    typography: "{typography.label}"
 ---
 
 # Design System: Light Falls
 
 ## Overview
 
-**Creative North Star: "The Descent Through Light"**
+**Creative North Star: "The Late-Night Broadcast"**
 
-The site is one committed field whose colour is a function of depth. Every photograph is placed by the exposure value its own EXIF records, and the page ground steps down with it: film-white daylight, sage shade, sea-teal dusk, deep-teal lamplight, ink-navy night, then near-black with stars. The photograph is always the loudest thing on the screen; the ground, the type and the meter exist to say how bright it was.
+The archive is a surreal television set left on after midnight. An ultramarine screen plays photographs as channels: the visitor tunes in, photographs are thrown onto the glass as the pointer moves, a short transmission gathers itself out of scattered words, a channel guide flips between collections, and the night sky is the last channel before the lime "End of transmission" card. It is retro, surreal and abstract, but the photographs are always the programme; every broadcast device exists to frame them or to step aside for them.
 
-Density is low and the rhythm is vertical. Photographs arrive one composition at a time (full, offset, pair, strip, quiet) with generous open ground between them. Type works at two extremes only: a narrow grotesk at poster scale for chapter and page names, and a small mono for readings. A hairline light-meter rail on the right edge carries the whole EV scale in ghost ticks and lights only the current reading.
+The whole page sits under one CRT layer (scanlines, glare, vignette, bezel shadow, moving grain, and an RGB fringe on display type and featured frames). The CRT is not a texture applied to a surface; it is the glass between the visitor and the set, and it clears exactly over the photograph being looked at. Sections are flat, full-bleed colour fields with square edges. Depth comes from printed photographs (white mats, tilts, soft drop shadows) laid on those fields, never from glass panels or decorative gradients.
 
-The world is flat and square. There are no cards, no rounded boxes and no glass panels; separation comes from ground colour, hairlines and open space.
+Density is low and theatrical: display type at broadcast scale in a pixel blackletter, small uppercase pixel labels for every measurement, and a plain humanist sans for the few sentences that need reading.
 
 **Key Characteristics:**
-- One ground per chapter, stepped at chapter boundaries, never a gradient.
-- Photographs full-colour and unaltered, held inside the gutters, square-cornered.
-- Narrow Mona Sans at extreme scale for names; Geist Mono only for measurements.
-- A fixed EV rail on the right that widens the right gutter everywhere it appears.
-- Hairlines (1px) are the only rules; nothing is boxed.
+- Four full-bleed fields (blue, paper, lime, deep); every section sits on exactly one, and its text colour follows from the field.
+- Jacquard 24 pixel blackletter for display only; Geist Pixel for labels and measurements; Geist for reading.
+- One CRT layer over everything, with a rectangular hole over the hovered or focused photograph.
+- Square corners everywhere except the floating nav (4px) and the test card's native circle.
+- Authored pixel ornaments (aperture sun, star, arrows) drawn on a grid; no glyph icons.
+- Stepped, signal-like motion: scramble, gather, throw, toss, corridor, pixel wipe, pixel resolve.
 
 ## Colors
 
-A cool, desaturated depth scale from film-white to near-black, with no accent: the photographs supply all the colour.
+A saturated broadcast palette: one ultramarine, one acid lime, and three neutrals tuned cool toward that blue.
 
 ### Primary
-The grounds. Each stratum owns exactly one; the root `data-ground` attribute swaps them and the page transitions in 0.9s on the expo-out curve.
-- **Film White** (daylight): the brightest ground, the first page state and the default for archive, index and about. Cool, slightly grey, never pure white.
-- **Sage Shade** (shade): the second chapter; grey-green, still a light ground carrying ink text.
-- **Sea Teal** (dusk): the last light ground; ink text still holds.
-- **Deep Teal** (lamplight): the first dark ground; text flips to paper.
-- **Ink Navy** (night): the night chapter, and the ground of the full-screen index menu, contact and 404.
-- **Near Black** (deep): the deep sky, the finale, and the photo viewer backdrop.
+- **Broadcast Ultramarine** (blue): the default field of the site, the root background, the browser theme colour and the pixel page wipe. On light fields it is the accent for display type (the active channel name, "End of transmission", "All N frames") fills blue chips and marks the current archive page.
+- **Dead-Air Indigo** (blue-deep): the deeper shade behind the ultramarine. Scrollbar track, viewer image placeholder, one test-card bar. Never a section field.
+
+### Secondary
+- **Test-Card Lime** (lime): the signal colour. Fills default chips, the "on" channel tag, the closing field, selection highlight, focus rings on dark fields, and one cell in eleven of the pixel wipe. On dark fields it is the accent for small text (pixel labels, ornaments, viewer counter).
 
 ### Neutral
-- **Ink** (ink): text and the rail on the three light grounds; also the fill of the current pager page.
-- **Paper** (paper): text on lamplight, night and deep-sky; warm against the cool grounds.
-- **Photo White** (photo-white): type set directly over a photograph (opening title, collection cover title, nav while it floats over a cover). Slightly warmer and brighter than paper so it holds against bright skies.
-- **Dim text**: not a separate colour; text at 84% foreground mixed into the current ground (oklab), so it follows every ground automatically. Used for ranges, metadata and secondary lines.
-- **Hairline**: foreground at 22% over transparent. On the fixed night/deep surfaces (menu, observing log) the hairline is paper at 10 to 18%.
+- **Studio Paper** (paper): the cool off-white field for the channel guide, collection sequences, grids and About; also the floating nav.
+- **Night Ink** (ink): text on paper and lime fields; the test-card and screen bezel.
+- **Deep Sky** (deep): the near-black field for the deep-sky channel and the photo viewer.
+- **Phosphor White** (white): text on blue and deep fields; the white mat around every print.
 
 ### Named Rules
-**The One Ground Rule.** A screen shows one ground colour at a time, chosen by the chapter that holds the middle of the viewport. Grounds step at chapter boundaries; they do not interpolate, and no gradient ever stands in for depth.
+**The Four Fields Rule.** Every section is one of four fields: blue (white text), paper (ink text), lime (ink text), deep (white text). The field sets `--field` and `--fg`; dimmed text (`--fg-dim`, 78% fg) and hairlines (`--hair`, 24% fg) are mixed from them, never picked.
 
-**The No Accent Rule.** There is no brand accent. Emphasis comes from scale, the lit rail marker, or inverting ink and ground (the current pager page, text selection). Never introduce a coloured highlight.
+**The Cross-Accent Rule.** Accents cross over: lime marks small text and ornaments on dark fields; blue marks display type and ornaments on light fields. Lime is never used as text on paper or lime; blue is never used as text on blue or deep.
+
+**The Chip Colour Rule.** Among interactive controls, colour fill belongs to chips. Links, list items and nav entries take the field's text colour and signal state with the directional underline, a lime "on" tag, or a colour change on the display name.
 
 ## Typography
 
-**Display Font:** Mona Sans Variable (with ui-sans-serif, system-ui)
-**Body Font:** Mona Sans Variable, at normal width
-**Label/Mono Font:** Geist Mono Variable (with ui-monospace)
+**Display Font:** Jacquard 24 (with ui-serif, serif)
+**Body Font:** Geist Variable (with ui-sans-serif, system-ui, sans-serif)
+**Label/Mono Font:** Geist Pixel (with ui-monospace, monospace)
 
-**Character:** One grotesk family, stretched across its width axis: compressed (wdth 75) and heavy-ish at poster scale for names, near-normal width for reading. The mono is small, uppercase and tabular, set like a meter display.
+**Character:** A pixel blackletter that reads like a station ident against a precise modern sans; the pixel mono carries every number the way an on-screen display would.
 
 ### Hierarchy
-- **Display** (560, wdth 75, line-height 0.86, tracking -0.035em, text-wrap balance): chapter names on the descent and page titles. Size is set per surface between `clamp(3.5rem, 11vw, 10rem)` and the opening title at `clamp(4.5rem, 17vw, 15rem)`; the frontmatter value is the chapter-name size. Pulled -0.04em left to align optically with the gutter. Chapter names rise line by line out of their own clip.
-- **Headline** (display settings at `clamp(2.5rem, 6vw, 5.5rem)`): finale line, neighbouring-collection titles, stratum names in the index menu.
-- **Title** (540, wdth 76, line-height 1): rows in the collection index, pager steps, object names in the deep sky (420, wdth 80, `clamp(2rem, 3.4vw, 3.25rem)`).
-- **Lead** (400, wdth 92, line-height 1.22): the homepage prologue and the about statement; under 40rem.
-- **Body** (400, line-height 1.45 to 1.5, text-wrap pretty): intros and chapter lines, held to 30 to 36rem.
-- **Label** (0.875rem): nav links, chapter collection links, menu close.
-- **Reading** (Geist Mono, 0.6875rem, uppercase, tabular numerals, tracking 0.02em): EV values and ranges, frame counts, dates, camera facts, the rail numerals (0.625rem), the viewer caption.
+- **Display** (400, clamp(4rem, 13vw, 12rem), 0.82): page titles ("Channel guide", "Archive", "Beyond the Frame", "No signal."). The opening title runs slightly smaller with 0.92 leading so real photographs can sit inline between words, ringed in lime. Balanced wrapping. Single weight; never synthesise others.
+- **Headline** (400, clamp(3.5rem, 10vw, 10rem), 0.82): section titles on the homepage ("Prints on the table", "Beyond the frame", "End of transmission").
+- **Title** (400, clamp(2.5rem, 6vw, 5.5rem), 0.82): channel names in the channel guide and menu, previous and next channel on the dial, deep-sky object names.
+- **Lede** (450, clamp(1.375rem, 1.6vw + 0.9rem, 2.5rem), 1.12, -0.02em): the transmission paragraph and page intros, about 44rem wide at most.
+- **Body** (400, 1.125rem, 1.45): short reading text, 34 to 40rem wide at most.
+- **Label** (400, 0.75rem, 0.02em, uppercase, tabular numbers): channel numbers, frame counts, dates, camera facts, the credit line, nav links, chips, viewer captions.
 
 ### Named Rules
-**The Measurement Rule.** Mono is for measurements only: EV readings, ranges, counts, dates, focal lengths, exposure facts. A sentence, a call to action or a navigation label is never set in mono.
+**The Display-Only Blackletter Rule.** Jacquard 24 is for display, headline and title roles only, at 2.5rem and above. It never sets a sentence, a label or a control.
 
-**The Two Extremes Rule.** Names are either poster-scale display or ordinary label size. There is no mid-scale heading voice and no label stacked above a heading: kicker and eyebrow lines are banned.
+**The Pixel Measures Rule.** Every measurement (channel, count, date, camera, light-travel time, page number) is set in Geist Pixel. Facts that read as prose stay in Geist.
+
+**The No-Kicker Rule.** No small label sits above a heading to announce it. A heading's supporting text follows it (a credit line, an "in the order they were made" tail) or sits in a definition list beside it.
 
 ## Layout
 
-A single vertical axis. Every page section pads left by the gutter and right by gutter plus rail (`padding-inline: gutter, gutter + rail`), so nothing ever runs under the EV rail. Pages without the rail (contact, 404) pad the gutter on both sides.
+Full-bleed fields stacked vertically, each padded by the section rhythm (`spacing.section`) and the side gutter (`spacing.gutter`). Inside a field, composition is either centred and theatrical (opening, prints on the table, deep-sky teaser, end card) or a two-column split at 64rem: copy left and a screen right (transmission and test card, collection head and cover, channel list and sticky screen).
 
-On the descent and in collections, each chapter's photographs are composed from their real orientations into five blocks, separated by the block gap:
-- **Full**: a landscape at the full content width, capped at 100svh, still inside both gutters.
-- **Offset**: a single frame at up to 58rem / 58vw (62vw in collections), pushed right, or pushed left by `clamp(gutter, 9vw, 10rem)`; alternates sides. Below 48rem it becomes 88% wide.
-- **Pair**: two portraits side by side, the second dropped by `clamp(3rem, 16vh, 12rem)`; at 64rem and up the columns go 5fr/4fr with a 16% left indent.
-- **Strip**: a run of landscapes. On the descent it scrolls horizontally inside the gutters (track padded by the gutter, block stopped short of the rail); in collections it falls back to an auto-fit grid of 22rem columns.
-- **Quiet**: one small frame (`clamp(11rem, 24vw, 22rem)`) centred in open ground, always closing a chapter.
+The channel guide is the key layout: a list of channel names on the left and a sticky screen on the right (top 5rem) that holds the corridor. Below 64rem the screen becomes a sticky 16:9 band under the nav with the list scrolling beneath it.
 
-Full archives use a justified-row grid: each frame flexes by its real aspect ratio around a target row height (`clamp(9rem, 22vw, 17rem)`, 7.5rem on phones) with a tight grid gap.
+Photograph grids are justified rows built from each frame's real aspect ratio (target row clamp(9rem, 22vw, 17rem), 7.5rem on narrow phones). Collection sequences alternate full, offset, pair, strip and quiet blocks, each frame tilted a few degrees. The prints table scatters cards deterministically across five columns and becomes a horizontal snap scroller below 48rem.
 
-Covers and the opening frame are the only full-bleed images; they sit at 100svh behind the nav with a soft top and bottom scrim for type. Portrait covers split instead: text left, cover in the right 45vw.
-
-Chapter heads place the display name left and a 22rem meta column (line, range, collection links) bottom-aligned on the right from 64rem. Breakpoints in use: 30rem, 40rem, 48rem, 52rem (nav links appear), 64rem.
+Breakpoints in use: 30rem, 40rem, 48rem, 56rem (nav links appear), 64rem (two-column splits), and 768px for the CRT's lighter mobile treatment.
 
 ## Elevation & Depth
 
-Flat. There are no shadows anywhere. Depth is literal: it is carried by the ground stepping darker chapter by chapter, and by photographs revealing as they arrive (clip-path insets scrubbed by scroll, a canvas "develop" on full frames, a fade-in once pixels land over a low-quality placeholder and the photograph's mean colour). The deep-sky chapter adds a restrained canvas starfield (pale blue-white points, slow twinkle, frozen under reduced motion) behind the photographs.
+The fields are flat. Depth belongs to physical prints and to the CRT glass. Prints carry a white mat (a solid spread ring or padding) and a soft, low drop shadow toned to the deep field; they lift a little on hover. The only other lifted surface is the floating nav. Glass blur and decorative gradients are absent; the only gradients in the build are the CRT's own scanlines, glare and vignette, which are the screen, not decoration.
+
+### Shadow Vocabulary
+- **Print at rest** (`box-shadow: 0 10px 24px -12px rgb(3 0 15 / 0.6)`): tossed prints on the table.
+- **Print lifted** (`box-shadow: 0 18px 36px -14px rgb(3 0 15 / 0.7)`): a tossed print under the pointer.
+- **Matted frame** (`box-shadow: 0 0 0 clamp(0.4rem, 0.8vw, 0.7rem) var(--color-white), 0 14px 30px -14px rgb(3 0 15 / 0.45)`): tilted frames in a collection sequence.
+- **Floating nav** (`box-shadow: 0 0 0 1px rgb(18 13 43 / 0.12), 0 6px 18px -8px rgb(3 0 15 / 0.45)`): the pill nav only.
+- **Hairline screen edge** (`box-shadow: 0 0 0 1px var(--hair)`): bezels of the test card and collection cover screen.
 
 ### Named Rules
-**The Literal Depth Rule.** Depth means darker ground, not lift. No box-shadows, no stacked surfaces, no layered panels.
+**The Hole In The Glass Rule.** The CRT layer sits above every page (z-index 2000, pointer-events none) and a rectangular hole the exact size of the hovered or keyboard-focused photograph cuts through it; that photograph also drops its RGB fringe. The photo viewer hides the CRT entirely. Nothing else may sit above the CRT except the pixel wipe and the skip link.
+
+**The Prints Not Panels Rule.** Shadows belong to photographs treated as physical prints. Text containers, fields and controls never take a drop shadow.
 
 ## Shapes
 
-Every edge is square (0 radius): frames, menu, pager cells, focus outlines. Rules are 1px hairlines in the current foreground at 22%. Underlines are 1px, offset 0.28em. The only recurring geometry is the rail: a vertical hairline with short minor ticks (0.375rem) and longer major ticks every 4 EV (0.75rem), and a 1.5rem marker bar.
+Square corners throughout: fields, chips, frames, prints, screens, tiles, the menu sheet. The single rounded silhouette is the floating nav at a 4px radius. The test card keeps its native circle (the station's centre disc holding a photograph and the aperture ornament); it is part of the test-card device, not a licence for rounded surfaces elsewhere.
+
+Ornaments are authored pixel art: the aperture sun (17x17), the star (9x9), and left and right arrows (7x7), drawn as grids of unit squares with crisp edges and filled in the current colour. New marks are drawn the same way, on the grid.
 
 ## Components
 
+### Chips
+The only coloured controls: square pixel-type tags that switch colour in two hard steps.
+- **Style:** lime fill with ink text (default), blue fill with white text (on lime fields), or ghost (transparent, field text colour, 1px inset hairline). Pixel label type, 1 line height, padding per `spacing.chip-pad`, gap 0.4rem in rows.
+- **State:** hover and focus switch fill (lime to white, blue to ink, ghost to lime) with `steps(2)` over 0.18s. Arrow ornaments sit inline for previous and next.
+
 ### Navigation
-Quiet and fixed. A 3.5rem bar: the title in narrow 620-weight Mona Sans with the photographer's name beside it at 0.8125rem, links at label size on the right (Index, Archive, Deep sky, About). The bar sits on the current ground at 92% with a hairline beneath (its current 10px backdrop blur is drift from the no-glass world, not a pattern to reuse); over a cover photograph it goes transparent and photo-white. Links use the directional trace underline. Below 52rem the links collapse to one "Index" button that opens the index menu. The name hides below 30rem.
+- **Pill nav:** fixed, top centre, paper fill, ink text, 4px radius, floating shadow. Holds the aperture mark with the site name in Jacquard 24 (1.35rem), pixel links with the directional underline trace (enters from the left, leaves to the right; persists on the current page) from 56rem, and a square menu button with a pixel hamburger drawn in SVG.
+- **Channel menu:** a full-screen blue dialog that wipes down in `steps(9)`; channel number and frame count in lime pixel type flank each name in Jacquard; hover turns the name lime; ghost chips for the remaining pages.
+- **Dial:** a lime field closing each collection, previous and next channel names in Jacquard with pixel arrows.
 
-### Directional Trace (links)
-A 1px underline that draws in from the left on hover, focus or current page and leaves to the right (0.35s, expo-out). Never rewinds. Used for nav, chapter collection links and the finale links.
+### Channel Guide (signature)
+A list of channels beside a sticky screen. The channel at the middle of the viewport, or under the pointer or focus, is "on": its pixel channel tag fills lime and its name turns blue; other names sit at 62% of the field's text colour. The screen plays the corridor: up to 18 of the channel's prints stand side-on in a diagonal row, the page scroll rides along them, a slow swell runs through the row, and each change of channel fires a 0.26s static burst (scanlines and noise in `steps(3)`). Prints in the corridor carry a 4px white mat that turns lime on hover. Beneath the screen a pixel caption reads the current frame. With reduced motion the corridor is not mounted and the screen shows the channel's cover still; tuning still works because it is navigation.
 
-### EV Rail (signature)
-A fixed hairline meter on the right edge, rail-wide, between the nav and the bottom of the viewport. It carries the full EV scale (16 down to -4) in ghost ticks with dim mono numerals every 4 EV, and a ∞ below the scale. The marker reads the light at the middle of the viewport: it interpolates between the measured frames above and below, holds through headings and gaps, and drops past the scale to ∞ in the deep sky. The current reading is printed vertically at the foot in mono ("EV 8.6", or "EV — beyond the scale"). On phones the rail narrows to 1.25rem and the numerals hide. It is decorative to assistive tech (aria-hidden).
+### Prints
+- **Tossed print:** white mat (`spacing.print-mat`), tilted up to 9 degrees, draggable with inertia on fine pointers, lands on top when picked up.
+- **Thrown photograph:** in the opening, the pointer throws tilted photographs (pool of ten, recycled) behind the title with a 6px white mat; they pop in and shrink away after 1.6s. Without a fine pointer the screen throws one on its own every 1.1s while visible.
+- **Matted frame:** collection sequence frames tilt by a few degrees and straighten on hover.
 
-### Frames (photographs)
-Square, unbordered, never cropped by a card. The frame reserves its exact aspect ratio and shows the photograph's blurred placeholder and mean colour until the image fades in (0.7s). Every frame opens the uncropped photograph in the viewer. In grids, hovering one frame scales it 1.025 and desaturates its neighbours.
+### Photographs (frames)
+Every photograph holds its box with its own aspect ratio, a low-quality placeholder and its dominant colour before the image fades in over `steps(4)`. Featured frames resolve from coarse pixels (56px blocks down to one) with a posterised palette widening to full colour. Grid frames scale to 1.025 on hover while their neighbours desaturate. Any frame opens the viewer.
 
-### Index Rows
-Hairline-separated rows: EV reading in mono, collection title at title scale, count and dates in mono on the right, a 9rem thumbnail from 48rem. Hover nudges the title 0.5rem right.
-
-### Index Menu
-A full-screen dialog on the night ground in paper. Each stratum name at headline scale over a column list of its collections, each with its median EV and count in mono.
-
-### Pager
-Previous and next steps at title scale on either side, numbered pages as 2.75rem square mono cells between; the current page inverts to ink on ground.
+### Test Card
+An ink-bezelled 4:3 card: seven vertical bars in the site palette, a centre circle holding a real photograph with the lime aperture ornament in difference blend, and a lime pixel caption ("Please stand by").
 
 ### Viewer
-PhotoSwipe on the deep ground. The photograph alone; its caption (title, date, EV, camera facts) set like a meter reading in paper at the foot, hidden when the UI hides.
+PhotoSwipe on the deep field: white icons, lime pixel counter, and a centred pixel caption with title, date, time and camera facts. The CRT is hidden while it is open.
+
+### Page Wipe
+On an internal link, a grid of pixels (16 columns, 8 on narrow screens) in ultramarine, one in eleven lime, snaps on in random order; the next page opens covered and its pixels snap off.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** give each chapter one ground and step to the next at the chapter boundary (daylight #e6e8ea through deep #04060a).
-- **Do** keep every block (full, offset, pair, strip) inside the gutters, with the right gutter widened by the rail wherever the rail is shown.
-- **Do** set every EV value, count, date and exposure fact in Geist Mono at 0.6875rem, uppercase, tabular.
-- **Do** set names at poster scale in Mona Sans wdth 75, weight 560, line-height 0.86, tracking -0.035em.
-- **Do** let the EV rail interpolate between measured frames and read ∞ in the deep sky.
-- **Do** separate with 1px hairlines and open ground, never with boxes.
-- **Do** honour reduced motion: ground changes, reveals, rail marker and starfield all go still.
+- **Do** put every new section on one of the four fields with the `field-*` class and let text, dim text and hairlines follow from it.
+- **Do** use lime as the accent on blue and deep fields and blue as the accent on paper and lime fields.
+- **Do** set every measurement (channel, count, date, camera, page) in uppercase Geist Pixel at 0.75rem with tabular numbers.
+- **Do** keep Jacquard 24 at 2.5rem and above, weight 400.
+- **Do** draw any new mark as a pixel grid in the ornament component, filled with the current colour.
+- **Do** treat photographs as prints when they need depth: a white mat, a small tilt, the print shadow.
+- **Do** use stepped timing (`steps(n)`) for colour and state changes and `cubic-bezier(0.16, 1, 0.3, 1)` for physical movement.
+- **Do** keep every photograph clickable through the CRT and register it so the hole can open over it.
+- **Do** disable scramble, gather, trail, toss, corridor, page wipe, pixel resolve, grain and transitions under reduced motion while keeping channel tuning, the menu and the viewer working.
 
 ### Don't:
 - **Don't** put a kicker or eyebrow label above a heading.
-- **Don't** use mono for sentences, buttons or navigation labels; mono is for measurements only.
-- **Don't** interpolate or gradient the ground between chapters.
-- **Don't** round corners, add drop shadows, or use cards or glass panels.
-- **Don't** add an accent colour; the photographs carry the colour.
-- **Don't** grade, tint or filter a photograph at rest; the only colour change is the transient grid-hover dim of neighbouring frames, and the viewer always shows the full, uncropped frame.
+- **Don't** use Unicode glyphs or icon fonts as icons; draw them on the pixel grid.
+- **Don't** fill links, buttons or list items with colour where a chip would do; chips are the coloured controls.
+- **Don't** round corners on fields, frames, chips or cards; the nav's 4px and the test card's circle are the only curves.
+- **Don't** add glass blur, translucent panels or decorative gradients; gradients live only in the CRT layer.
+- **Don't** place anything above the CRT layer except the page wipe and the skip link, and don't let the CRT cover the viewer.
+- **Don't** set Jacquard 24 for sentences, labels or controls, or synthesise weights it doesn't have.
+- **Don't** use colours outside the seven tokens; mix tints from the field with `color-mix` instead.
