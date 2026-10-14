@@ -83,16 +83,16 @@ const ground = c.stratum.key;
       {
         higher && (
           <a href={href(higher)} class="neighbour">
-            <span class="mono">Higher · {higher.ev ? formatEv(higher.ev.median) : ""}</span>
             <span class="display neighbour__title">{higher.title}</span>
+            <span class="mono">Higher · {higher.ev ? formatEv(higher.ev.median) : ""}</span>
           </a>
         )
       }
       {
         deeper && (
           <a href={href(deeper)} class="neighbour neighbour--deeper">
-            <span class="mono">Deeper · {deeper.ev ? formatEv(deeper.ev.median) : "beyond the scale"}</span>
             <span class="display neighbour__title">{deeper.title}</span>
+            <span class="mono">Deeper · {deeper.ev ? formatEv(deeper.ev.median) : "beyond the scale"}</span>
           </a>
         )
       }

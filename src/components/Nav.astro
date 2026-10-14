@@ -70,9 +70,8 @@ const isCurrent = (href: string) => current === href || (href !== url("/") && cu
     gap: 1.5rem;
     padding-inline: var(--gutter) calc(var(--gutter) + var(--rail));
     color: var(--fg);
-    background: color-mix(in oklab, var(--ground) 92%, transparent);
+    background: var(--ground);
     border-bottom: 1px solid var(--hair);
-    backdrop-filter: blur(10px) saturate(1.1);
     pointer-events: none;
     transition:
       background-color 0.6s var(--ease-out-expo),
@@ -83,7 +82,6 @@ const isCurrent = (href: string) => current === href || (href !== url("/") && cu
     color: #f4f1ea;
     background: transparent;
     border-color: transparent;
-    backdrop-filter: none;
   }
   .nav > * {
     pointer-events: auto;
