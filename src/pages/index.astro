@@ -6,7 +6,7 @@ import TestCard from "@/components/TestCard.astro";
 import TossTable from "@/components/TossTable.astro";
 import Tuner from "@/components/Tuner.astro";
 import Base from "@/layouts/Base.astro";
-import { asset, channelLabel, collection, collectionHref, collections, DEEP_SKY_SLUG, home, photos } from "@/lib/photos";
+import { asset, collection, collectionHref, collections, DEEP_SKY_SLUG, home, photos } from "@/lib/photos";
 import { site, url } from "@/lib/site";
 
 const base = import.meta.env.BASE_URL;
@@ -48,7 +48,6 @@ const jsonld = {
 
     <div class="open__stack">
       <Ornament size="clamp(3.5rem, 6vw, 5.5rem)" class="open__mark" />
-      <p class="pixel open__tag">[ Now transmitting · {channels.length} channels{span && ` · ${span}`} ]</p>
       <h1 id="title" class="display open__title">
         <span class="open__line">Light Falls</span>
         <span class="open__line">
@@ -62,7 +61,7 @@ const jsonld = {
           Andromeda
         </span>
       </h1>
-      <p class="pixel open__by">Photographs by {site.photographer}</p>
+      <p class="pixel open__by">Photographs by {site.photographer}{span && `, ${span}`} · {collections.length} channels</p>
       <ul class="open__chips" aria-label="Channels">
         {channels.slice(0, 6).map((c) => (
           <li>
@@ -80,11 +79,6 @@ const jsonld = {
       <a class="open__tile open__tile--lime" href="#transmission" aria-label="Scroll to the transmission">
         <Ornament size="60%" />
       </a>
-      {inlineA && (
-        <span class="open__tile" aria-hidden="true">
-          <img src={asset(base, inlineA, 480)} alt="" loading="lazy" />
-        </span>
-      )}
     </div>
   </section>
 
@@ -99,7 +93,7 @@ const jsonld = {
     </div>
   </section>
 
-  <Tuner list={channels} heading={`Channel guide · ${channels.length} channels`} headingId="guide" />
+  <Tuner list={channels} heading={`Channel guide · ${channels.length} channels and the night sky`} headingId="guide" />
 
   <section class="tossed field-blue" aria-labelledby="tossed-title">
     <header class="tossed__head">
@@ -113,13 +107,12 @@ const jsonld = {
     deep && (
       <section class="sky field-deep" aria-labelledby="sky-title">
         <Starfield />
-        <p class="pixel sky__ch">{channelLabel(deep.channel)} · last channel</p>
         <h2 id="sky-title" class="display sky__title" data-scramble>
           Beyond the frame
         </h2>
         <p class="sky__text">
-          The Moon, the Sun, Jupiter, the Pleiades, Orion and the Andromeda Galaxy: all {deep.photos.length} frames,
-          ordered by how long their light travelled.
+          Channel {deep.channel}, the last one: the Moon, the Sun, Jupiter, the Pleiades, Orion and the Andromeda
+          Galaxy. {deep.photos.length} frames ordered by how long their light travelled; the five farthest are here.
         </p>
         <div class="sky__row">
           {[...deep.photos]
@@ -188,9 +181,6 @@ const jsonld = {
   }
   .open__mark {
     color: var(--color-lime);
-  }
-  .open__tag {
-    margin: 0;
   }
   .open__title {
     margin: 0;
@@ -333,10 +323,6 @@ const jsonld = {
     gap: 1.5rem;
     text-align: center;
     overflow: clip;
-  }
-  .sky__ch {
-    margin: 0;
-    color: var(--color-lime);
   }
   .sky__title {
     margin: 0;

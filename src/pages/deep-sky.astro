@@ -2,7 +2,7 @@
 import Photo from "@/components/Photo.astro";
 import Starfield from "@/components/Starfield.astro";
 import Base from "@/layouts/Base.astro";
-import { channelLabel, collection, DEEP_SKY_SLUG, facts, formatDate } from "@/lib/photos";
+import { collection, DEEP_SKY_SLUG, facts, formatDate } from "@/lib/photos";
 import { url } from "@/lib/site";
 
 const c = collection(DEEP_SKY_SLUG);
@@ -15,10 +15,9 @@ const description = `All ${objects.length} astrophotographs by the photographer,
   <div class="sky field-deep">
   <Starfield />
   <header class="head">
-    <p class="pixel head__ch">{channelLabel(c.channel)} · last channel</p>
     <h1 class="display head__title" data-scramble="load">Beyond the Frame</h1>
     <p class="head__text">
-      The last channel is the night sky. These {objects.length} frames are ordered by how long their light travelled to
+      Channel {c.channel}, the last one, is the night sky. These {objects.length} frames are ordered by how long their light travelled to
       reach the camera: about a second from the Moon, two and a half million years from Andromeda.
     </p>
     <ol class="log pixel" aria-label="Observing log">
@@ -87,10 +86,6 @@ const description = `All ${objects.length} astrophotographs by the photographer,
     align-content: end;
     gap: 1.75rem;
     color: var(--color-white);
-  }
-  .head__ch {
-    margin: 0;
-    color: var(--color-lime);
   }
   .head__trail {
     margin: 0;

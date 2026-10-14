@@ -129,7 +129,10 @@ export function mountSurf(host: HTMLElement, channels: SurfFrame[][], onLabel: (
       c.el.dataset.label = f.label;
     });
     layout();
-    // Each channel enters flat and swings into the corridor.
+    // Changing channel: a burst of static, then the new row swings into the corridor.
+    host.classList.remove("is-static");
+    void host.offsetWidth;
+    host.classList.add("is-static");
     turn.value = 0;
     gsap.to(turn, { value: 1, duration: 1, ease: "expo.out" });
     render();

@@ -1,7 +1,7 @@
 ---
 // Authored pixel marks for this site: an aperture sun (six blades round an open centre) and a small star.
 interface Props {
-  kind?: "aperture" | "star";
+  kind?: "aperture" | "star" | "arrow-left" | "arrow-right";
   size?: string;
   class?: string;
   label?: string;
@@ -27,6 +27,24 @@ const art = {
     "..#.....#.....#..",
     "........#........",
     "........#........",
+  ],
+  "arrow-right": [
+    "...#...",
+    "....#..",
+    ".....#.",
+    "#######",
+    ".....#.",
+    "....#..",
+    "...#...",
+  ],
+  "arrow-left": [
+    "...#...",
+    "..#....",
+    ".#.....",
+    "#######",
+    ".#.....",
+    "..#....",
+    "...#...",
   ],
   star: [
     "....#....",

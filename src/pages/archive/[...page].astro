@@ -1,6 +1,7 @@
 ---
 import Grid from "@/components/Grid.astro";
 import Base from "@/layouts/Base.astro";
+import Ornament from "@/components/Ornament.astro";
 import { chronological, collectionHref, collections, formatDate, type Photo } from "@/lib/photos";
 import { url } from "@/lib/site";
 
@@ -40,7 +41,7 @@ const title = index === 0 ? "Archive" : `Archive, page ${index + 1}`;
     <Grid photos={frames} eager={4} />
   </section>
   <nav class="pager field-lime" aria-label="Archive pages">
-    {index > 0 ? <a class="chip chip--blue" href={pageUrl(index - 1)} rel="prev">◂ Newer</a> : <span aria-hidden="true"></span>}
+    {index > 0 ? <a class="chip chip--blue" href={pageUrl(index - 1)} rel="prev"><Ornament kind="arrow-left" size="0.7rem" /> Newer</a> : <span aria-hidden="true"></span>}
     <ol class="pager__pages">
       {
         Array.from({ length: pages }, (_, i) => (
@@ -53,7 +54,7 @@ const title = index === 0 ? "Archive" : `Archive, page ${index + 1}`;
         ))
       }
     </ol>
-    {index < pages - 1 ? <a class="chip chip--blue pager__next" href={pageUrl(index + 1)} rel="next">Older ▸</a> : <span aria-hidden="true"></span>}
+    {index < pages - 1 ? <a class="chip chip--blue pager__next" href={pageUrl(index + 1)} rel="next">Older <Ornament kind="arrow-right" size="0.7rem" /></a> : <span aria-hidden="true"></span>}
   </nav>
 </Base>
 
