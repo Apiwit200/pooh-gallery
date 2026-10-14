@@ -1,0 +1,848 @@
+{
+ "builtAt": "2026-10-14T02:31:32.148Z",
+ "inventory": 2417,
+ "analysed": 2417,
+ "missingLocally": 0,
+ "unreadable": [],
+ "identicalDuplicates": [
+  {
+   "kept": "a/2025 sixth [Khaoyai]/DSCF7614.jpg",
+   "duplicate": "a/2025 sixth [Khaoyai]/DSCF7614.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 1/DSCF8241.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8241.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 1/DSCF8242.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8242.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 1/DSCF8243.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8243.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 1/DSCF8245.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8245.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 1/DSCF8247.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8247.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 1/DSCF8251.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8251.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 1/DSCF8252.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8252.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 1/DSCF8254.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8254.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 1/DSCF8255.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8255.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 1/DSCF8257.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8257.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 1/DSCF8259.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8259.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 1/DSCF8261.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8261.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 1/DSCF8262.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8262.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 1/DSCF8263.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8263.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 1/DSCF8264.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8264.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 1/DSCF8267.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8267.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 1/DSCF8271.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8271.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 1/DSCF8273.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8273.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 1/DSCF8274.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8274.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 1/DSCF8276.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8276.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 1/DSCF8279.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8279.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 1/DSCF8280.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8280.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 1/DSCF8281.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8281.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 1/DSCF8283.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8283.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 1/DSCF8292.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8292.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 1/DSCF8294.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8294.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8298.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8298.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8301.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8301.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8305.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8305.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8306.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8306.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8307.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8307.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8308.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8308.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8309.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8309.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8311.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8311.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8312.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8312.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8313.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8313.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8314.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8314.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8315.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8315.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8316.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8316.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8317.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8317.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8318.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8318.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8320.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8320.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8322.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8322.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8323.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8323.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8325.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8325.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8327.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8327.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8328.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8328.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8329.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8329.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8330.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8330.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8333.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8333.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8334.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8334.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8336.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8336.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8337.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8337.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8338.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8338.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8340.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8340.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8341.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8341.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8343.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8343.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8345.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8345.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8348.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8348.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8349.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8349.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8351.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8351.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8354.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8354.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8355.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8355.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8360.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8360.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8362.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8362.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8363.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8363.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8368.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8368.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8371.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8371.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8374.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8374.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8376.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8376.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8377.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8377.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8385.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8385.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8390.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8390.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8392.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8392.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8393.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8393.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8394.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8394.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8395.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8395.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/Huahin/Day 2/DSCF8402.jpg",
+   "duplicate": "a/Huahin/Views/DSCF8402.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7155.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7155.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7156.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7156.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7158.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7158.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7162.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7162.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7163.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7163.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7169.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7169.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7170.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7170.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7173.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7173.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7174.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7174.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7176.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7176.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7177.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7177.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7179.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7179.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7180.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7180.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7183.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7183.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7185.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7185.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7186.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7186.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7190.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7190.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7195.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7195.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7196.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7196.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7206.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7206.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7207.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7207.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7210.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7210.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7211.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7211.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7212.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7212.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7213.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7213.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7214.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7214.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7215.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7215.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7216.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7216.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7217.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7217.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7221.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7221.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7226.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7226.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7228.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7228.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7229.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7229.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7230.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7230.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7233.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7233.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7235.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7235.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7236.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7236.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7240.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7240.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7242.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7242.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7244.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7244.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7245.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7245.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7246.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7246.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7247.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7247.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7248.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7248.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7249.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7249.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7250.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7250.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7252.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7252.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7254.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7254.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7255.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7255.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7256.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7256.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7266.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7266.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7267.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7267.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7268.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7268.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7269.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7269.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7270.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7270.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7273.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7273.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7274.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7274.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7278.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7278.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7280.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7280.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7281.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7281.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7283.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7283.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7284.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7284.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7287.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7287.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7291.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7291.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7292.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7292.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7293.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7293.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7294.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7294.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7295.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7295.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7296.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7296.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7297.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7297.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7298.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7298.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7340.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7340.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7341.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7341.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7342.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7342.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7343.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7343.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7345.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7345.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7348.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7348.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7365.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7365.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7370.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7370.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7371.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7371.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7372.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7372.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7373.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7373.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7375.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7375.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7376.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7376.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7379.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7379.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7385.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7385.jpg",
+   "kind": "identical file"
+  },
+  {
+   "kept": "a/2025 fourth [Pattaya]/DSCF7390.jpg",
+   "duplicate": "a/Pattaya's Views/DSCF7390.jpg",
+   "kind": "identical file"
+  }
+ ],
+ "nearDuplicatePairs": 34,
+ "unassignedFolders": [],
+ "manifest": 2251,
+ "public": 1976,
+ "held": 275,
+ "withEv": 1528,
+ "publicAssetMB": 657.9,
+ "failedDownloads": [],
+ "skippedNonJpeg": 82
+}
