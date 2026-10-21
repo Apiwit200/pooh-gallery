@@ -46,7 +46,8 @@ Variant files are named by the content hash of their original. A re-edited photo
 Everything editorial lives in this one file:
 
 - `collections`: one entry per Drive folder, with a `slug` (the URL), `title`, `intro` and `folders`. Optional fields: `cover` (a photo id), `sequence` (photo ids for the curated run at the top of the collection page) and `hidden`.
-- `hidden: true` keeps a collection off every public page and generates no public files for it. Six folders where people are the main subject start hidden. Set `hidden` to `false` once everyone shown has agreed to publication, then rerun `npm run photos:build`.
+- `hidden: true` keeps a collection off every public page and generates no public files for it. Per photo, `hidden: true` in `photos` does the same for one frame; frames with obvious visible faces in the people folders are hidden this way. Change either, then rerun `npm run photos:build`.
+- `src/data/stories.json` holds the alt text and the short story for each public frame, keyed by photo id. The story shows beside featured prints and in the full-screen viewer.
 - `photos`: per-photo overrides keyed by photo id, with `title`, `alt`, `featured` and `hidden`.
 - `descent`: `hero` (opening photo), `finale` (closing photo), `finaleTitle`, and `featured` (photo ids for the homepage). Order doesn't matter, because the homepage sorts them by measured light.
 - `strata`: the one-line text under each stratum heading.

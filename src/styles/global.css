@@ -368,6 +368,22 @@ html.viewer-open .crt {
   pointer-events: none;
   transition: opacity 0.3s;
 }
+.pswp__facts p {
+  margin: 0 auto;
+}
+.pswp__story {
+  max-width: 40rem;
+  margin-bottom: 0.75rem !important;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  text-transform: none;
+  text-wrap: pretty;
+}
+.pswp__facts:has(.pswp__story:not([hidden])) {
+  background: linear-gradient(to top, rgb(3 0 15 / 0.9), rgb(3 0 15 / 0.65) 70%, transparent);
+  padding-top: 3rem;
+}
 .pswp:not(.pswp--ui-visible) .pswp__facts {
   opacity: 0;
 }

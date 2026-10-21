@@ -25,6 +25,7 @@ async function setup() {
       element: a,
       pid: a.dataset.pid,
       caption: a.dataset.caption,
+      story: a.dataset.story,
     })),
     pswpModule: () => import("photoswipe"),
     bgOpacity: 1,
@@ -38,7 +39,7 @@ async function setup() {
     arrowPrevTitle: "Previous photograph",
     arrowNextTitle: "Next photograph",
     errorMsg: "This photograph could not be loaded.",
-    paddingFn: (vp) => (vp.x < 700 ? { top: 0, bottom: 0, left: 0, right: 0 } : { top: 48, bottom: 72, left: 64, right: 64 }),
+    paddingFn: (vp) => (vp.x < 700 ? { top: 0, bottom: 0, left: 0, right: 0 } : { top: 48, bottom: 150, left: 64, right: 64 }),
   });
   lightbox.on("uiRegister", () => {
     lightbox!.pswp!.ui!.registerElement({
@@ -48,11 +49,18 @@ async function setup() {
       appendTo: "root",
       html: "",
       onInit: (el, pswp) => {
-        el.className = "pswp__facts mono";
+        el.className = "pswp__facts";
         el.setAttribute("aria-live", "polite");
+        const story = document.createElement("p");
+        story.className = "pswp__story";
+        const line = document.createElement("p");
+        line.className = "pswp__line";
+        el.append(story, line);
         const update = () => {
-          const d = pswp.currSlide?.data as { caption?: string } | undefined;
-          el.textContent = d?.caption ?? "";
+          const d = pswp.currSlide?.data as { caption?: string; story?: string } | undefined;
+          story.textContent = d?.story ?? "";
+          story.hidden = !d?.story;
+          line.textContent = d?.caption ?? "";
         };
         pswp.on("change", update);
         update();

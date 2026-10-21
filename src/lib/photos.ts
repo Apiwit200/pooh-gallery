@@ -1,5 +1,6 @@
 import curationData from "@/data/curation.json";
 import manifest from "@/data/photos.json";
+import storyData from "@/data/stories.json";
 
 export type Orientation = "landscape" | "portrait" | "square";
 
@@ -33,6 +34,8 @@ export interface Photo {
   similarTo?: string;
   title?: string;
   alt?: string;
+  /** A short story written around the frame; shown in the viewer. */
+  story?: string;
   hidden?: boolean;
   /** Deep sky only: how long the light travelled to reach the camera. */
   lightTravel?: string;
@@ -77,9 +80,14 @@ export const WIDTHS: readonly number[] = manifest.widths;
 const curation = curationData as unknown as { collections: CurationCollection[]; home: HomeCuration };
 const hiddenCollections = new Set(curation.collections.filter((c) => c.hidden).map((c) => c.slug));
 
-export const photos: Photo[] = (manifest.photos as unknown as (Photo & { held?: boolean })[]).filter(
-  (p) => !p.held && !p.hidden && !hiddenCollections.has(p.collection),
-);
+const stories = storyData as Record<string, { alt?: string; story?: string }>;
+export const photos: Photo[] = (manifest.photos as unknown as (Photo & { held?: boolean })[])
+  .filter((p) => !p.held && !p.hidden && !hiddenCollections.has(p.collection))
+  .map((p) => {
+    const s = stories[p.id];
+    const alt = p.alt ?? s?.alt;
+    return { ...p, ...(alt ? { alt } : {}), ...(s?.story ? { story: s.story } : {}) };
+  });
 const byId = new Map(photos.map((p) => [p.id, p]));
 const pick = (ids: string[] = []) => ids.flatMap((id) => byId.get(id) ?? []);
 

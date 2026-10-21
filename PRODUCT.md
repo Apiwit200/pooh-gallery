@@ -30,7 +30,8 @@ Photographs live in three public Google Drive folders. A rerunnable ingestion sc
 
 - Static site only. No paid backend, CMS, or image CDN.
 - Every valid astrophotography JPEG must be reachable on the site.
-- Folders centred on recognizable people (for example "Day 25 U&P people", "Athit", "FD home") are ingested but held off public pages until the photographer approves them in the curation file.
+- In the people folders ("Day 25 U&P people", "Athit", "Day 12", "Day 15", "FD home"), any frame with an obvious visible face (portraits, group photos) stays off public pages; the rest are published. The "U" folder is published whole, at the photographer's request.
+- Every public frame carries a short story written around what is visible in it (`src/data/stories.json`). Stories never name people or invent facts about the photographer's life.
 - GPS metadata is never published.
 - Original files stay separate from public assets and are never committed.
 - Photographs are never altered by generative tools or heavily graded.

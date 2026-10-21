@@ -1,792 +1,1164 @@
 {
- "$comment": "Edit titles, intros, covers and visibility here, then run npm run photos:build. home.inline: two photos set inside the title. home.trail: photos the pointer throws on the opening screen. home.featured: frames the homepage may show. Per-photo overrides go in photos, keyed by photo id: title, alt, hidden. Titles with titleNote were written by the designer and are meant to be edited.",
- "collections": [
-  {
-   "slug": "2025-i",
-   "title": "Garden Café",
-   "folders": [
-    "a/2025 first"
-   ],
-   "intro": "A bus window, a yellow car, then a garden café: blue deck chairs on the lawn, a waterfall, and rooms glowing amber inside.",
-   "cover": "6617f52098",
-   "sequence": [
-    "06bc2a7232",
-    "dd11c16ca3",
-    "bffca05f19",
-    "3119e8b40e",
-    "e7a669b662",
-    "38f5b50054",
-    "20852a07e9"
-   ],
-   "titleNote": "Title chosen by the designer from the frames; the Drive folder name is in folders. Edit freely."
+  "$comment": "Edit titles, intros, covers and visibility here, then run npm run photos:build. home.inline: two photos set inside the title. home.trail: photos the pointer throws on the opening screen. home.featured: frames the homepage may show. Per-photo overrides go in photos, keyed by photo id: title, alt, hidden. Titles with titleNote were written by the designer and are meant to be edited.",
+  "collections": [
+    {
+      "slug": "2025-i",
+      "title": "Garden Café",
+      "folders": [
+        "a/2025 first"
+      ],
+      "intro": "A bus window, a yellow car, then a garden café: blue deck chairs on the lawn, a waterfall, and rooms glowing amber inside.",
+      "cover": "6617f52098",
+      "sequence": [
+        "06bc2a7232",
+        "dd11c16ca3",
+        "bffca05f19",
+        "3119e8b40e",
+        "e7a669b662",
+        "38f5b50054",
+        "20852a07e9"
+      ],
+      "titleNote": "Title chosen by the designer from the frames; the Drive folder name is in folders. Edit freely."
+    },
+    {
+      "slug": "2025-ii",
+      "title": "Ivy Barn",
+      "folders": [
+        "a/2025 second"
+      ],
+      "intro": "A barn swallowed by ivy, baskets of tomatoes and berries, and a café dark enough that the windows do all the lighting.",
+      "cover": "c67d6529c3",
+      "sequence": [
+        "726eeb0239",
+        "161ca91bb1",
+        "fc94612787",
+        "9343dbd5cb",
+        "f5a3d879e5",
+        "e3f8141760"
+      ],
+      "titleNote": "Title chosen by the designer from the frames; the Drive folder name is in folders. Edit freely."
+    },
+    {
+      "slug": "2025-iii",
+      "title": "Mist and Koi",
+      "folders": [
+        "a/2025 third"
+      ],
+      "intro": "A snail crossing the sand, koi under a waterfall, and mist sitting low on the hills.",
+      "cover": "91bd200397",
+      "sequence": [
+        "b177cfda21",
+        "f537c1c573",
+        "6c146e5b8e",
+        "c5ee780fc2",
+        "0417b7c62e"
+      ],
+      "titleNote": "Title chosen by the designer from the frames; the Drive folder name is in folders. Edit freely."
+    },
+    {
+      "slug": "pattaya",
+      "title": "Pattaya",
+      "folders": [
+        "a/2025 fourth [Pattaya]"
+      ],
+      "intro": "Pattaya in April. The aquarium tunnel first, sharks and rays overhead, then the hotel, then the beach as the sun goes down over the mudflats.",
+      "cover": "35872fe992",
+      "sequence": [
+        "7c2a0cb856",
+        "71670aea4a",
+        "24eb40511b",
+        "8ec16ae597",
+        "1401d7b505",
+        "e27cc1f53c",
+        "fbd69f5d97"
+      ]
+    },
+    {
+      "slug": "toscana",
+      "title": "Toscana",
+      "folders": [
+        "a/2025 fifth [Toscana]"
+      ],
+      "intro": "An Italian-style village in Thailand: ochre facades, a leaning tower, glasshouses on still water, and almost nobody in the streets.",
+      "cover": "78c0610901",
+      "sequence": [
+        "40e18db485",
+        "ed519e3849",
+        "b53cb9a899",
+        "522501cab9",
+        "af99edbaa9",
+        "c9b4ea9a0e",
+        "8e32078fb1"
+      ]
+    },
+    {
+      "slug": "the-zoo",
+      "title": "The Zoo",
+      "folders": [
+        "a/2025 fifth [zoo]"
+      ],
+      "intro": "A morning at the zoo, mostly through wire and bars. A white lion mid-yawn, meerkats on watch, a sheep that came to the fence.",
+      "cover": "8632a8eba9",
+      "sequence": [
+        "0457405c0f",
+        "61f037652a",
+        "8e9f66151f",
+        "c872e6c4c0",
+        "6a070dbbd5",
+        "5907475c49",
+        "5c482402c6",
+        "1eeaa7e588"
+      ]
+    },
+    {
+      "slug": "khao-yai",
+      "title": "Khao Yai",
+      "folders": [
+        "a/2025 sixth [Khaoyai]"
+      ],
+      "intro": "Khao Yai National Park. Deer lying in the grass, deer crossing the river, a spider in the leaves, and the ridges going blue toward evening.",
+      "cover": "f022a8230f",
+      "sequence": [
+        "1b763aeba7",
+        "454ba022dc",
+        "fa3aad70ca",
+        "226940f45d",
+        "30ce224e41",
+        "e63023808b",
+        "5bc23753bc",
+        "0448557ccb"
+      ]
+    },
+    {
+      "slug": "sea-2026",
+      "title": "Sea, 2026",
+      "folders": [
+        "a/2026 sea new"
+      ],
+      "intro": "A boat out to the islands: white wake, green hills, two boats at anchor, and water clear enough to see the fish.",
+      "cover": "92187ec039",
+      "sequence": [
+        "fe57045057",
+        "fb510dd699",
+        "0b6a8d7c65",
+        "932604d0b5",
+        "80b694847d",
+        "0c35161893",
+        "9d4376b593"
+      ]
+    },
+    {
+      "slug": "alpaca-cafe",
+      "title": "Alpaca Café",
+      "folders": [
+        "a/Alpaca Cafe"
+      ],
+      "intro": "Sheep on the boardwalk, alpacas at the rail, grass going gold in low sun.",
+      "cover": "a21a1dc564",
+      "sequence": [
+        "0cd051c242",
+        "7cb03b9e84",
+        "9ec92cb422",
+        "cd0db10051",
+        "87e649c7e0",
+        "e3de0f03b8",
+        "4fc051815f",
+        "55130ecef3"
+      ]
+    },
+    {
+      "slug": "movie-on-the-hill",
+      "title": "Movie on the Hill",
+      "folders": [
+        "a/Day 24 Movie on the Hill"
+      ],
+      "intro": "An open-air concert on a hillside. It starts in late sun on the grass and ends in stage light, confetti and smoke.",
+      "cover": "615a916bfb",
+      "sequence": [
+        "010bb9658e",
+        "0fc56e7f95",
+        "90ba8b7731",
+        "34703e9932",
+        "bb4ef91515",
+        "a1a36dbd9f",
+        "3c5c75ad42",
+        "235d06b641",
+        "66e5773d3a"
+      ]
+    },
+    {
+      "slug": "up-people",
+      "title": "U&P, People",
+      "folders": [
+        "a/Day 25 U&P people"
+      ],
+      "intro": ""
+    },
+    {
+      "slug": "up-views",
+      "title": "U&P, Views",
+      "folders": [
+        "a/Day 25 U&P views"
+      ],
+      "intro": "A cat in the café window, a sunflower field, and a long evening walk while the sky turned pink.",
+      "cover": "c850bb19e9",
+      "sequence": [
+        "288041a606",
+        "fce04c22b5",
+        "b914b33f2a",
+        "5b9d561d99",
+        "9ae1eb243f",
+        "64dfae1f32",
+        "62bcd78c6d",
+        "dcf3019908"
+      ]
+    },
+    {
+      "slug": "the-ranch",
+      "title": "The Ranch",
+      "folders": [
+        "a/Day 26 Ranch"
+      ],
+      "intro": "A night at the ranch. Grill smoke, string lights, a dog crossing the yard, one street lamp.",
+      "cover": "ef35c47010",
+      "sequence": [
+        "0c5855acf3",
+        "6cab76671c",
+        "25c525a9da",
+        "68449eaead",
+        "688c18ed22",
+        "7bfe523f64"
+      ]
+    },
+    {
+      "slug": "hua-hin-day-1",
+      "title": "Hua Hin, Day 1",
+      "folders": [
+        "a/Huahin/Day 1"
+      ],
+      "intro": "The first day in Hua Hin: grey sea from the balcony, bougainvillea, a stone elephant facing the water.",
+      "cover": "e740bf218b",
+      "sequence": [
+        "2098c6d88a",
+        "eb95ec0739",
+        "32e3b66392",
+        "5cb18b22fe",
+        "2289d2e8c6",
+        "09bfcc7439"
+      ]
+    },
+    {
+      "slug": "hua-hin-day-2",
+      "title": "Hua Hin, Day 2",
+      "folders": [
+        "a/Huahin/Day 2"
+      ],
+      "intro": "The second day: a fighter jet parked on a lawn, then limestone peaks reflected in green water, with monkeys on the rails.",
+      "cover": "939ff4b6ac",
+      "sequence": [
+        "6814b20df4",
+        "1cafaa2d5d",
+        "5abbdf57b5",
+        "472b1c6422",
+        "7b39a77cd6",
+        "28e0f7d381",
+        "648c70ec84"
+      ]
+    },
+    {
+      "slug": "hua-hin-views",
+      "title": "Hua Hin, Views",
+      "folders": [
+        "a/Huahin/Views"
+      ],
+      "intro": "Hua Hin, chosen frames: sea, sky and stone.",
+      "cover": "6fb96ce7b6",
+      "sequence": [
+        "fee320461f",
+        "8cd286bd82",
+        "f45802b25f",
+        "e194bf56db",
+        "00a4305e12",
+        "a58479b8e4"
+      ],
+      "hidden": true,
+      "heldReason": "Exact copies of frames in the day folders; kept hidden at the photographer's request."
+    },
+    {
+      "slug": "mukha-cafe",
+      "title": "Mukha Café",
+      "folders": [
+        "a/Mukha Cafe"
+      ],
+      "intro": "A café in the trees. Low winter sun across the terrace, a pond holding the sky, woven plates on a warm wall.",
+      "cover": "3666690f1e",
+      "sequence": [
+        "be15cae6e9",
+        "13c95b4eb8",
+        "c4062f54d9",
+        "3557208739",
+        "f41388d042",
+        "8342d62b7d",
+        "4d888ac124"
+      ]
+    },
+    {
+      "slug": "new-year",
+      "title": "New Year",
+      "folders": [
+        "a/New Year"
+      ],
+      "intro": "New Year in a field. Pink dusk, a long exposure that turned a man into a ghost, fireworks over the crops, and a dog standing in the dark.",
+      "cover": "1e2f12a7a6",
+      "sequence": [
+        "5850ea8322",
+        "6f591d126a",
+        "c402e46683",
+        "4bff3d64cb",
+        "ecad25b5c1",
+        "783a7df054",
+        "c24b9268a9"
+      ]
+    },
+    {
+      "slug": "pattayas-views",
+      "title": "Pattaya's Views",
+      "folders": [
+        "a/Pattaya's Views"
+      ],
+      "intro": "More from Pattaya: the aquarium tunnel, clownfish in the coral, and a small fish washed up on the sand.",
+      "cover": "3558770843",
+      "sequence": [
+        "f1221f9c7f",
+        "571455cd23",
+        "e083f9934c",
+        "dfaa63d3d3",
+        "9e42d74732",
+        "bf0930de2e",
+        "acbb3f6f93"
+      ],
+      "hidden": true,
+      "heldReason": "Exact copies of frames in the day folders; kept hidden at the photographer's request."
+    },
+    {
+      "slug": "taiwan",
+      "title": "Taiwan",
+      "folders": [
+        "a/Taiwan"
+      ],
+      "intro": "Taiwan. Painted village walls, a tea house, a mountain lake under low cloud, temple dragons, a rainy street, and a plane on the tarmac at night.",
+      "cover": "c1d302cbe7",
+      "sequence": [
+        "397ee4198b",
+        "cb701cc5ad",
+        "9c15e4b88a",
+        "4b21a5e650",
+        "8c34da2b3b",
+        "546c63acb7",
+        "8854f5a93b",
+        "0c42359262",
+        "efe7e22562",
+        "b101eaabd4"
+      ]
+    },
+    {
+      "slug": "athit",
+      "title": "Athit",
+      "folders": [
+        "b/Athit"
+      ],
+      "intro": ""
+    },
+    {
+      "slug": "day-1",
+      "title": "Behind the Wire",
+      "folders": [
+        "b/Day 1"
+      ],
+      "intro": "A long day out. The drive, then the zoo: tortoises under a heat lamp, a marmoset in a shaft of light, a lion cub in the shade, a crow and its shadow.",
+      "cover": "faa254ec24",
+      "sequence": [
+        "9a1fda15bb",
+        "c7765bb3e1",
+        "640e72d707",
+        "ed411baa7e",
+        "fe763fd387",
+        "c874e667c5",
+        "5041e61b7e",
+        "3d6295eeb6",
+        "fe019f6c65"
+      ],
+      "titleNote": "Title chosen by the designer from the frames; the Drive folder name is in folders. Edit freely."
+    },
+    {
+      "slug": "day-2",
+      "title": "Back Roads",
+      "folders": [
+        "b/Day 2"
+      ],
+      "intro": "Lawns and back roads into dusk: a dog behind a gate, bougainvillea, power lines against a pink sky, and the Moon coming out.",
+      "cover": "a594ec96d4",
+      "sequence": [
+        "9a84a6585c",
+        "86c7f04c60",
+        "ae40bf79a1",
+        "b48d489f6d",
+        "9ae4d4e0aa",
+        "109908c1cf"
+      ],
+      "titleNote": "Title chosen by the designer from the frames; the Drive folder name is in folders. Edit freely."
+    },
+    {
+      "slug": "day-3",
+      "title": "Town Mornings",
+      "folders": [
+        "b/Day 3"
+      ],
+      "intro": "A day around town. A sleeping dog, a lotus, traffic in a mirror, and a dog who looked straight at the lens.",
+      "cover": "9ff6a7ca75",
+      "sequence": [
+        "2fd0c208aa",
+        "46557693d6",
+        "37e9b5fc3f",
+        "3422440c58",
+        "faacf01e3a",
+        "0d21e58cc2",
+        "73b8ad5fb4"
+      ],
+      "titleNote": "Title chosen by the designer from the frames; the Drive folder name is in folders. Edit freely."
+    },
+    {
+      "slug": "day-12",
+      "title": "Day 12",
+      "folders": [
+        "b/Day 12"
+      ],
+      "intro": ""
+    },
+    {
+      "slug": "day-14",
+      "title": "Dry Season",
+      "folders": [
+        "b/Day 14"
+      ],
+      "intro": "Dogs, empty roads, birds on an old water jar, a lone tree against the hills, and one pink cloud.",
+      "cover": "e4ec7516e5",
+      "sequence": [
+        "307b0dc7e3",
+        "dacf451139",
+        "7acd86fafb",
+        "722a81765f",
+        "5faab6aa66",
+        "1ef6be7938",
+        "d8bad020c0",
+        "427dba0400"
+      ],
+      "titleNote": "Title chosen by the designer from the frames; the Drive folder name is in folders. Edit freely."
+    },
+    {
+      "slug": "day-15",
+      "title": "Day 15",
+      "folders": [
+        "b/Day 15"
+      ],
+      "intro": ""
+    },
+    {
+      "slug": "day-24",
+      "title": "Yellow Trees",
+      "folders": [
+        "b/Day 24"
+      ],
+      "intro": "Roads lined with yellow trees, a red ant mound, and the sun going down behind pylons and a single tree.",
+      "cover": "117ba4fe82",
+      "sequence": [
+        "decf8c0ef8",
+        "a25812faf9",
+        "12690aa5bb",
+        "7df7d14fc7",
+        "242720065f",
+        "8fd8decacd",
+        "8dc8aa2b6d"
+      ],
+      "titleNote": "Title chosen by the designer from the frames; the Drive folder name is in folders. Edit freely."
+    },
+    {
+      "slug": "fd-home",
+      "title": "FD Home",
+      "folders": [
+        "b/FD home"
+      ],
+      "intro": ""
+    },
+    {
+      "slug": "nam-khiao",
+      "title": "Nam Khiao",
+      "folders": [
+        "b/NamKhiaoBeta"
+      ],
+      "intro": "A hillside house above farmland: garden statues, wide green views, and grass lit from behind.",
+      "cover": "6904dd1390",
+      "sequence": [
+        "dd4ced9877",
+        "1100161015",
+        "d8d2f6b826",
+        "4c2a92a8ee",
+        "cf749a171d"
+      ]
+    },
+    {
+      "slug": "p00p3oo",
+      "title": "Long Lens",
+      "folders": [
+        "b/P00P3OO"
+      ],
+      "intro": "Long lens, close up: dogs, a cherub, a car's tail light, a blue fan, a cat on a rusty stair, and a thin Moon.",
+      "cover": "3d7827704e",
+      "sequence": [
+        "ebde0dcf8f",
+        "45636d4d02",
+        "9662ab93e0",
+        "5f1138ada0",
+        "c7b556b144",
+        "fa37ddf811",
+        "4554287cf5",
+        "930cd7cb45"
+      ],
+      "titleNote": "Title chosen by the designer from the frames; the Drive folder name is in folders. Edit freely."
+    },
+    {
+      "slug": "sea-views",
+      "title": "Sea Views",
+      "folders": [
+        "b/Sea Views"
+      ],
+      "intro": "A beach resort from noon to night: the sea, the foam, a shell, a neon palm, and then the hotel lights on black water.",
+      "cover": "aa8c488949",
+      "sequence": [
+        "56d3c2153b",
+        "e67809a711",
+        "d6355c3425",
+        "c44a09a92d",
+        "c525dc9d1c",
+        "d2f7a05bb4",
+        "fd0ec3834e",
+        "b8a8eb531e"
+      ]
+    },
+    {
+      "slug": "u",
+      "title": "U",
+      "folders": [
+        "b/U"
+      ],
+      "intro": ""
+    },
+    {
+      "slug": "loose-frames",
+      "title": "Tigers and a Crescent",
+      "folders": [
+        "b"
+      ],
+      "intro": "Frames that never joined a folder: two tigers and a crescent Moon.",
+      "cover": "5d174c2737",
+      "sequence": [
+        "6a22670c60",
+        "5b202008c9"
+      ],
+      "titleNote": "Title chosen by the designer from the frames; the Drive folder name is in folders. Edit freely."
+    },
+    {
+      "slug": "beyond-the-frame",
+      "title": "Beyond the Frame",
+      "folders": [
+        "astro"
+      ],
+      "intro": "Everything past the bottom of the exposure scale: the Moon, the Sun, Jupiter, the Pleiades, Orion and Andromeda.",
+      "cover": "c709572997"
+    }
+  ],
+  "photos": {
+    "0b0bc867b8": {
+      "title": "Almost Full Moon",
+      "lightTravel": "1.3 seconds",
+      "lightSeconds": 1.3
+    },
+    "889467440b": {
+      "title": "Almost Full Moon, from video",
+      "lightTravel": "1.3 seconds",
+      "lightSeconds": 1.3
+    },
+    "fa9b24a1e8": {
+      "title": "Full Worm Moon",
+      "lightTravel": "1.3 seconds",
+      "lightSeconds": 1.3
+    },
+    "4950854687": {
+      "title": "The Moon, HDR",
+      "lightTravel": "1.3 seconds",
+      "lightSeconds": 1.3
+    },
+    "782953a517": {
+      "title": "The Moon at 300mm",
+      "lightTravel": "1.3 seconds",
+      "lightSeconds": 1.3
+    },
+    "aa6985ec85": {
+      "title": "The Sun, inverted",
+      "lightTravel": "8 minutes 20 seconds",
+      "lightSeconds": 500
+    },
+    "384b65ac32": {
+      "title": "Jupiter",
+      "lightTravel": "between 33 and 53 minutes",
+      "lightSeconds": 2580
+    },
+    "92017b9979": {
+      "title": "The Pleiades at 135mm",
+      "lightTravel": "about 440 years",
+      "lightSeconds": 13860000000
+    },
+    "0568ae3063": {
+      "title": "Pleiades, California Nebula and Taurus",
+      "lightTravel": "440 to 1,000 years",
+      "lightSeconds": 22050000000
+    },
+    "005b8f6395": {
+      "title": "The Belt of Orion",
+      "lightTravel": "about 1,300 to 2,000 years",
+      "lightSeconds": 40950000000
+    },
+    "92ebe02629": {
+      "title": "Orion",
+      "lightTravel": "from hundreds of years to about 1,300",
+      "lightSeconds": 42210000000
+    },
+    "a3a0da4b8a": {
+      "title": "Cassiopeia to Andromeda",
+      "lightTravel": "up to 2.5 million years",
+      "lightSeconds": 75600000000000
+    },
+    "c709572997": {
+      "title": "M31, the Andromeda Galaxy",
+      "lightTravel": "about 2.5 million years",
+      "lightSeconds": 78750000000000
+    },
+    "e81d541409": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "ebd89ef11c": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "8e1575b83d": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "8f4d0b8eba": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "86f00f717e": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "66d240cee0": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "b53b2ce326": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "a9d634c991": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "4c2b7067e2": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "fddf25bfb5": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "12c616f620": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "f92619827d": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "b39224762d": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "1ec83e70f9": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "2cba93abc9": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "0867367174": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "aace3c785c": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "c3539c5d5b": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "b5228a18c9": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "adaf0f7f5f": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "740af1ea29": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "42521e1312": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "6187704d2a": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "65b6ef9132": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "bc066f1699": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "670166c3da": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "28314bc794": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "47d449aafe": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "93f5bd4434": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "4d611dff19": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "864bdc3ddd": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "643e7ed01e": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "d046aeb56e": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "9244c592c4": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "40942c419d": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "f94547697b": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "85d5575314": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "160f8bf3ee": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "1f8c7abfab": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "2d1932b675": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "e6b15f4820": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "0d007947be": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "1bc4060d2f": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "95c7ebb081": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "305e7d1cc1": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "094e11c8e9": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "b15fb0697a": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "a65b3a2c87": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "adf44da546": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "2fe739281a": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "333fbb1826": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "9b880a48a8": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "c66d6c688e": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "0cdabbf058": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "9dfddce0fc": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "28780dbd45": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "07238f0342": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "57e11b14c7": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "4f20c66fa9": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "0aeb2d9adb": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "e77b11ffe2": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "0bfd899c81": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "6da01a3c99": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "6c5e7a746e": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "ab0d4e4b20": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "75fbf9c382": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "2011e468d2": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "fb541544e3": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "99fdccdf58": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "c4f1a5d6b2": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "6dd1fe0ee2": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "4ca430892f": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "a4c83758d9": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "b0c2678d5c": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "11e9a4ba1d": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "9332eb1ec1": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "a9e1d3732c": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "f197dc1ca7": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "02650aca75": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "561c6d9bd6": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "dd26b06f90": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "03c840ccb9": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "7f5423e646": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "6c551c64ef": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "da2d081046": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "f278644b08": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "217c382bef": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "82d42e9b25": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "ef2250d8d0": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "cf40bc84f5": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "bfef7e6381": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "8845b5b1ea": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "2bb6a463fb": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "f4529b40e9": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "724d7fb859": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "91646cdfb1": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "326971c78a": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "449d22b2b1": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "2d2ca727c3": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "5fb5a4ece0": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "511bebe122": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    },
+    "3a23b5d80d": {
+      "hidden": true,
+      "heldReason": "Visible face; kept off the public site at the photographer's request."
+    }
   },
-  {
-   "slug": "2025-ii",
-   "title": "Ivy Barn",
-   "folders": [
-    "a/2025 second"
-   ],
-   "intro": "A barn swallowed by ivy, baskets of tomatoes and berries, and a café dark enough that the windows do all the lighting.",
-   "cover": "c67d6529c3",
-   "sequence": [
-    "726eeb0239",
-    "161ca91bb1",
-    "fc94612787",
-    "9343dbd5cb",
-    "f5a3d879e5",
-    "e3f8141760"
-   ],
-   "titleNote": "Title chosen by the designer from the frames; the Drive folder name is in folders. Edit freely."
-  },
-  {
-   "slug": "2025-iii",
-   "title": "Mist and Koi",
-   "folders": [
-    "a/2025 third"
-   ],
-   "intro": "A snail crossing the sand, koi under a waterfall, and mist sitting low on the hills.",
-   "cover": "91bd200397",
-   "sequence": [
-    "b177cfda21",
-    "f537c1c573",
-    "6c146e5b8e",
-    "c5ee780fc2",
-    "0417b7c62e"
-   ],
-   "titleNote": "Title chosen by the designer from the frames; the Drive folder name is in folders. Edit freely."
-  },
-  {
-   "slug": "pattaya",
-   "title": "Pattaya",
-   "folders": [
-    "a/2025 fourth [Pattaya]"
-   ],
-   "intro": "Pattaya in April. The aquarium tunnel first, sharks and rays overhead, then the hotel, then the beach as the sun goes down over the mudflats.",
-   "cover": "35872fe992",
-   "sequence": [
-    "7c2a0cb856",
-    "71670aea4a",
-    "24eb40511b",
-    "8ec16ae597",
-    "1401d7b505",
-    "e27cc1f53c",
-    "fbd69f5d97"
-   ]
-  },
-  {
-   "slug": "toscana",
-   "title": "Toscana",
-   "folders": [
-    "a/2025 fifth [Toscana]"
-   ],
-   "intro": "An Italian-style village in Thailand: ochre facades, a leaning tower, glasshouses on still water, and almost nobody in the streets.",
-   "cover": "78c0610901",
-   "sequence": [
-    "40e18db485",
-    "ed519e3849",
-    "b53cb9a899",
-    "522501cab9",
-    "af99edbaa9",
-    "c9b4ea9a0e",
-    "8e32078fb1"
-   ]
-  },
-  {
-   "slug": "the-zoo",
-   "title": "The Zoo",
-   "folders": [
-    "a/2025 fifth [zoo]"
-   ],
-   "intro": "A morning at the zoo, mostly through wire and bars. A white lion mid-yawn, meerkats on watch, a sheep that came to the fence.",
-   "cover": "8632a8eba9",
-   "sequence": [
-    "0457405c0f",
-    "61f037652a",
-    "8e9f66151f",
-    "c872e6c4c0",
-    "6a070dbbd5",
-    "5907475c49",
-    "5c482402c6",
-    "1eeaa7e588"
-   ]
-  },
-  {
-   "slug": "khao-yai",
-   "title": "Khao Yai",
-   "folders": [
-    "a/2025 sixth [Khaoyai]"
-   ],
-   "intro": "Khao Yai National Park. Deer lying in the grass, deer crossing the river, a spider in the leaves, and the ridges going blue toward evening.",
-   "cover": "f022a8230f",
-   "sequence": [
-    "1b763aeba7",
-    "454ba022dc",
-    "fa3aad70ca",
-    "226940f45d",
-    "30ce224e41",
-    "e63023808b",
-    "5bc23753bc",
-    "0448557ccb"
-   ]
-  },
-  {
-   "slug": "sea-2026",
-   "title": "Sea, 2026",
-   "folders": [
-    "a/2026 sea new"
-   ],
-   "intro": "A boat out to the islands: white wake, green hills, two boats at anchor, and water clear enough to see the fish.",
-   "cover": "92187ec039",
-   "sequence": [
-    "fe57045057",
-    "fb510dd699",
-    "0b6a8d7c65",
-    "932604d0b5",
-    "80b694847d",
-    "0c35161893",
-    "9d4376b593"
-   ]
-  },
-  {
-   "slug": "alpaca-cafe",
-   "title": "Alpaca Café",
-   "folders": [
-    "a/Alpaca Cafe"
-   ],
-   "intro": "Sheep on the boardwalk, alpacas at the rail, grass going gold in low sun.",
-   "cover": "a21a1dc564",
-   "sequence": [
-    "0cd051c242",
-    "7cb03b9e84",
-    "9ec92cb422",
-    "cd0db10051",
-    "87e649c7e0",
-    "e3de0f03b8",
-    "4fc051815f",
-    "55130ecef3"
-   ]
-  },
-  {
-   "slug": "movie-on-the-hill",
-   "title": "Movie on the Hill",
-   "folders": [
-    "a/Day 24 Movie on the Hill"
-   ],
-   "intro": "An open-air concert on a hillside. It starts in late sun on the grass and ends in stage light, confetti and smoke.",
-   "cover": "615a916bfb",
-   "sequence": [
-    "010bb9658e",
-    "0fc56e7f95",
-    "90ba8b7731",
-    "34703e9932",
-    "bb4ef91515",
-    "a1a36dbd9f",
-    "3c5c75ad42",
-    "235d06b641",
-    "66e5773d3a"
-   ]
-  },
-  {
-   "slug": "up-people",
-   "title": "U&P, People",
-   "folders": [
-    "a/Day 25 U&P people"
-   ],
-   "intro": "",
-   "hidden": true,
-   "heldReason": "People are the main subject. Set hidden to false once everyone shown has agreed to publication."
-  },
-  {
-   "slug": "up-views",
-   "title": "U&P, Views",
-   "folders": [
-    "a/Day 25 U&P views"
-   ],
-   "intro": "A cat in the café window, a sunflower field, and a long evening walk while the sky turned pink.",
-   "cover": "c850bb19e9",
-   "sequence": [
-    "288041a606",
-    "fce04c22b5",
-    "b914b33f2a",
-    "5b9d561d99",
-    "9ae1eb243f",
-    "64dfae1f32",
-    "62bcd78c6d",
-    "dcf3019908"
-   ]
-  },
-  {
-   "slug": "the-ranch",
-   "title": "The Ranch",
-   "folders": [
-    "a/Day 26 Ranch"
-   ],
-   "intro": "A night at the ranch. Grill smoke, string lights, a dog crossing the yard, one street lamp.",
-   "cover": "ef35c47010",
-   "sequence": [
-    "0c5855acf3",
-    "6cab76671c",
-    "25c525a9da",
-    "68449eaead",
-    "688c18ed22",
-    "7bfe523f64"
-   ]
-  },
-  {
-   "slug": "hua-hin-day-1",
-   "title": "Hua Hin, Day 1",
-   "folders": [
-    "a/Huahin/Day 1"
-   ],
-   "intro": "The first day in Hua Hin: grey sea from the balcony, bougainvillea, a stone elephant facing the water.",
-   "cover": "e740bf218b",
-   "sequence": [
-    "2098c6d88a",
-    "eb95ec0739",
-    "32e3b66392",
-    "5cb18b22fe",
-    "2289d2e8c6",
-    "09bfcc7439"
-   ]
-  },
-  {
-   "slug": "hua-hin-day-2",
-   "title": "Hua Hin, Day 2",
-   "folders": [
-    "a/Huahin/Day 2"
-   ],
-   "intro": "The second day: a fighter jet parked on a lawn, then limestone peaks reflected in green water, with monkeys on the rails.",
-   "cover": "939ff4b6ac",
-   "sequence": [
-    "6814b20df4",
-    "1cafaa2d5d",
-    "5abbdf57b5",
-    "472b1c6422",
-    "7b39a77cd6",
-    "28e0f7d381",
-    "648c70ec84"
-   ]
-  },
-  {
-   "slug": "hua-hin-views",
-   "title": "Hua Hin, Views",
-   "folders": [
-    "a/Huahin/Views"
-   ],
-   "intro": "Hua Hin, chosen frames: sea, sky and stone.",
-   "cover": "6fb96ce7b6",
-   "sequence": [
-    "fee320461f",
-    "8cd286bd82",
-    "f45802b25f",
-    "e194bf56db",
-    "00a4305e12",
-    "a58479b8e4"
-   ]
-  },
-  {
-   "slug": "mukha-cafe",
-   "title": "Mukha Café",
-   "folders": [
-    "a/Mukha Cafe"
-   ],
-   "intro": "A café in the trees. Low winter sun across the terrace, a pond holding the sky, woven plates on a warm wall.",
-   "cover": "3666690f1e",
-   "sequence": [
-    "be15cae6e9",
-    "13c95b4eb8",
-    "c4062f54d9",
-    "3557208739",
-    "f41388d042",
-    "8342d62b7d",
-    "4d888ac124"
-   ]
-  },
-  {
-   "slug": "new-year",
-   "title": "New Year",
-   "folders": [
-    "a/New Year"
-   ],
-   "intro": "New Year in a field. Pink dusk, a long exposure that turned a man into a ghost, fireworks over the crops, and a dog standing in the dark.",
-   "cover": "1e2f12a7a6",
-   "sequence": [
-    "5850ea8322",
-    "6f591d126a",
-    "c402e46683",
-    "4bff3d64cb",
-    "ecad25b5c1",
-    "783a7df054",
-    "c24b9268a9"
-   ]
-  },
-  {
-   "slug": "pattayas-views",
-   "title": "Pattaya's Views",
-   "folders": [
-    "a/Pattaya's Views"
-   ],
-   "intro": "More from Pattaya: the aquarium tunnel, clownfish in the coral, and a small fish washed up on the sand.",
-   "cover": "3558770843",
-   "sequence": [
-    "f1221f9c7f",
-    "571455cd23",
-    "e083f9934c",
-    "dfaa63d3d3",
-    "9e42d74732",
-    "bf0930de2e",
-    "acbb3f6f93"
-   ]
-  },
-  {
-   "slug": "taiwan",
-   "title": "Taiwan",
-   "folders": [
-    "a/Taiwan"
-   ],
-   "intro": "Taiwan. Painted village walls, a tea house, a mountain lake under low cloud, temple dragons, a rainy street, and a plane on the tarmac at night.",
-   "cover": "c1d302cbe7",
-   "sequence": [
-    "397ee4198b",
-    "cb701cc5ad",
-    "9c15e4b88a",
-    "4b21a5e650",
-    "8c34da2b3b",
-    "546c63acb7",
-    "8854f5a93b",
-    "0c42359262",
-    "efe7e22562",
-    "b101eaabd4"
-   ]
-  },
-  {
-   "slug": "athit",
-   "title": "Athit",
-   "folders": [
-    "b/Athit"
-   ],
-   "intro": "",
-   "hidden": true,
-   "heldReason": "People are the main subject. Set hidden to false once everyone shown has agreed to publication."
-  },
-  {
-   "slug": "day-1",
-   "title": "Behind the Wire",
-   "folders": [
-    "b/Day 1"
-   ],
-   "intro": "A long day out. The drive, then the zoo: tortoises under a heat lamp, a marmoset in a shaft of light, a lion cub in the shade, a crow and its shadow.",
-   "cover": "faa254ec24",
-   "sequence": [
-    "9a1fda15bb",
-    "c7765bb3e1",
-    "640e72d707",
-    "ed411baa7e",
-    "fe763fd387",
-    "c874e667c5",
-    "5041e61b7e",
-    "3d6295eeb6",
-    "fe019f6c65"
-   ],
-   "titleNote": "Title chosen by the designer from the frames; the Drive folder name is in folders. Edit freely."
-  },
-  {
-   "slug": "day-2",
-   "title": "Back Roads",
-   "folders": [
-    "b/Day 2"
-   ],
-   "intro": "Lawns and back roads into dusk: a dog behind a gate, bougainvillea, power lines against a pink sky, and the Moon coming out.",
-   "cover": "a594ec96d4",
-   "sequence": [
-    "9a84a6585c",
-    "86c7f04c60",
-    "ae40bf79a1",
-    "b48d489f6d",
-    "9ae4d4e0aa",
-    "109908c1cf"
-   ],
-   "titleNote": "Title chosen by the designer from the frames; the Drive folder name is in folders. Edit freely."
-  },
-  {
-   "slug": "day-3",
-   "title": "Town Mornings",
-   "folders": [
-    "b/Day 3"
-   ],
-   "intro": "A day around town. A sleeping dog, a lotus, traffic in a mirror, and a dog who looked straight at the lens.",
-   "cover": "9ff6a7ca75",
-   "sequence": [
-    "2fd0c208aa",
-    "46557693d6",
-    "37e9b5fc3f",
-    "3422440c58",
-    "faacf01e3a",
-    "0d21e58cc2",
-    "73b8ad5fb4"
-   ],
-   "titleNote": "Title chosen by the designer from the frames; the Drive folder name is in folders. Edit freely."
-  },
-  {
-   "slug": "day-12",
-   "title": "Day 12",
-   "folders": [
-    "b/Day 12"
-   ],
-   "intro": "",
-   "hidden": true,
-   "heldReason": "People are the main subject. Set hidden to false once everyone shown has agreed to publication."
-  },
-  {
-   "slug": "day-14",
-   "title": "Dry Season",
-   "folders": [
-    "b/Day 14"
-   ],
-   "intro": "Dogs, empty roads, birds on an old water jar, a lone tree against the hills, and one pink cloud.",
-   "cover": "e4ec7516e5",
-   "sequence": [
-    "307b0dc7e3",
-    "dacf451139",
-    "7acd86fafb",
-    "722a81765f",
-    "5faab6aa66",
-    "1ef6be7938",
-    "d8bad020c0",
-    "427dba0400"
-   ],
-   "titleNote": "Title chosen by the designer from the frames; the Drive folder name is in folders. Edit freely."
-  },
-  {
-   "slug": "day-15",
-   "title": "Day 15",
-   "folders": [
-    "b/Day 15"
-   ],
-   "intro": "",
-   "hidden": true,
-   "heldReason": "People are the main subject. Set hidden to false once everyone shown has agreed to publication."
-  },
-  {
-   "slug": "day-24",
-   "title": "Yellow Trees",
-   "folders": [
-    "b/Day 24"
-   ],
-   "intro": "Roads lined with yellow trees, a red ant mound, and the sun going down behind pylons and a single tree.",
-   "cover": "117ba4fe82",
-   "sequence": [
-    "decf8c0ef8",
-    "a25812faf9",
-    "12690aa5bb",
-    "7df7d14fc7",
-    "242720065f",
-    "8fd8decacd",
-    "8dc8aa2b6d"
-   ],
-   "titleNote": "Title chosen by the designer from the frames; the Drive folder name is in folders. Edit freely."
-  },
-  {
-   "slug": "fd-home",
-   "title": "FD Home",
-   "folders": [
-    "b/FD home"
-   ],
-   "intro": "",
-   "hidden": true,
-   "heldReason": "People are the main subject. Set hidden to false once everyone shown has agreed to publication."
-  },
-  {
-   "slug": "nam-khiao",
-   "title": "Nam Khiao",
-   "folders": [
-    "b/NamKhiaoBeta"
-   ],
-   "intro": "A hillside house above farmland: garden statues, wide green views, and grass lit from behind.",
-   "cover": "6904dd1390",
-   "sequence": [
-    "dd4ced9877",
-    "1100161015",
-    "d8d2f6b826",
-    "4c2a92a8ee",
-    "cf749a171d"
-   ]
-  },
-  {
-   "slug": "p00p3oo",
-   "title": "Long Lens",
-   "folders": [
-    "b/P00P3OO"
-   ],
-   "intro": "Long lens, close up: dogs, a cherub, a car's tail light, a blue fan, a cat on a rusty stair, and a thin Moon.",
-   "cover": "3d7827704e",
-   "sequence": [
-    "ebde0dcf8f",
-    "45636d4d02",
-    "9662ab93e0",
-    "5f1138ada0",
-    "c7b556b144",
-    "fa37ddf811",
-    "4554287cf5",
-    "930cd7cb45"
-   ],
-   "titleNote": "Title chosen by the designer from the frames; the Drive folder name is in folders. Edit freely."
-  },
-  {
-   "slug": "sea-views",
-   "title": "Sea Views",
-   "folders": [
-    "b/Sea Views"
-   ],
-   "intro": "A beach resort from noon to night: the sea, the foam, a shell, a neon palm, and then the hotel lights on black water.",
-   "cover": "aa8c488949",
-   "sequence": [
-    "56d3c2153b",
-    "e67809a711",
-    "d6355c3425",
-    "c44a09a92d",
-    "c525dc9d1c",
-    "d2f7a05bb4",
-    "fd0ec3834e",
-    "b8a8eb531e"
-   ]
-  },
-  {
-   "slug": "u",
-   "title": "U",
-   "folders": [
-    "b/U"
-   ],
-   "intro": "",
-   "hidden": true,
-   "heldReason": "People are the main subject. Set hidden to false once everyone shown has agreed to publication."
-  },
-  {
-   "slug": "loose-frames",
-   "title": "Tigers and a Crescent",
-   "folders": [
-    "b"
-   ],
-   "intro": "Frames that never joined a folder: two tigers and a crescent Moon.",
-   "cover": "5d174c2737",
-   "sequence": [
-    "6a22670c60",
-    "5b202008c9"
-   ],
-   "titleNote": "Title chosen by the designer from the frames; the Drive folder name is in folders. Edit freely."
-  },
-  {
-   "slug": "beyond-the-frame",
-   "title": "Beyond the Frame",
-   "folders": [
-    "astro"
-   ],
-   "intro": "Everything past the bottom of the exposure scale: the Moon, the Sun, Jupiter, the Pleiades, Orion and Andromeda.",
-   "cover": "c709572997"
+  "home": {
+    "inline": [
+      "f022a8230f",
+      "c709572997"
+    ],
+    "trail": [
+      "6617f52098",
+      "20852a07e9",
+      "c67d6529c3",
+      "6c146e5b8e",
+      "35872fe992",
+      "7c2a0cb856",
+      "6bd8d122c5",
+      "b53cb9a899",
+      "78c0610901",
+      "8632a8eba9",
+      "f022a8230f",
+      "e63023808b",
+      "92187ec039",
+      "932604d0b5",
+      "a21a1dc564",
+      "615a916bfb",
+      "34703e9932",
+      "3c5c75ad42",
+      "c850bb19e9",
+      "87830cdd0d",
+      "ef35c47010",
+      "32e3b66392",
+      "472b1c6422",
+      "be15cae6e9",
+      "1e2f12a7a6",
+      "c24b9268a9",
+      "c1d302cbe7",
+      "9c15e4b88a",
+      "8854f5a93b",
+      "b101eaabd4",
+      "faa254ec24",
+      "ed411baa7e",
+      "a594ec96d4",
+      "9ff6a7ca75",
+      "e4ec7516e5",
+      "722a81765f",
+      "117ba4fe82",
+      "6904dd1390",
+      "ebde0dcf8f",
+      "930cd7cb45",
+      "aa8c488949",
+      "c525dc9d1c",
+      "fd0ec3834e",
+      "5d174c2737",
+      "c709572997",
+      "a3a0da4b8a",
+      "0568ae3063",
+      "fa9b24a1e8",
+      "92ebe02629"
+    ],
+    "featured": [
+      "6617f52098",
+      "20852a07e9",
+      "c67d6529c3",
+      "6c146e5b8e",
+      "35872fe992",
+      "7c2a0cb856",
+      "6bd8d122c5",
+      "b53cb9a899",
+      "78c0610901",
+      "8632a8eba9",
+      "f022a8230f",
+      "e63023808b",
+      "92187ec039",
+      "932604d0b5",
+      "a21a1dc564",
+      "615a916bfb",
+      "34703e9932",
+      "3c5c75ad42",
+      "c850bb19e9",
+      "87830cdd0d",
+      "ef35c47010",
+      "32e3b66392",
+      "472b1c6422",
+      "be15cae6e9",
+      "1e2f12a7a6",
+      "c24b9268a9",
+      "c1d302cbe7",
+      "9c15e4b88a",
+      "8854f5a93b",
+      "b101eaabd4",
+      "faa254ec24",
+      "ed411baa7e",
+      "a594ec96d4",
+      "9ff6a7ca75",
+      "e4ec7516e5",
+      "722a81765f",
+      "117ba4fe82",
+      "6904dd1390",
+      "ebde0dcf8f",
+      "930cd7cb45",
+      "aa8c488949",
+      "c525dc9d1c",
+      "fd0ec3834e",
+      "5d174c2737",
+      "c709572997",
+      "a3a0da4b8a",
+      "0568ae3063",
+      "fa9b24a1e8",
+      "92ebe02629"
+    ],
+    "finale": "aa6985ec85"
   }
- ],
- "photos": {
-  "0b0bc867b8": {
-   "title": "Almost Full Moon",
-   "lightTravel": "1.3 seconds",
-   "lightSeconds": 1.3
-  },
-  "889467440b": {
-   "title": "Almost Full Moon, from video",
-   "lightTravel": "1.3 seconds",
-   "lightSeconds": 1.3
-  },
-  "fa9b24a1e8": {
-   "title": "Full Worm Moon",
-   "lightTravel": "1.3 seconds",
-   "lightSeconds": 1.3
-  },
-  "4950854687": {
-   "title": "The Moon, HDR",
-   "lightTravel": "1.3 seconds",
-   "lightSeconds": 1.3
-  },
-  "782953a517": {
-   "title": "The Moon at 300mm",
-   "lightTravel": "1.3 seconds",
-   "lightSeconds": 1.3
-  },
-  "aa6985ec85": {
-   "title": "The Sun, inverted",
-   "lightTravel": "8 minutes 20 seconds",
-   "lightSeconds": 500
-  },
-  "384b65ac32": {
-   "title": "Jupiter",
-   "lightTravel": "between 33 and 53 minutes",
-   "lightSeconds": 2580
-  },
-  "92017b9979": {
-   "title": "The Pleiades at 135mm",
-   "lightTravel": "about 440 years",
-   "lightSeconds": 13860000000.0
-  },
-  "0568ae3063": {
-   "title": "Pleiades, California Nebula and Taurus",
-   "lightTravel": "440 to 1,000 years",
-   "lightSeconds": 22050000000.0
-  },
-  "005b8f6395": {
-   "title": "The Belt of Orion",
-   "lightTravel": "about 1,300 to 2,000 years",
-   "lightSeconds": 40950000000.0
-  },
-  "92ebe02629": {
-   "title": "Orion",
-   "lightTravel": "from hundreds of years to about 1,300",
-   "lightSeconds": 42210000000.0
-  },
-  "a3a0da4b8a": {
-   "title": "Cassiopeia to Andromeda",
-   "lightTravel": "up to 2.5 million years",
-   "lightSeconds": 75600000000000.0
-  },
-  "c709572997": {
-   "title": "M31, the Andromeda Galaxy",
-   "lightTravel": "about 2.5 million years",
-   "lightSeconds": 78750000000000.0
-  },
-  "e81d541409": {
-   "hidden": true,
-   "heldReason": "Recognizable people posing; publish once they agree."
-  },
-  "ebd89ef11c": {
-   "hidden": true,
-   "heldReason": "Recognizable people posing; publish once they agree."
-  },
-  "8e1575b83d": {
-   "hidden": true,
-   "heldReason": "Recognizable people posing; publish once they agree."
-  },
-  "8f4d0b8eba": {
-   "hidden": true,
-   "heldReason": "Recognizable people posing; publish once they agree."
-  },
-  "86f00f717e": {
-   "hidden": true,
-   "heldReason": "Recognizable people posing; publish once they agree."
-  },
-  "66d240cee0": {
-   "hidden": true,
-   "heldReason": "Recognizable people posing; publish once they agree."
-  },
-  "b53b2ce326": {
-   "hidden": true,
-   "heldReason": "Recognizable people posing; publish once they agree."
-  }
- },
- "home": {
-  "inline": [
-   "f022a8230f",
-   "c709572997"
-  ],
-  "trail": [
-   "6617f52098",
-   "20852a07e9",
-   "c67d6529c3",
-   "6c146e5b8e",
-   "35872fe992",
-   "7c2a0cb856",
-   "6bd8d122c5",
-   "b53cb9a899",
-   "78c0610901",
-   "8632a8eba9",
-   "f022a8230f",
-   "e63023808b",
-   "92187ec039",
-   "932604d0b5",
-   "a21a1dc564",
-   "615a916bfb",
-   "34703e9932",
-   "3c5c75ad42",
-   "c850bb19e9",
-   "87830cdd0d",
-   "ef35c47010",
-   "32e3b66392",
-   "472b1c6422",
-   "be15cae6e9",
-   "1e2f12a7a6",
-   "c24b9268a9",
-   "c1d302cbe7",
-   "9c15e4b88a",
-   "8854f5a93b",
-   "b101eaabd4",
-   "faa254ec24",
-   "ed411baa7e",
-   "a594ec96d4",
-   "9ff6a7ca75",
-   "e4ec7516e5",
-   "722a81765f",
-   "117ba4fe82",
-   "6904dd1390",
-   "ebde0dcf8f",
-   "930cd7cb45",
-   "aa8c488949",
-   "c525dc9d1c",
-   "fd0ec3834e",
-   "5d174c2737",
-   "c709572997",
-   "a3a0da4b8a",
-   "0568ae3063",
-   "fa9b24a1e8",
-   "92ebe02629"
-  ],
-  "featured": [
-   "6617f52098",
-   "20852a07e9",
-   "c67d6529c3",
-   "6c146e5b8e",
-   "35872fe992",
-   "7c2a0cb856",
-   "6bd8d122c5",
-   "b53cb9a899",
-   "78c0610901",
-   "8632a8eba9",
-   "f022a8230f",
-   "e63023808b",
-   "92187ec039",
-   "932604d0b5",
-   "a21a1dc564",
-   "615a916bfb",
-   "34703e9932",
-   "3c5c75ad42",
-   "c850bb19e9",
-   "87830cdd0d",
-   "ef35c47010",
-   "32e3b66392",
-   "472b1c6422",
-   "be15cae6e9",
-   "1e2f12a7a6",
-   "c24b9268a9",
-   "c1d302cbe7",
-   "9c15e4b88a",
-   "8854f5a93b",
-   "b101eaabd4",
-   "faa254ec24",
-   "ed411baa7e",
-   "a594ec96d4",
-   "9ff6a7ca75",
-   "e4ec7516e5",
-   "722a81765f",
-   "117ba4fe82",
-   "6904dd1390",
-   "ebde0dcf8f",
-   "930cd7cb45",
-   "aa8c488949",
-   "c525dc9d1c",
-   "fd0ec3834e",
-   "5d174c2737",
-   "c709572997",
-   "a3a0da4b8a",
-   "0568ae3063",
-   "fa9b24a1e8",
-   "92ebe02629"
-  ],
-  "finale": "aa6985ec85"
- }
 }

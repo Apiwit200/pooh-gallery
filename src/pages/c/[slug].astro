@@ -53,11 +53,26 @@ const intro = c.intro || `${c.photos.length} photographs${when ? `, ${when}` : "
               class:list={["block", `block--${b.kind}`, b.kind === "offset" && `block--${b.side}`]}
               style={`--tilt:${((n * 37) % 7) - 3}deg;${b.kind === "strip" ? `--cols:${stripCols(b.photos.length)}` : ""}`}
             >
-              {b.kind === "full" && <Photo photo={b.photo} crt sizes="(min-width: 64rem) 80vw, 100vw" />}
-              {b.kind === "offset" && <Photo photo={b.photo} crt sizes="(min-width: 64rem) 55vw, 100vw" />}
+              {b.kind === "full" && (
+                <figure class="print">
+                  <Photo photo={b.photo} crt sizes="(min-width: 64rem) 80vw, 100vw" />
+                  {b.photo.story && <figcaption class="tale">{b.photo.story}</figcaption>}
+                </figure>
+              )}
+              {b.kind === "offset" && (
+                <figure class="print">
+                  <Photo photo={b.photo} crt sizes="(min-width: 64rem) 55vw, 100vw" />
+                  {b.photo.story && <figcaption class="tale">{b.photo.story}</figcaption>}
+                </figure>
+              )}
               {b.kind === "pair" && b.photos.map((p) => <Photo photo={p} sizes="(min-width: 48rem) 40vw, 100vw" />)}
               {b.kind === "strip" && b.photos.map((p) => <Photo photo={p} sizes="(min-width: 48rem) 30vw, 100vw" />)}
-              {b.kind === "quiet" && <Photo photo={b.photo} sizes="(min-width: 48rem) 26vw, 60vw" />}
+              {b.kind === "quiet" && (
+                <figure class="print">
+                  <Photo photo={b.photo} sizes="(min-width: 48rem) 26vw, 60vw" />
+                  {b.photo.story && <figcaption class="tale">{b.photo.story}</figcaption>}
+                </figure>
+              )}
             </div>
           ))}
         </section>
@@ -158,12 +173,31 @@ const intro = c.intro || `${c.photos.length} photographs${when ? `, ${when}` : "
   .block :global(.frame:hover) {
     rotate: 0deg;
   }
-  .block--full :global(.frame) {
+  .print {
+    margin: 0;
+    display: grid;
+    gap: clamp(1.5rem, 3vw, 2.25rem);
+  }
+  .tale {
+    max-width: 34rem;
+    font-size: 1.0625rem;
+    line-height: 1.55;
+    color: var(--fg-dim);
+    text-wrap: pretty;
+  }
+  .block--full .print {
     width: min(100%, 72rem);
     margin-inline: auto;
   }
-  .block--offset :global(.frame) {
+  .block--full .tale {
+    justify-self: center;
+    text-align: center;
+  }
+  .block--offset .print {
     width: min(100%, 52rem);
+  }
+  .block--right .tale {
+    justify-self: end;
   }
   .block--right {
     display: flex;
@@ -193,8 +227,11 @@ const intro = c.intro || `${c.photos.length} photographs${when ? `, ${when}` : "
     justify-content: flex-end;
     padding-right: clamp(var(--gutter), 12vw, 12rem);
   }
-  .block--quiet :global(.frame) {
-    width: clamp(11rem, 24vw, 22rem);
+  .block--quiet .print {
+    width: clamp(15rem, 28vw, 24rem);
+  }
+  .block--quiet .tale {
+    font-size: 0.9375rem;
   }
   @media (max-width: 47.99rem) {
     .block--strip {
