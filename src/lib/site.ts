@@ -7,7 +7,7 @@ export const site = {
   // Fill these in to show them on the About and Contact pages. Leave empty to hide.
   // A short statement in the photographer's own words, one paragraph per entry.
   statement: [] as string[],
-  email: "",
+  email: "apiwit2003@gmail.com",
   links: [] as { label: string; href: string }[],
 };
 

@@ -1,5 +1,5 @@
 {
- "builtAt": "2026-10-14T02:47:11.544Z",
+ "builtAt": "2026-10-14T03:15:05.331Z",
  "inventory": 2417,
  "analysed": 2417,
  "missingLocally": 0,
@@ -841,7 +841,7 @@
  "manifest": 2251,
  "public": 1969,
  "held": 282,
- "withEv": 1528,
+ "withEv": 1413,
  "publicAssetMB": 654.7,
  "failedDownloads": [],
  "skippedNonJpeg": 82

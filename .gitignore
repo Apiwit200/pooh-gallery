@@ -16,3 +16,6 @@ photos/.cache/
 videos/*/node_modules/
 videos/*/renders/*.tmp
 videos/*/snapshots/
+
+# Review captures from design passes (large, local evidence only)
+.impeccable/review/
