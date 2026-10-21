@@ -1,93 +1,119 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=1920, height=1080">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
     <style>
-      @font-face { font-family: "Mona Sans"; src: url("assets/mona.woff2") format("woff2"); font-weight: 200 900; font-stretch: 75% 125%; }
-      @font-face { font-family: "Geist Mono"; src: url("assets/geist-mono.woff2") format("woff2"); font-weight: 100 900; }
+      @font-face { font-family: "Jacquard 24"; src: url("assets/jacquard.woff2") format("woff2"); }
+      @font-face { font-family: "Geist Pixel"; src: url("assets/geist-pixel.woff2") format("woff2"); }
       * { margin: 0; padding: 0; box-sizing: border-box; }
-      html, body { margin: 0; overflow: hidden; background: #04060a; }
-      #root { width: 100%; height: 100%; position: relative; overflow: hidden; background: #04060a; color: #ebe7dd; }
-      .plate { position: absolute; inset: 0; overflow: hidden; }
-      #scrim { position: absolute; inset: 0; background: linear-gradient(to top, rgb(4 6 10 / 0.55), rgb(4 6 10 / 0) 34%), linear-gradient(to left, rgb(4 6 10 / 0.35), rgb(4 6 10 / 0) 18%); }
-      .plate img { display: block; width: 100%; height: 100%; object-fit: cover; }
-      .plate--last { background: #04060a; }
-      .plate--last img { object-fit: contain; }
-      #meter { position: absolute; top: 96px; bottom: 170px; right: 96px; width: 40px; border-left: 2px solid rgb(235 231 221 / 0.28); }
-      #meter .tick { position: absolute; left: 0; width: 12px; height: 2px; background: rgb(235 231 221 / 0.28); }
-      #marker { position: absolute; left: -6px; top: 0; width: 46px; height: 3px; background: #ebe7dd; }
-      #reading { position: absolute; right: 96px; bottom: 96px; width: 520px; height: 34px; text-align: right; font: 400 30px/1 "Geist Mono", monospace; letter-spacing: 0.04em; }
-      #reading .r { position: absolute; right: 0; top: 0; display: block; white-space: nowrap; opacity: 0; }
-      #title { position: absolute; left: 92px; bottom: 150px; font: 560 236px/0.86 "Mona Sans", sans-serif; font-stretch: 75%; letter-spacing: -0.035em; }
-      #credit { position: absolute; left: 100px; bottom: 96px; font: 400 34px/1 "Mona Sans", sans-serif; font-stretch: 90%; }
+      html, body { margin: 0; overflow: hidden; background: #350aff; }
+      #root { width: 100%; height: 100%; position: relative; overflow: hidden; background: #350aff; color: #f4f4ff; font-family: "Geist Pixel", monospace; }
+      .layer { position: absolute; inset: 0; overflow: hidden; }
+      .pixel { font-family: "Geist Pixel", monospace; text-transform: uppercase; letter-spacing: 0.02em; }
+
+      #card { display: grid; grid-template-rows: 68% 10% 22%; background: #120d2b; }
+      #card .row { display: grid; grid-template-columns: repeat(7, 1fr); }
+      #card .row--low { grid-template-columns: 2fr 1fr 2fr 1fr 1fr; }
+      #card .plate { position: absolute; left: 50%; top: 50%; translate: -50% -50%; padding: 34px 54px; background: #120d2b; box-shadow: 0 0 0 8px #bcf015; text-align: center; }
+      #card .plate b { display: block; font-weight: 400; font-size: 76px; line-height: 1; color: #bcf015; }
+      #card .plate span { display: block; margin-top: 18px; font-size: 30px; color: #f4f4ff; }
+
+      .ch img { display: block; width: 100%; height: 100%; object-fit: cover; }
+      .ch--sky { background: #03000f; }
+      .ch--sky img { object-fit: contain; }
+      .chip { position: absolute; left: 72px; top: 64px; padding: 14px 18px 12px; background: #bcf015; color: #120d2b; font-size: 44px; line-height: 1; }
+      .name { position: absolute; left: 72px; bottom: 72px; padding: 12px 16px 10px; background: #350aff; color: #f4f4ff; font-size: 34px; line-height: 1; }
+
+      #end { background: #350aff; display: grid; place-content: center; justify-items: center; gap: 34px; }
+      #title { font-family: "Jacquard 24", serif; font-weight: 400; font-size: 330px; line-height: 0.82; color: #f4f4ff; }
+      #credit { font-size: 44px; color: #bcf015; }
+      #mark { width: 112px; height: 112px; display: grid; grid-template-columns: repeat(7, 1fr); }
+      #mark i { background: #bcf015; }
+      #mark i.o { background: transparent; }
+      #end .chip { background: #bcf015; }
+
+      #static { background-size: cover; image-rendering: pixelated; opacity: 0; }
+      #scan { background: repeating-linear-gradient(to bottom, rgb(0 0 20 / 0.22) 0 2px, transparent 2px 6px); pointer-events: none; }
+      #vignette { background: radial-gradient(ellipse 130% 95% at 50% 50%, transparent 62%, rgb(0 0 20 / 0.45) 100%); box-shadow: inset 0 0 140px 30px rgb(0 0 20 / 0.32); }
     </style>
   </head>
   <body>
-    <div data-hf-id="hf-199x" id="root" data-composition-id="main" data-start="0" data-duration="10" data-width="1920" data-height="1080">
-      <div data-hf-id="hf-goka" id="plate-0" data-layout-allow-overflow="" class="plate"><img data-hf-id="hf-3pwc" id="img-0" src="assets/f0.avif" alt="" style="object-position:0% 50%"></div>
-      <div data-hf-id="hf-kmob" id="plate-1" data-layout-allow-overflow="" class="plate"><img data-hf-id="hf-sp8q" id="img-1" src="assets/f1.avif" alt="" style="object-position:37% 34%"></div>
-      <div data-hf-id="hf-9r6o" id="plate-2" data-layout-allow-overflow="" class="plate"><img data-hf-id="hf-vomk" id="img-2" src="assets/f2.avif" alt="" style="object-position:41% 44%"></div>
-      <div data-hf-id="hf-aiuh" id="plate-3" data-layout-allow-overflow="" class="plate"><img data-hf-id="hf-or9j" id="img-3" src="assets/f3.avif" alt="" style="object-position:31% 0%"></div>
-      <div data-hf-id="hf-1uym" id="plate-4" data-layout-allow-overflow="" class="plate"><img data-hf-id="hf-n134" id="img-4" src="assets/f4.avif" alt="" style="object-position:72% 0%"></div>
-      <div data-hf-id="hf-5t2n" id="plate-5" data-layout-allow-overflow="" class="plate"><img data-hf-id="hf-0zgu" id="img-5" src="assets/f5.avif" alt="" style="object-position:53% 50%"></div>
-      <div data-hf-id="hf-jrkq" id="plate-6" data-layout-allow-overflow="" class="plate plate--last"><img data-hf-id="hf-yu0j" id="img-6" src="assets/f6.avif" alt="" style="object-position:50% 47%"></div>
-      <div data-hf-id="hf-wmg9" id="scrim"></div>
-      <div data-hf-id="hf-x2n0" id="meter">
-        <span data-hf-id="hf-80b2" class="tick" style="top:0.00%"></span>
-        <span data-hf-id="hf-0p7r" class="tick" style="top:5.00%"></span>
-        <span data-hf-id="hf-dxa3" class="tick" style="top:10.00%"></span>
-        <span data-hf-id="hf-syne" class="tick" style="top:15.00%"></span>
-        <span data-hf-id="hf-cdgm" class="tick" style="top:20.00%"></span>
-        <span data-hf-id="hf-gjxb" class="tick" style="top:25.00%"></span>
-        <span data-hf-id="hf-1j1h" class="tick" style="top:30.00%"></span>
-        <span data-hf-id="hf-fh1w" class="tick" style="top:35.00%"></span>
-        <span data-hf-id="hf-3ivc" class="tick" style="top:40.00%"></span>
-        <span data-hf-id="hf-rjwx" class="tick" style="top:45.00%"></span>
-        <span data-hf-id="hf-iyun" class="tick" style="top:50.00%"></span>
-        <span data-hf-id="hf-ywvq" class="tick" style="top:55.00%"></span>
-        <span data-hf-id="hf-shuy" class="tick" style="top:60.00%"></span>
-        <span data-hf-id="hf-dghn" class="tick" style="top:65.00%"></span>
-        <span data-hf-id="hf-et2h" class="tick" style="top:70.00%"></span>
-        <span data-hf-id="hf-5ee8" class="tick" style="top:75.00%"></span>
-        <span data-hf-id="hf-tp7w" class="tick" style="top:80.00%"></span>
-        <span data-hf-id="hf-r3od" class="tick" style="top:85.00%"></span>
-        <span data-hf-id="hf-i2g3" class="tick" style="top:90.00%"></span>
-        <span data-hf-id="hf-f95e" class="tick" style="top:95.00%"></span>
-        <span data-hf-id="hf-sn2z" class="tick" style="top:100.00%"></span>
-        <span data-hf-id="hf-o554" id="marker"></span>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="10" data-width="1920" data-height="1080">
+      <div id="card" class="layer">
+        <div class="row"><i style="background:#f4f4ff"></i><i style="background:#bcf015"></i><i style="background:#ebedf5"></i><i style="background:#350aff"></i><i style="background:#1a0080"></i><i style="background:#bcf015"></i><i style="background:#120d2b"></i></div>
+        <div class="row"><i style="background:#120d2b"></i><i style="background:#bcf015"></i><i style="background:#1a0080"></i><i style="background:#350aff"></i><i style="background:#ebedf5"></i><i style="background:#bcf015"></i><i style="background:#f4f4ff"></i></div>
+        <div class="row row--low"><i style="background:#1a0080"></i><i style="background:#f4f4ff"></i><i style="background:#350aff"></i><i style="background:#120d2b"></i><i style="background:#bcf015"></i></div>
+        <div class="plate pixel"><b>Please stand by</b><span>Light Falls · 33 channels</span></div>
       </div>
-      <div data-hf-id="hf-yk1z" id="reading">
-        <span data-hf-id="hf-tsuh" id="r-0" class="r" data-layout-allow-overlap="">EV 12.3</span>
-        <span data-hf-id="hf-vv7x" id="r-1" class="r" data-layout-allow-overlap="">EV 10.8</span>
-        <span data-hf-id="hf-z4ko" id="r-2" class="r" data-layout-allow-overlap="">EV 6.3</span>
-        <span data-hf-id="hf-s424" id="r-3" class="r" data-layout-allow-overlap="">EV 3.5</span>
-        <span data-hf-id="hf-rvux" id="r-4" class="r" data-layout-allow-overlap="">EV 2.2</span>
-        <span data-hf-id="hf-hk57" id="r-5" class="r" data-layout-allow-overlap="">EV −0.7</span>
-        <span data-hf-id="hf-0u1m" id="r-6" class="r" data-layout-allow-overlap="">EV — · beyond the scale</span>
+      <div id="ch-0" data-layout-allow-overflow class="layer ch" style="opacity:0">
+        <img id="img-0" src="assets/f0.avif" alt="" style="object-position:0% 50%" />
+        <span class="chip pixel">CH 01</span>
+        <span class="name pixel">Sea, 2026</span>
       </div>
-      <h1 data-hf-id="hf-5jrn" id="title">Light Falls</h1>
-      <p data-hf-id="hf-ghoa" id="credit">Photographs by Apiwit Nathong</p>
+      <div id="ch-1" data-layout-allow-overflow class="layer ch" style="opacity:0">
+        <img id="img-1" src="assets/f1.avif" alt="" style="object-position:37% 34%" />
+        <span class="chip pixel">CH 07</span>
+        <span class="name pixel">Khao Yai</span>
+      </div>
+      <div id="ch-2" data-layout-allow-overflow class="layer ch" style="opacity:0">
+        <img id="img-2" src="assets/f2.avif" alt="" style="object-position:31% 0%" />
+        <span class="chip pixel">CH 10</span>
+        <span class="name pixel">Pattaya</span>
+      </div>
+      <div id="ch-3" data-layout-allow-overflow class="layer ch" style="opacity:0">
+        <img id="img-3" src="assets/f3.avif" alt="" style="object-position:81% 53%" />
+        <span class="chip pixel">CH 09</span>
+        <span class="name pixel">The Zoo</span>
+      </div>
+      <div id="ch-4" data-layout-allow-overflow class="layer ch" style="opacity:0">
+        <img id="img-4" src="assets/f4.avif" alt="" style="object-position:53% 50%" />
+        <span class="chip pixel">CH 14</span>
+        <span class="name pixel">New Year</span>
+      </div>
+      <div id="ch-5" data-layout-allow-overflow class="layer ch ch--sky" style="opacity:0">
+        <img id="img-5" src="assets/f5.avif" alt="" style="object-position:50% 47%" />
+        <span class="chip pixel">CH 33</span>
+        <span class="name pixel">M31, the Andromeda Galaxy</span>
+      </div>
+      <div id="end" class="layer" style="opacity:0">
+        <span class="chip pixel">End of transmission</span>
+        <div id="mark"><i class="o"></i><i></i><i></i><i></i><i></i><i></i><i class="o"></i><i></i><i></i><i class="o"></i><i class="o"></i><i class="o"></i><i></i><i></i><i></i><i class="o"></i><i class="o"></i><i class="o"></i><i class="o"></i><i class="o"></i><i></i><i></i><i class="o"></i><i class="o"></i><i></i><i class="o"></i><i class="o"></i><i></i><i></i><i class="o"></i><i class="o"></i><i class="o"></i><i class="o"></i><i class="o"></i><i></i><i></i><i></i><i class="o"></i><i class="o"></i><i class="o"></i><i></i><i></i><i class="o"></i><i></i><i></i><i></i><i></i><i></i><i class="o"></i></div>
+        <h1 id="title">Light Falls</h1>
+        <p id="credit" class="pixel">Photographs by Apiwit Nathong</p>
+      </div>
+      <div id="static" class="layer"></div>
+      <div id="scan" class="layer"></div>
+      <div id="vignette" class="layer"></div>
     </div>
     <script>
-      const frames = [{"ev":12.3,"label":"EV 12.3","y":18.499999999999996},{"ev":10.8,"label":"EV 10.8","y":25.999999999999996},{"ev":6.3,"label":"EV 6.3","y":48.5},{"ev":3.5,"label":"EV 3.5","y":62.5},{"ev":2.2,"label":"EV 2.2","y":69},{"ev":-0.7,"label":"EV −0.7","y":83.5},{"ev":null,"label":"EV —","y":104}];
-      const slot = 1.2333;
+      const cuts = [1.4,2.4,3.4,4.4,5.4,6.4,7.4];
+      const count = 6;
       const tl = gsap.timeline({ paused: true });
-      const meter = document.getElementById("meter");
-      frames.forEach((f, i) => {
-        const plate = "#plate-" + i;
-        const img = "#img-" + i;
-        const at = i * slot;
-        tl.fromTo(plate, { opacity: 0 }, { opacity: 1, duration: i === 0 ? 0.8 : 0.55, ease: "power1.inOut" }, i === 0 ? 0 : at - 0.35);
-        tl.fromTo(img, { scale: 1.12 }, { scale: 1, duration: slot + 0.9, ease: "none" }, Math.max(0, at - 0.35));
-        tl.to("#marker", { y: (f.y / 100) * meter.clientHeight, duration: i === 0 ? 0.01 : 0.6, ease: "expo.out" }, Math.max(0, at - 0.2));
-        tl.fromTo("#r-" + i, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, Math.max(0, at - 0.15));
-        if (i > 0) tl.to("#r-" + (i - 1), { opacity: 0, y: -14, duration: 0.3, ease: "power2.in" }, at - 0.2);
+      // Each cut: three frames of static, then the next channel snaps on underneath.
+      cuts.forEach((t, k) => {
+        const s = t - 0.18;
+        [0, 1, 2].forEach((n) => tl.set("#static", { opacity: 1, backgroundImage: "url(assets/static-" + ((n + k) % 3) + ".png)" }, s + n * 0.06));
+        tl.set("#static", { opacity: 0 }, t);
+        const prev = k === 0 ? "#card" : "#ch-" + (k - 1);
+        const next = k === count ? "#end" : "#ch-" + k;
+        tl.set(prev, { opacity: 0 }, t);
+        tl.set(next, { opacity: 1 }, t);
+        if (k < count) {
+          tl.fromTo("#img-" + k, { scale: 1.06 }, { scale: 1, duration: 1.1, ease: "power2.out" }, t);
+          tl.fromTo("#ch-" + k + " .chip", { opacity: 0 }, { opacity: 1, duration: 0.24, ease: "steps(3)" }, t + 0.06);
+          tl.fromTo("#ch-" + k + " .name", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.36, ease: "steps(6)" }, t + 0.12);
+        }
       });
-      tl.fromTo("#title", { yPercent: 40, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 1.2, ease: "expo.out" }, 7.4 + 0.2);
-      tl.fromTo("#credit", { opacity: 0 }, { opacity: 1, duration: 0.8, ease: "power2.out" }, 7.4 + 0.7);
-      tl.to(["#meter", "#reading"], { opacity: 0, duration: 0.8 }, 7.4 + 0.4);
+      tl.fromTo("#card .plate", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "steps(3)" }, 0.15);
+      const end = 7.4;
+      tl.fromTo("#mark i", { opacity: 0 }, { opacity: 1, duration: 0.01, stagger: { each: 0.008, from: "random" } }, end + 0.05);
+      tl.fromTo("#title", { clipPath: "inset(0 0 100% 0)" }, { clipPath: "inset(0 0 0% 0)", duration: 0.6, ease: "steps(9)" }, end + 0.3);
+      tl.fromTo("#credit", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "steps(3)" }, end + 0.9);
+      tl.fromTo("#end .chip", { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "steps(2)" }, end + 1.2);
+      tl.to("#scan", { backgroundPositionY: 12, duration: 10, ease: "none" }, 0);
+      window.__timelines = window.__timelines || {};
       window.__timelines["main"] = tl;
       tl.seek(0);
     </script>

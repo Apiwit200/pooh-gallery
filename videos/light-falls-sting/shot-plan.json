@@ -1,10 +1,22 @@
 {
   "category": "kinetic-type",
   "duration": 10,
-  "canvas": [1920, 1080],
+  "canvas": [
+    1920,
+    1080
+  ],
   "asset_needs": [],
-  "brief": "Title sting for the photography exhibition Light Falls. Seven of the photographer's own frames, chosen from the curated homepage, dissolve in descending order of measured exposure value: island at noon, a deer in shade, a pylon at dusk, a shark in aquarium light, concert confetti, New Year fireworks, and finally M31. A Geist Mono EV readout and a hairline meter on the right step down with each frame's real EV (read from src/data/photos.json) and fall off the scale at Andromeda. The title rises over the galaxy for the final 2.4 seconds. Photographs are shown unaltered: no grading, no filters, only scale and opacity.",
+  "brief": "Title sting for Light Falls in the site's late-night broadcast look. A colour-bar test card ('Please stand by') flips through six channels of the photographer's own frames, each cut a three-frame burst of seeded static, each frame carrying its real channel number and collection title in Geist Pixel chips. The last channel is the Andromeda Galaxy; then the screen goes ultramarine for the pixel aperture, the Jacquard 24 title and the credit. Photographs are shown unaltered: no grading, no filters, only scale; scanlines and vignette sit over the whole screen like the site's CRT.",
   "frames_source": "src/data/curation.json ids, resolved to public/photos/<file>-1920.avif by build.mjs",
-  "fonts": ["Mona Sans Variable (wdth 75)", "Geist Mono Variable"],
-  "palette": { "deep": "#04060a", "paper": "#ebe7dd" }
+  "fonts": [
+    "Jacquard 24",
+    "Geist Pixel"
+  ],
+  "palette": {
+    "blue": "#350aff",
+    "lime": "#bcf015",
+    "paper": "#ebedf5",
+    "ink": "#120d2b",
+    "white": "#f4f4ff"
+  }
 }
